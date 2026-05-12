@@ -361,7 +361,7 @@
         }).join('')
       }
 
-      return `<div class="msg msg-ai" style="max-width:95%">${this._escape(m.text)}${cardsHtml}</div>`
+      return `<div class="msg msg-ai" style="max-width:95%">${this._renderMarkdown(m.text)}${cardsHtml}</div>`
     }
 
     _handleSend() {
@@ -468,6 +468,13 @@
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
+    }
+
+    _renderMarkdown(str) {
+      return this._escape(str)
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/\n/g, '<br>')
     }
   }
 

@@ -36,8 +36,8 @@ const STATE_FULL: Record<string, string> = Object.fromEntries(
 function extractLocation(message: string): { state?: string; city?: string } {
   const msg = message.toLowerCase()
 
-  // "in Chicago, IL" / "near Chicago" / "in California"
-  const nearIn = msg.match(/(?:near|in|around)\s+([a-z\s]+?)(?:,\s*([a-z]{2}))?(?:\s|$|,|\.|!)/)
+  // "in Chicago, IL" / "near Chicago" / "live in Newbury Park" / "I'm in California"
+  const nearIn = msg.match(/(?:live in|living in|based in|i'm in|i am in|near|in|around)\s+([a-z\s]+?)(?:,\s*([a-z]{2}))?(?:\s|$|,|\.|!)/)
   let city: string | undefined
   let state: string | undefined
 

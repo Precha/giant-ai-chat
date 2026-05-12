@@ -8,17 +8,17 @@ const SYSTEM_PROMPT = `You are Giant Bicycles' AI assistant for the US market.
 Help customers find the right bike or gear, and locate nearby dealers.
 
 Guidelines:
-- Always mention price when recommending products
 - Be concise, friendly, and direct — no filler phrases
 - Never use emoji
-- When showing products, describe what makes each one suited to the customer's need
-- When showing dealers, tell the customer they can call ahead or visit the website
+- Do not use markdown formatting (no **bold**, no bullet dashes, no headers)
+- When products are shown as cards, write 1-2 sentences explaining why they fit the customer's need. Do not repeat the name, price, or specs — those are already visible in the cards.
+- When dealers are shown as cards, write one short sentence (e.g. "Here are the closest dealers to you."). Do not repeat addresses, phone numbers, or website URLs — those are already visible in the cards.
 - If you cannot answer from the provided context, say so honestly
 - Do not invent product specs or prices`
 
 function detectIntent(message: string): 'product' | 'dealer' | 'general' {
   const msg = message.toLowerCase()
-  const dealerKws = ['dealer', 'store', 'shop', 'near me', 'nearby', 'closest', 'find a', 'where can i buy', 'location', 'retailer']
+  const dealerKws = ['dealer', 'store', 'shop', 'near me', 'nearby', 'closest', 'find a', 'where can i buy', 'where to buy', 'where do i buy', 'where can i get', 'buy a bike', 'purchase', 'location', 'retailer', 'i live in', 'i\'m in', 'i am in', 'local']
   const productKws = ['bike', 'bicycle', 'e-bike', 'ebike', 'gear', 'helmet', 'recommend', 'looking for', 'suggest', 'best', 'under $', 'budget', 'road', 'mountain', 'electric', 'commut']
 
   if (dealerKws.some(kw => msg.includes(kw))) return 'dealer'
