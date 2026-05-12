@@ -118,11 +118,20 @@ export interface ProductResult extends Product {
   score: number
 }
 
+function isFrameset(product: Product): boolean {
+  return /frameset/i.test(product.name) ||
+    product.filters.some(f => /frameset/i.test(f))
+}
+
 export function searchProducts(message: string, topK = 3): ProductResult[] {
   const products = getProducts()
   const filters = extractFilters(message)
 
+  // Only include framesets if user explicitly asked for one
+  const wantsFrameset = /frameset/i.test(message)
+
   let candidates = products.filter(p => {
+    if (!wantsFrameset && isFrameset(p)) return false
     if (filters.priceMax && p.price > filters.priceMax) return false
     if (filters.priceMin && p.priceMax < filters.priceMin) return false
     if (filters.brand && !p.brand.toLowerCase().includes(filters.brand.toLowerCase())) return false

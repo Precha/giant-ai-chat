@@ -33,23 +33,49 @@ const STATE_FULL: Record<string, string> = Object.fromEntries(
   Object.entries(STATE_ABBR).map(([k, v]) => [v.toLowerCase(), k])
 )
 
+// Common city nicknames / abbreviations → { city, state }
+const CITY_ALIASES: Record<string, { city: string; state: string }> = {
+  'la':            { city: 'Los Angeles',   state: 'CA' },
+  'los angeles':   { city: 'Los Angeles',   state: 'CA' },
+  'sf':            { city: 'San Francisco', state: 'CA' },
+  'san francisco': { city: 'San Francisco', state: 'CA' },
+  'nyc':           { city: 'New York',      state: 'NY' },
+  'new york city': { city: 'New York',      state: 'NY' },
+  'chicago':       { city: 'Chicago',       state: 'IL' },
+  'dallas':        { city: 'Dallas',        state: 'TX' },
+  'houston':       { city: 'Houston',       state: 'TX' },
+  'miami':         { city: 'Miami',         state: 'FL' },
+  'seattle':       { city: 'Seattle',       state: 'WA' },
+  'portland':      { city: 'Portland',      state: 'OR' },
+  'denver':        { city: 'Denver',        state: 'CO' },
+  'phoenix':       { city: 'Phoenix',       state: 'AZ' },
+  'boston':        { city: 'Boston',        state: 'MA' },
+  'atlanta':       { city: 'Atlanta',       state: 'GA' },
+  'nashville':     { city: 'Nashville',     state: 'TN' },
+  'austin':        { city: 'Austin',        state: 'TX' },
+}
+
 function extractLocation(message: string): { state?: string; city?: string } {
   const msg = message.toLowerCase()
-
-  // "in Chicago, IL" / "near Chicago" / "live in Newbury Park" / "I'm in California"
-  const nearIn = msg.match(/(?:live in|living in|based in|i'm in|i am in|near|in|around)\s+([a-z\s]+?)(?:,\s*([a-z]{2}))?(?:\s|$|,|\.|!)/)
   let city: string | undefined
   let state: string | undefined
+
+  // "in Chicago, IL" / "near Chicago" / "live in Newbury Park" / "I'm in California"
+  const nearIn = msg.match(/(?:live in|living in|based in|i'm in|i am in|near|in|around)\s+([a-z][a-z\s]*?)(?:,\s*([a-z]{2}))?(?:\s|$|,|\.|!)/)
 
   if (nearIn) {
     const loc = nearIn[1].trim()
     const abbr = nearIn[2]?.toUpperCase()
 
-    if (abbr && STATE_ABBR[abbr]) {
+    // Check city aliases first (handles "LA", "SF", "NYC")
+    const alias = CITY_ALIASES[loc]
+    if (alias) {
+      city = alias.city
+      state = alias.state
+    } else if (abbr && STATE_ABBR[abbr]) {
       state = abbr
       city = loc
     } else {
-      // Check if loc is a state name
       const stateAbbr = STATE_FULL[loc]
       if (stateAbbr) {
         state = stateAbbr
@@ -59,9 +85,9 @@ function extractLocation(message: string): { state?: string; city?: string } {
     }
   }
 
-  // Fallback: scan for state abbreviations (e.g., "CA", "NY")
+  // Fallback: look for known state abbreviations (e.g. "CA", "NY") — uppercase only to avoid false matches
   if (!state) {
-    const abbrMatch = msg.match(/\b([A-Z]{2})\b/)
+    const abbrMatch = message.match(/\b([A-Z]{2})\b/)
     if (abbrMatch && STATE_ABBR[abbrMatch[1]]) state = abbrMatch[1]
   }
 
@@ -100,11 +126,11 @@ export function searchDealers(
     if (stateFiltered.length > 0) candidates = stateFiltered
   }
 
-  // Filter by city (fuzzy)
+  // Filter by city — word boundary match to avoid substring false positives
   if (city) {
+    const cityRe = new RegExp(`\\b${city.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i')
     const cityFiltered = candidates.filter(d =>
-      d.city?.toLowerCase().includes(city.toLowerCase()) ||
-      d.address?.toLowerCase().includes(city.toLowerCase())
+      cityRe.test(d.city ?? '') || cityRe.test(d.address ?? '')
     )
     if (cityFiltered.length > 0) candidates = cityFiltered
   }

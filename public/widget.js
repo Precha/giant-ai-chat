@@ -361,7 +361,15 @@
         }).join('')
       }
 
-      return `<div class="msg msg-ai" style="max-width:95%">${this._renderMarkdown(m.text)}${cardsHtml}</div>`
+      // When cards exist: always show cards first, text below
+      if (cardsHtml) {
+        const textHtml = m.text
+          ? `<div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--grey-border);font-size:12px;color:var(--muted)">${this._renderMarkdown(m.text)}</div>`
+          : ''
+        return `<div class="msg msg-ai" style="max-width:95%">${cardsHtml}${textHtml}</div>`
+      }
+
+      return `<div class="msg msg-ai" style="max-width:95%">${this._renderMarkdown(m.text)}</div>`
     }
 
     _handleSend() {
@@ -375,6 +383,8 @@
     async _sendMessage(text) {
       this._togglePanel(true)
       this._addUserMessage(text)
+      // Collapse quick questions after first user message
+      if (!this._chipsCollapsed) this._toggleChips()
       this._setLoading(true)
 
       const messages = this._shadow.getElementById('messages')
