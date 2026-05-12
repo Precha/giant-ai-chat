@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Giant AI Chat Widget
 
-## Getting Started
+Universal AI chat widget for Giant Bicycles — add it to any website with one script tag.
 
-First, run the development server:
+**Capabilities:** Product recommendations (Giant / Liv / Momentum) · Dealer finder with GPS · Streaming responses powered by Claude claude-sonnet-4-6
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Deploy in 2 minutes
+
+### 1. Fork & deploy to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/YOUR_GITHUB/giant-ai-chat&env=ANTHROPIC_API_KEY&envDescription=Get%20your%20key%20at%20console.anthropic.com)
+
+Set `ANTHROPIC_API_KEY` when prompted. Done.
+
+### 2. Embed on your website
+
+```html
+<script src="https://YOUR-DEPLOY.vercel.app/widget.js"></script>
+<giant-chat
+  api-url="https://YOUR-DEPLOY.vercel.app/api/chat"
+  platform="web"
+  market="US"
+  lang="en"
+></giant-chat>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Shopify** — add to `theme.liquid` before `</body>`:
+```html
+<script src="https://YOUR-DEPLOY.vercel.app/widget.js"></script>
+<giant-chat
+  api-url="https://YOUR-DEPLOY.vercel.app/api/chat"
+  platform="shopify"
+  market="{{ shop.metafields.market.value | default: 'US' }}"
+  lang="{{ request.locale.iso_code }}"
+></giant-chat>
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Salesforce Commerce Cloud** — add to `htmlHead.isml`:
+```html
+<script src="https://YOUR-DEPLOY.vercel.app/widget.js"></script>
+<giant-chat
+  api-url="https://YOUR-DEPLOY.vercel.app/api/chat"
+  platform="sfcc"
+  market="${pdict.currentLocale.country}"
+  lang="${pdict.currentLocale.language}"
+></giant-chat>
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Run locally
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+git clone https://github.com/YOUR_GITHUB/giant-ai-chat
+cd giant-ai-chat
+npm install
+cp .env.example .env.local
+# Edit .env.local — add your ANTHROPIC_API_KEY
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Update data
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Product and dealer data lives in `data/`. To refresh:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Replace files in `data/products/` with new Giant product JSON exports
+- Replace `data/dealers/dealers_US.json` with a fresh dealer export
+- Restart the server (data loads once at startup)
+
+---
+
+## Cost estimate
+
+| Traffic | Est. monthly cost |
+|---|---|
+| Low (~30 chats/day) | ~$10–20 |
+| Medium (~100 chats/day) | ~$40–80 |
+| High (~300 chats/day) | ~$100–160 |
+
+Prompt caching is enabled — reduces Claude API costs ~90% on repeated system prompts.
+
+---
+
+## Tech stack
+
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| AI | Claude claude-sonnet-4-6 · Anthropic SDK · streaming + prompt caching |
+| Widget | Vanilla Web Component + Shadow DOM (zero dependencies) |
+| Data | Local JSON, in-memory keyword search |
+| Deploy | Vercel (free tier sufficient for demo) |

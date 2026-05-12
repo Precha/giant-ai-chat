@@ -1,0 +1,791 @@
+{
+  "Products": [
+    {
+      "Id": 4023,
+      "GlobalId": 4023,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Vida E+",
+      "Type": 1,
+      "Features": [],
+      "MetaTitle": "Vida E+ (2026) |  City & Hybrid bike",
+      "MetaDescription": "Fuel Your Freedom",
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/mis8bldqttbtlhr2ozpa/MY26VidaE_ColorA.jpg",
+          "SkuId": "7480000194",
+          "CloudinaryPublicId": "mis8bldqttbtlhr2ozpa"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/mis8bldqttbtlhr2ozpa/MY26VidaE_ColorA.jpg",
+          "SkuId": "7480000197",
+          "CloudinaryPublicId": "mis8bldqttbtlhr2ozpa"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/tk4xnbrkxcbrdfzypdiq/MY26VidaE_Front_color_C.jpg",
+          "CloudinaryPublicId": "tk4xnbrkxcbrdfzypdiq"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/wlygmlimivlktot2zkrc/MY26VidaE_Rear_color_C.jpg",
+          "CloudinaryPublicId": "wlygmlimivlktot2zkrc"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/ttsxrb0ealvobemzr9qx/MY26VidaE_ColorB.jpg",
+          "SkuId": "7480000294",
+          "CloudinaryPublicId": "ttsxrb0ealvobemzr9qx"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/ttsxrb0ealvobemzr9qx/MY26VidaE_ColorB.jpg",
+          "SkuId": "7480000297",
+          "CloudinaryPublicId": "ttsxrb0ealvobemzr9qx"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/ckpfgvw6vxf1kshb67rv/MY26VidaE_Front_color_A.jpg",
+          "CloudinaryPublicId": "ckpfgvw6vxf1kshb67rv"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/sg7pka5iadn76557xouu/MY26VidaE_Rear_color_A.jpg",
+          "CloudinaryPublicId": "sg7pka5iadn76557xouu"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/vpmkuk00bu2wnsp1obdn/MY26VidaE_ColorC-D7.jpg",
+          "CloudinaryPublicId": "vpmkuk00bu2wnsp1obdn"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/py9r5guefgzitvggbnmi/MY26VidaE_ColorC.jpg",
+          "SkuId": "7480000394",
+          "CloudinaryPublicId": "py9r5guefgzitvggbnmi"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/py9r5guefgzitvggbnmi/MY26VidaE_ColorC.jpg",
+          "SkuId": "7480000397",
+          "CloudinaryPublicId": "py9r5guefgzitvggbnmi"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/o5v4ozyr1dmqxnndw6zv/MY26VidaE_Front_color_B.jpg",
+          "CloudinaryPublicId": "o5v4ozyr1dmqxnndw6zv"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/jmmo0vmmzqkz4dvooxdz/MY26VidaE_Rear_color_B.jpg",
+          "CloudinaryPublicId": "jmmo0vmmzqkz4dvooxdz"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/kpspqglhd2lsa7loijrm/MY26VidaE_ColorC-D4.jpg",
+          "CloudinaryPublicId": "kpspqglhd2lsa7loijrm"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/da5lcsypmg7wrmert2ar/MY26VidaE_ColorC-D3.jpg",
+          "CloudinaryPublicId": "da5lcsypmg7wrmert2ar"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/rmoxlkvraua2jiz1d4o6/MY26VidaE_ColorC-D8.jpg",
+          "CloudinaryPublicId": "rmoxlkvraua2jiz1d4o6"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/y7l6vj0iisxoitxfpno1/MY26VidaE_ColorC-D2.jpg",
+          "CloudinaryPublicId": "y7l6vj0iisxoitxfpno1"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/um77z8nxwvhwhzfoout1/MY26VidaE_ColorC-D6.jpg",
+          "CloudinaryPublicId": "um77z8nxwvhwhzfoout1"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/amjy6mu2tn92svpbcmdj/MY26VidaE_ColorC-D5.jpg",
+          "CloudinaryPublicId": "amjy6mu2tn92svpbcmdj"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/z2each4vkaulizmb7bkz/MY26VidaE_ColorC-D1.jpg",
+          "CloudinaryPublicId": "z2each4vkaulizmb7bkz"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/mqwbnp1ggcw4fqegrlzi/USA_125151_b.jpg",
+          "CloudinaryPublicId": "mqwbnp1ggcw4fqegrlzi"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/w2nzpfktwq6qettlqzke/USA_123904_b.jpg",
+          "CloudinaryPublicId": "w2nzpfktwq6qettlqzke"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/t67rwdpn2abm1fqyxgod/USA_128503_b.jpg",
+          "CloudinaryPublicId": "t67rwdpn2abm1fqyxgod"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/ihod9bltiiomvzgkediw/USA_125311_b.jpg",
+          "CloudinaryPublicId": "ihod9bltiiomvzgkediw"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/lmhqroxr9h9cvtvpzrnd/USA_123986_b.jpg",
+          "CloudinaryPublicId": "lmhqroxr9h9cvtvpzrnd"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/ouamqouzufjtmnw8spak/USA_124018_b.jpg",
+          "CloudinaryPublicId": "ouamqouzufjtmnw8spak"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/hsznw8llhclanb7quhlt/USA_124065_b.jpg",
+          "CloudinaryPublicId": "hsznw8llhclanb7quhlt"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/kuqbbrjox3le9ylvlwaa/USA_124110_b.jpg",
+          "CloudinaryPublicId": "kuqbbrjox3le9ylvlwaa"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/ycmtr4uia0uq8nf4uzff/USA_125826_b.jpg",
+          "CloudinaryPublicId": "ycmtr4uia0uq8nf4uzff"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/o9yelpm7dunfgcntqiik/USA_126345_b.jpg",
+          "CloudinaryPublicId": "o9yelpm7dunfgcntqiik"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/vax4ilkeec9t0v7hnxb9/USA_128076_bbbb.jpg",
+          "CloudinaryPublicId": "vax4ilkeec9t0v7hnxb9"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/djigr77feosfkr2rqb5g/USA_128647_b.jpg",
+          "CloudinaryPublicId": "djigr77feosfkr2rqb5g"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/phqspafqjwjmwbbjsyrz/USA_125002_b.jpg",
+          "CloudinaryPublicId": "phqspafqjwjmwbbjsyrz"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/gtebqeropkqmnvoapqjd/USA_122538_b.jpg",
+          "CloudinaryPublicId": "gtebqeropkqmnvoapqjd"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/yjnnt9vigodthffz0ura/USA_125379_b.jpg",
+          "CloudinaryPublicId": "yjnnt9vigodthffz0ura"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/qt5weqa5hxyfjlh5u8gu/USA_123635_b.jpg",
+          "CloudinaryPublicId": "qt5weqa5hxyfjlh5u8gu"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "7480000194",
+          "Price": 2150,
+          "Color": "Abyss Black",
+          "Size": "Small",
+          "Usage": "",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "Frame": {
+            "SizeName": "S",
+            "SeatTubeLength": 380,
+            "SeatTubeAngle": 67,
+            "TopTubeLength": 625,
+            "HeadTubeLength": 195,
+            "HeadTubeAngle": 66.5,
+            "ForkRake": 47,
+            "Trail": 98.8,
+            "WheelBase": 1141.3,
+            "ChainStayLength": 480,
+            "BottomBracketDrop": 45,
+            "Stack": 649.5,
+            "Reach": 348.6,
+            "StandOverHeight": 420,
+            "HandlebarWidth": 720,
+            "StemLength": 60,
+            "CrankLength": 165,
+            "CrankLengthDec": 165,
+            "WheelSizeAlt": "26\"",
+            "SizeStart": "155",
+            "SizeEnd": "175",
+            "Image": "//static.giant-bicycles.com/Images/Momentum/GlobalFrames/momentum-general-geo.png",
+            "SortOrder": 8
+          },
+          "ShowInShop": true,
+          "Barcode": "4711291190191",
+          "OrderHandlingAmount": 95,
+          "OrderHandlingFees": [
+            {
+              "Title": "Destination fee",
+              "Description": "Destination Fee reflects costs incurred in transportation, logistics, and other associated fees. The destination fee is non-refundable or negotiable.",
+              "Amount": 95
+            },
+            {
+              "Title": "E-Bike Battery Recycling Fee",
+              "Description": "<a href=\"/us/call2recycle-partnership\">Learn more about the E-Bike Battery Recycling Program</a>",
+              "Amount": 5
+            }
+          ],
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/mis8bldqttbtlhr2ozpa/MY26VidaE_ColorA.jpg",
+              "SkuId": "7480000194",
+              "CloudinaryPublicId": "mis8bldqttbtlhr2ozpa"
+            }
+          ]
+        },
+        {
+          "Id": "7480000197",
+          "Price": 2150,
+          "Color": "Abyss Black",
+          "Size": "Large",
+          "Usage": "",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "Frame": {
+            "SizeName": "L",
+            "SeatTubeLength": 450,
+            "SeatTubeAngle": 67,
+            "TopTubeLength": 640,
+            "HeadTubeLength": 210,
+            "HeadTubeAngle": 67,
+            "ForkRake": 47,
+            "Trail": 95.4,
+            "WheelBase": 1149.8,
+            "ChainStayLength": 480,
+            "BottomBracketDrop": 45,
+            "Stack": 666.2,
+            "Reach": 356.5,
+            "StandOverHeight": 420,
+            "HandlebarWidth": 720,
+            "StemLength": 80,
+            "CrankLength": 165,
+            "CrankLengthDec": 165,
+            "WheelSizeAlt": "26\"",
+            "SizeStart": "173",
+            "SizeEnd": "190",
+            "Image": "//static.giant-bicycles.com/Images/Momentum/GlobalFrames/momentum-general-geo.png",
+            "SortOrder": 13
+          },
+          "ShowInShop": true,
+          "Barcode": "4711291190207",
+          "OrderHandlingAmount": 95,
+          "OrderHandlingFees": [
+            {
+              "Title": "Destination fee",
+              "Description": "Destination Fee reflects costs incurred in transportation, logistics, and other associated fees. The destination fee is non-refundable or negotiable.",
+              "Amount": 95
+            },
+            {
+              "Title": "E-Bike Battery Recycling Fee",
+              "Description": "<a href=\"/us/call2recycle-partnership\">Learn more about the E-Bike Battery Recycling Program</a>",
+              "Amount": 5
+            }
+          ],
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/mis8bldqttbtlhr2ozpa/MY26VidaE_ColorA.jpg",
+              "SkuId": "7480000197",
+              "CloudinaryPublicId": "mis8bldqttbtlhr2ozpa"
+            }
+          ]
+        },
+        {
+          "Id": "7480000294",
+          "Price": 2150,
+          "Color": "Mountain Air",
+          "Size": "Small",
+          "Usage": "",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "Frame": {
+            "SizeName": "S",
+            "SeatTubeLength": 380,
+            "SeatTubeAngle": 67,
+            "TopTubeLength": 625,
+            "HeadTubeLength": 195,
+            "HeadTubeAngle": 66.5,
+            "ForkRake": 47,
+            "Trail": 98.8,
+            "WheelBase": 1141.3,
+            "ChainStayLength": 480,
+            "BottomBracketDrop": 45,
+            "Stack": 649.5,
+            "Reach": 348.6,
+            "StandOverHeight": 420,
+            "HandlebarWidth": 720,
+            "StemLength": 60,
+            "CrankLength": 165,
+            "CrankLengthDec": 165,
+            "WheelSizeAlt": "26\"",
+            "SizeStart": "155",
+            "SizeEnd": "175",
+            "Image": "//static.giant-bicycles.com/Images/Momentum/GlobalFrames/momentum-general-geo.png",
+            "SortOrder": 8
+          },
+          "ShowInShop": true,
+          "Barcode": "4711291190221",
+          "OrderHandlingAmount": 95,
+          "OrderHandlingFees": [
+            {
+              "Title": "Destination fee",
+              "Description": "Destination Fee reflects costs incurred in transportation, logistics, and other associated fees. The destination fee is non-refundable or negotiable.",
+              "Amount": 95
+            },
+            {
+              "Title": "E-Bike Battery Recycling Fee",
+              "Description": "<a href=\"/us/call2recycle-partnership\">Learn more about the E-Bike Battery Recycling Program</a>",
+              "Amount": 5
+            }
+          ],
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/ttsxrb0ealvobemzr9qx/MY26VidaE_ColorB.jpg",
+              "SkuId": "7480000294",
+              "CloudinaryPublicId": "ttsxrb0ealvobemzr9qx"
+            }
+          ]
+        },
+        {
+          "Id": "7480000297",
+          "Price": 2150,
+          "Color": "Mountain Air",
+          "Size": "Large",
+          "Usage": "",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "Frame": {
+            "SizeName": "L",
+            "SeatTubeLength": 450,
+            "SeatTubeAngle": 67,
+            "TopTubeLength": 640,
+            "HeadTubeLength": 210,
+            "HeadTubeAngle": 67,
+            "ForkRake": 47,
+            "Trail": 95.4,
+            "WheelBase": 1149.8,
+            "ChainStayLength": 480,
+            "BottomBracketDrop": 45,
+            "Stack": 666.2,
+            "Reach": 356.5,
+            "StandOverHeight": 420,
+            "HandlebarWidth": 720,
+            "StemLength": 80,
+            "CrankLength": 165,
+            "CrankLengthDec": 165,
+            "WheelSizeAlt": "26\"",
+            "SizeStart": "173",
+            "SizeEnd": "190",
+            "Image": "//static.giant-bicycles.com/Images/Momentum/GlobalFrames/momentum-general-geo.png",
+            "SortOrder": 13
+          },
+          "ShowInShop": true,
+          "Barcode": "4711291190238",
+          "OrderHandlingAmount": 95,
+          "OrderHandlingFees": [
+            {
+              "Title": "Destination fee",
+              "Description": "Destination Fee reflects costs incurred in transportation, logistics, and other associated fees. The destination fee is non-refundable or negotiable.",
+              "Amount": 95
+            },
+            {
+              "Title": "E-Bike Battery Recycling Fee",
+              "Description": "<a href=\"/us/call2recycle-partnership\">Learn more about the E-Bike Battery Recycling Program</a>",
+              "Amount": 5
+            }
+          ],
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/ttsxrb0ealvobemzr9qx/MY26VidaE_ColorB.jpg",
+              "SkuId": "7480000297",
+              "CloudinaryPublicId": "ttsxrb0ealvobemzr9qx"
+            }
+          ]
+        },
+        {
+          "Id": "7480000394",
+          "Price": 2150,
+          "Color": "Caramel Cinnamon",
+          "Size": "Small",
+          "Usage": "",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "Frame": {
+            "SizeName": "S",
+            "SeatTubeLength": 380,
+            "SeatTubeAngle": 67,
+            "TopTubeLength": 625,
+            "HeadTubeLength": 195,
+            "HeadTubeAngle": 66.5,
+            "ForkRake": 47,
+            "Trail": 98.8,
+            "WheelBase": 1141.3,
+            "ChainStayLength": 480,
+            "BottomBracketDrop": 45,
+            "Stack": 649.5,
+            "Reach": 348.6,
+            "StandOverHeight": 420,
+            "HandlebarWidth": 720,
+            "StemLength": 60,
+            "CrankLength": 165,
+            "CrankLengthDec": 165,
+            "WheelSizeAlt": "26\"",
+            "SizeStart": "155",
+            "SizeEnd": "175",
+            "Image": "//static.giant-bicycles.com/Images/Momentum/GlobalFrames/momentum-general-geo.png",
+            "SortOrder": 8
+          },
+          "ShowInShop": true,
+          "Barcode": "4711291233522",
+          "OrderHandlingAmount": 95,
+          "OrderHandlingFees": [
+            {
+              "Title": "Destination fee",
+              "Description": "Destination Fee reflects costs incurred in transportation, logistics, and other associated fees. The destination fee is non-refundable or negotiable.",
+              "Amount": 95
+            },
+            {
+              "Title": "E-Bike Battery Recycling Fee",
+              "Description": "<a href=\"/us/call2recycle-partnership\">Learn more about the E-Bike Battery Recycling Program</a>",
+              "Amount": 5
+            }
+          ],
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/py9r5guefgzitvggbnmi/MY26VidaE_ColorC.jpg",
+              "SkuId": "7480000394",
+              "CloudinaryPublicId": "py9r5guefgzitvggbnmi"
+            }
+          ]
+        },
+        {
+          "Id": "7480000397",
+          "Price": 2150,
+          "Color": "Caramel Cinnamon",
+          "Size": "Large",
+          "Usage": "",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "Frame": {
+            "SizeName": "L",
+            "SeatTubeLength": 450,
+            "SeatTubeAngle": 67,
+            "TopTubeLength": 640,
+            "HeadTubeLength": 210,
+            "HeadTubeAngle": 67,
+            "ForkRake": 47,
+            "Trail": 95.4,
+            "WheelBase": 1149.8,
+            "ChainStayLength": 480,
+            "BottomBracketDrop": 45,
+            "Stack": 666.2,
+            "Reach": 356.5,
+            "StandOverHeight": 420,
+            "HandlebarWidth": 720,
+            "StemLength": 80,
+            "CrankLength": 165,
+            "CrankLengthDec": 165,
+            "WheelSizeAlt": "26\"",
+            "SizeStart": "173",
+            "SizeEnd": "190",
+            "Image": "//static.giant-bicycles.com/Images/Momentum/GlobalFrames/momentum-general-geo.png",
+            "SortOrder": 13
+          },
+          "ShowInShop": true,
+          "Barcode": "4711291233539",
+          "OrderHandlingAmount": 95,
+          "OrderHandlingFees": [
+            {
+              "Title": "Destination fee",
+              "Description": "Destination Fee reflects costs incurred in transportation, logistics, and other associated fees. The destination fee is non-refundable or negotiable.",
+              "Amount": 95
+            },
+            {
+              "Title": "E-Bike Battery Recycling Fee",
+              "Description": "<a href=\"/us/call2recycle-partnership\">Learn more about the E-Bike Battery Recycling Program</a>",
+              "Amount": 5
+            }
+          ],
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/py9r5guefgzitvggbnmi/MY26VidaE_ColorC.jpg",
+              "SkuId": "7480000397",
+              "CloudinaryPublicId": "py9r5guefgzitvggbnmi"
+            }
+          ]
+        }
+      ],
+      "ProductAttributes": [
+        {
+          "Key": "bike_specs_hybrid_motor",
+          "Label": "Motor",
+          "Value": "SyncDrive Move S, rear hub, 60Nm, 48V, 500W",
+          "Short": ""
+        },
+        {
+          "Key": "bike_specs_hybrid_controller",
+          "Label": "Controller",
+          "Value": "RideControl Dash Core, 3 support levels"
+        },
+        {
+          "Key": "bike_specs_hybrid_display",
+          "Label": "Display",
+          "Value": "RideControl Dash Core, high-angle visibility, full color LCD display",
+          "Short": ""
+        },
+        {
+          "Key": "bike_specs_hybrid_battery",
+          "Label": "Battery",
+          "Value": "Energy 700, 46.8Vdc 14.7Ah, 48V",
+          "Short": ""
+        },
+        {
+          "Key": "bike_specs_hybrid_charger",
+          "Label": "Charger",
+          "Value": "Fast Charger 3A, 48V"
+        },
+        {
+          "Key": "bike_specs_hybrid_connectivity",
+          "Label": "Connectivity",
+          "Value": "RideControl App enabled ANT+ wireless display signal with e-bike profile"
+        },
+        {
+          "Key": "bike_specs_frame_sizes",
+          "Label": "Sizes",
+          "Value": "S,L"
+        },
+        {
+          "Key": "bike_specs_frame_colors",
+          "Label": "Colors",
+          "Value": "Abyss Black, Mountain Air"
+        },
+        {
+          "Key": "bike_specs_frame_frame",
+          "Label": "Frame",
+          "Value": "ALUXX aluminum, Low step thru, integrated lock mount"
+        },
+        {
+          "Key": "bike_specs_frame_fork",
+          "Label": "Fork",
+          "Value": "SR Suntour XCM 34 Boost DS Coil 80mm travel 15x110 AH axle"
+        },
+        {
+          "Key": "bike_specs_frame_shock",
+          "Label": "Shock",
+          "Value": "n/a"
+        },
+        {
+          "Key": "bike_specs_components_handlebar",
+          "Label": "Handlebar",
+          "Value": "Aluminum, 20⁰ Back Sweep, 50mm Rise"
+        },
+        {
+          "Key": "bike_specs_components_grips",
+          "Label": "Grips",
+          "Value": "Momentum comfort grip"
+        },
+        {
+          "Key": "bike_specs_components_stem",
+          "Label": "Stem",
+          "Value": "Momentum alluminum 31.8mm"
+        },
+        {
+          "Key": "bike_specs_components_seatpost",
+          "Label": "Seatpost",
+          "Value": "Forged alluminum 30.9mm",
+          "Short": ""
+        },
+        {
+          "Key": "bike_specs_components_saddle",
+          "Label": "Saddle",
+          "Value": "Momentum saddle w/ Rear Handle"
+        },
+        {
+          "Key": "bike_specs_components_pedals",
+          "Label": "Pedals",
+          "Value": "Friction Top platform type"
+        },
+        {
+          "Key": "bike_specs_drivetrain_shifters",
+          "Label": "Shifters",
+          "Value": "Shimano Altus"
+        },
+        {
+          "Key": "bike_specs_drivetrain_frontderailleur",
+          "Label": "Front Derailleur",
+          "Value": "n/a"
+        },
+        {
+          "Key": "bike_specs_drivetrain_rearderailleur",
+          "Label": "Rear Derailleur",
+          "Value": "Shimano Acera 8-speed"
+        },
+        {
+          "Key": "bike_specs_drivetrain_brakes",
+          "Label": "Brakes",
+          "Value": "Tektro HDE3940, hydraulic disc, 4-piston, 180mm [F&R]"
+        },
+        {
+          "Key": "bike_specs_drivetrain_brakelevers",
+          "Label": "Brake Levers",
+          "Value": "Brake lever with system cut off feature"
+        },
+        {
+          "Key": "bike_specs_drivetrain_cassette",
+          "Label": "Cassette",
+          "Value": "Shimano 11-40T 8-speed"
+        },
+        {
+          "Key": "bike_specs_drivetrain_chain",
+          "Label": "Chain",
+          "Value": "KMC e8 Sport e-bike optimized",
+          "Short": ""
+        },
+        {
+          "Key": "bike_specs_drivetrain_crankset",
+          "Label": "Crankset",
+          "Value": "Forge alloy crankset w/chain guard steel chainring 52T"
+        },
+        {
+          "Key": "bike_specs_wheels_bottombracket",
+          "Label": "Bottom Bracket",
+          "Value": "Torque Sensor"
+        },
+        {
+          "Key": "bike_specs_wheels_rims",
+          "Label": "Rims",
+          "Value": "Alluminum 26\"",
+          "Short": ""
+        },
+        {
+          "Key": "bike_specs_wheels_hubs",
+          "Label": "Hubs",
+          "Value": "eTracker Boost alloy 6-bolt disc 15x110mm [F] SyncDrive Move S [R]"
+        },
+        {
+          "Key": "bike_specs_wheels_spokes",
+          "Label": "Spokes",
+          "Value": "Stainless steel"
+        },
+        {
+          "Key": "bike_specs_wheels_tires",
+          "Label": "Tires",
+          "Value": "26\" x 2.4\""
+        },
+        {
+          "Key": "bike_specs_wheels_extras",
+          "Label": "Extras",
+          "Value": "EBIKE Certifications: UL 2849 certified, EN15194 certified"
+        },
+        {
+          "Key": "bike_specs_cargoloadlimit",
+          "Label": "Cargo load limits",
+          "Value": "Cargo load limits: Front rack 33lbs (Accessory), Rear rack 55lbs"
+        },
+        {
+          "Key": "bike_specs_totalloadlimit",
+          "Label": "Total Load Weight Limit",
+          "Value": "300 lbs (includes rider, cargo, and accessories)"
+        }
+      ],
+      "RelatedProductIds": [
+        4902,
+        4914,
+        4896,
+        5422
+      ],
+      "CollectionName": "2026",
+      "BikeSeriesName": "Vida E+",
+      "BikeSeriesDescription": "More powerful than ever, the new Vida E+ combines effortless speed, intelligent tech, and superior comfort to redefine your ride.\r\nPower That Delivers The Vida E’s powerful 500W motor and impressive 700Wh battery provide 28mph pedal assist, making steep hills, city cruising and everyday adventures effortless. Its optional throttle is a game-changing upgrade that delivers instant 20mph acceleration at your fingertips, no pedaling required.\r\nIntelligence in Motion True power demands smart engineering. Our breakthrough SyncDrive technology reads real-time data from three precision sensors, instantly calibrating the perfect boost for every single pedal stroke. The result? A ride so intuitive, it’s in sync with you. \r\nComfort Redefined Every detail is designed for your comfort. The low step-through frame suits riders of all abilities, while its 80mm travel suspension fork absorbs the road ahead for a super-smooth ride. A plush saddle and wide, grippy tires complete the ultimate comfort package for any terrain.  \r\nThere are no compromises with the Vida E: serious power, smart technology and all-day comfort put the fun and freedom back into riding, wherever you’re going. Enjoy La Vida today!",
+      "Headline": "Fuel Your Freedom",
+      "Tagline": "Riding La Vida",
+      "Filters": [
+        {
+          "FilterId": 1,
+          "FilterName": "Surface",
+          "LocalizedFilterNames": [],
+          "FilterNameLocalized": "Surface",
+          "FilterValue": "E-Bikes",
+          "LocalizedFilterValues": [],
+          "FilterValueLocalized": "E-Bikes"
+        },
+        {
+          "FilterId": 2,
+          "FilterName": "Level",
+          "LocalizedFilterNames": [],
+          "FilterNameLocalized": "Level",
+          "FilterValue": "Lifestyle",
+          "LocalizedFilterValues": [],
+          "FilterValueLocalized": "Lifestyle"
+        },
+        {
+          "FilterId": 3,
+          "FilterName": "Best For",
+          "LocalizedFilterNames": [],
+          "FilterNameLocalized": "Best For",
+          "FilterValue": "City & Hybrid",
+          "LocalizedFilterValues": [],
+          "FilterValueLocalized": "City & Hybrid"
+        },
+        {
+          "FilterId": 4,
+          "FilterName": "Suspension",
+          "LocalizedFilterNames": [],
+          "FilterNameLocalized": "Suspension",
+          "FilterValue": "Front Suspension",
+          "LocalizedFilterValues": [],
+          "FilterValueLocalized": "Front Suspension"
+        },
+        {
+          "FilterId": 5,
+          "FilterName": "Frame Material",
+          "LocalizedFilterNames": [],
+          "FilterNameLocalized": "Frame Material",
+          "FilterValue": "Aluminium",
+          "LocalizedFilterValues": [
+            {
+              "CultureId": 1,
+              "Text": "Aluminum"
+            }
+          ],
+          "FilterValueLocalized": "Aluminum"
+        },
+        {
+          "FilterId": 6,
+          "FilterName": "Wheel Size",
+          "LocalizedFilterNames": [],
+          "FilterNameLocalized": "Wheel Size",
+          "FilterValue": "26\"",
+          "LocalizedFilterValues": [],
+          "FilterValueLocalized": "26\""
+        },
+        {
+          "FilterId": 7,
+          "FilterName": "Brake Type",
+          "LocalizedFilterNames": [],
+          "FilterNameLocalized": "Brake Type",
+          "FilterValue": "Disc Brake",
+          "LocalizedFilterValues": [],
+          "FilterValueLocalized": "Disc Brake"
+        },
+        {
+          "FilterId": 41,
+          "FilterName": "Seatpost Type",
+          "LocalizedFilterNames": [],
+          "FilterNameLocalized": "Seatpost Type",
+          "FilterValue": "Adjustable",
+          "LocalizedFilterValues": [],
+          "FilterValueLocalized": "Adjustable"
+        }
+      ],
+      "Categories": [
+        "Bikes",
+        "Urban Bikes",
+        "Leisure Bikes"
+      ],
+      "PowerReviewId": "b-4023",
+      "Colors": [
+        "Abyss Black",
+        "Mountain Air",
+        "Caramel Cinnamon"
+      ],
+      "NavigationIds": [
+        "bikes-76",
+        "bikes-186"
+      ],
+      "CurrencyCode": "USD",
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": true,
+      "DefaultPedalId": 3,
+      "AllowanceLevel": 20,
+      "Url": "/us/vida-eplus",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    }
+  ]
+}
