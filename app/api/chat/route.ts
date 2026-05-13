@@ -43,11 +43,12 @@ export async function POST(req: Request) {
       return new Response('Missing message', { status: 400 })
     }
 
-    // Build full context from history for better intent detection
+    // fullContext (history + message) used only for search, NOT intent detection
+    // Intent detection uses current message only to avoid history contamination
     const recentContext = history.map(m => m.content).join(' ')
     const fullContext = `${recentContext} ${message}`.trim()
 
-    const intent = detectIntent(fullContext)
+    const intent = detectIntent(message)
     let contextBlock = ''
     let structuredData: object | null = null
 
