@@ -75,7 +75,12 @@ export async function POST(req: Request) {
             brand: p.brand,
             price: p.price,
             priceMax: p.priceMax,
-            description: p.description ? p.description.slice(0, 100).replace(/\s\S+$/, '…') : '',
+            description: (() => {
+              const d = p.description
+              if (!d) return ''
+              if (d.length <= 100) return d
+              return d.slice(0, 100).replace(/\s\S+$/, '…')
+            })(),
             imageUrl: p.imageUrl,
             productUrl: p.productUrl,
             inStock: p.inStock,

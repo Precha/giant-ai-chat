@@ -138,7 +138,9 @@ function parseProducts(raw: any, defaultBrand: Brand, forceBrand?: Brand): Produ
         category: filters[0] ?? '',
         price,
         priceMax,
-        description: p.MetaDescription ?? p.BikeSeriesDescription?.slice(0, 300) ?? '',
+        description: (p.MetaDescription && p.MetaDescription.length >= 60)
+          ? p.MetaDescription
+          : p.BikeSeriesDescription?.slice(0, 300) ?? p.MetaDescription ?? '',
         imageUrl,
         productUrl: `${BRAND_BASE_URL[brand]}${p.Url ?? ''}`,
         filters,
