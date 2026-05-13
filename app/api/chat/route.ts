@@ -111,7 +111,16 @@ function detectIntent(message: string): 'product' | 'dealer' | 'general' {
   if (strongDealerKws.some(kw => msg.includes(kw)) || strongDealerRe.test(msg)) return 'dealer'
 
   // Product keywords — only checked when no strong dealer signal
-  const productKws = ['bike', 'bicycle', 'e-bike', 'ebike', 'gear', 'helmet', 'jersey', 'saddle', 'glove', 'recommend', 'looking for', 'suggest', 'best', 'under $', 'budget', 'road', 'mountain', 'electric', 'commut', 'liv', 'giant', 'momentum']
+  const productKws = [
+    'bike', 'bicycle', 'e-bike', 'ebike', 'gear', 'helmet', 'jersey', 'saddle', 'glove',
+    'recommend', 'looking for', 'suggest', 'best', 'under $', 'budget',
+    'road', 'mountain', 'electric', 'commut', 'gravel', 'trail', 'kids',
+    'liv', 'giant', 'momentum', 'cadex',
+    'tire', 'wheel', 'shoe', 'pedal', 'bottle', 'light', 'lock', 'pump',
+    'bag', 'rack', 'fender', 'tube', 'handlebar', 'stem', 'seatpost',
+    'battery', 'charger', 'accessory', 'apparel', 'sock', 'eyewear',
+    'goggle', 'computer', 'short', 'bib', 'warmer', 'jacket',
+  ]
   if (productKws.some(kw => msg.includes(kw))) return 'product'
 
   return 'general'
