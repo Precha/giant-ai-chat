@@ -61,7 +61,7 @@ function extractLocation(message: string): { state?: string; city?: string } {
   let state: string | undefined
 
   // "in Chicago, IL" / "near Chicago" / "live in Newbury Park" / "I'm in California"
-  const nearIn = msg.match(/(?:live in|living in|based in|i'm in|i am in|near|in|around)\s+([a-z][a-z\s]*?)(?:,\s*([a-z]{2}))?(?:\s|$|,|\.|!)/)
+  const nearIn = msg.match(/(?:live in|living in|based in|i'm in|i am in|near|in|around)\s+([a-z][a-z\s]*?)(?:,\s*([a-z]{2}))?(?:\s|$|[,\.!?])/)
 
   if (nearIn) {
     const loc = nearIn[1].trim()
