@@ -30,24 +30,29 @@ function detectIntent(message: string): 'product' | 'dealer' | 'general' {
 export async function POST(req: Request) {
   try {
     const body = await req.json()
-    const { message, userLat, userLng } = body as {
+    const { message, userLat, userLng, history = [] } = body as {
       message: string
       sessionId?: string
       platform?: string
       userLat?: number
       userLng?: number
+      history?: Array<{ role: 'user' | 'assistant'; content: string }>
     }
 
     if (!message?.trim()) {
       return new Response('Missing message', { status: 400 })
     }
 
-    const intent = detectIntent(message)
+    // Build full context from history for better intent detection
+    const recentContext = history.map(m => m.content).join(' ')
+    const fullContext = `${recentContext} ${message}`.trim()
+
+    const intent = detectIntent(fullContext)
     let contextBlock = ''
     let structuredData: object | null = null
 
     if (intent === 'product') {
-      const results = searchProducts(message, 3)
+      const results = searchProducts(fullContext, 3)
       if (results.length) {
         contextBlock = `RELEVANT PRODUCTS:\n${formatProductsForPrompt(results)}`
         structuredData = {
@@ -78,6 +83,7 @@ export async function POST(req: Request) {
             distanceMi: d.distanceMi,
             lat: d.lat,
             lng: d.lng,
+            campaigns: d.campaigns,
           })),
         }
       }
@@ -98,7 +104,11 @@ export async function POST(req: Request) {
           cache_control: { type: 'ephemeral' },
         },
       ],
-      messages: [{ role: 'user', content: userContent }],
+      messages: [
+        // Inject conversation history for multi-turn context
+        ...history.map(m => ({ role: m.role, content: m.content })),
+        { role: 'user', content: userContent },
+      ],
     })
 
     // Return SSE stream

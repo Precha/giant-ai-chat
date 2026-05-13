@@ -164,9 +164,13 @@ export function searchProducts(message: string, topK = 3): ProductResult[] {
 
   const BIKE_BRANDS = new Set(['Giant', 'Liv', 'Momentum'])
 
+  const ACCESSORY_PART_RE = /^(replacement|spare|visor for|plug for|pad(s)? for|mount for|strap for|extension for|clip for|clamp for|cover for)/i
+
   let candidates = products.filter(p => {
     // Gear query: only return gear/accessory products, not bikes
     if (filters.isGear && BIKE_BRANDS.has(p.brand)) return false
+    // Gear query: exclude obvious replacement parts/accessories
+    if (filters.isGear && ACCESSORY_PART_RE.test(p.name)) return false
     if (!wantsFrameset && isFrameset(p)) return false
     if (filters.priceMax && p.price > filters.priceMax) return false
     if (filters.priceMin && p.priceMax < filters.priceMin) return false

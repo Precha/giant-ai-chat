@@ -30,6 +30,7 @@ export interface Dealer {
   url: string
   lat: number
   lng: number
+  campaigns: string[]   // service names: "Click & Collect", "Home Delivery", etc.
 }
 
 // Brand codes from raw JSON
@@ -117,6 +118,7 @@ function parseDealers(raw: any): Dealer[] {
       url: d.Url ?? '',
       lat: d.Latitude,
       lng: d.Longitude,
+      campaigns: (d.Campaigns ?? []).map((c: any) => c.Name).filter(Boolean),
     }
   }).filter(Boolean) as Dealer[]
 }

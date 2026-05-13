@@ -141,11 +141,13 @@ export function searchDealers(
 export function formatDealersForPrompt(dealers: DealerResult[]): string {
   return dealers.map(d => {
     const dist = d.distanceMi != null ? ` (${d.distanceMi.toFixed(1)} mi away)` : ''
+    const services = d.campaigns.length ? `Services: ${d.campaigns.join(', ')}` : ''
     return [
       `Dealer: ${d.name}${dist}`,
       `Address: ${d.address}`,
       `Phone: ${d.phone || 'N/A'}`,
       `Website: ${d.url ? 'https://' + d.url.replace(/^https?:\/\//, '') : 'N/A'}`,
-    ].join('\n')
+      services,
+    ].filter(Boolean).join('\n')
   }).join('\n\n')
 }

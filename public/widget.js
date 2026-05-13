@@ -18,7 +18,7 @@
   const LINK_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`
 
   const QUICK_CHIPS = [
-    'Find an e-bike under $3,000',
+    'Find an e-bike under $1,500',
     'Best mountain bikes',
     'Find a dealer near me',
     "Liv women's bikes",
@@ -149,6 +149,12 @@
       border-radius:32px; padding:2px 8px; white-space:nowrap; flex-shrink:0;
     }
     .dealer-address { font-size:12px; color:var(--muted); line-height:1.5; margin-bottom:8px; }
+    .dealer-campaigns { display:flex; gap:5px; flex-wrap:wrap; margin-bottom:8px; }
+    .dealer-campaign-badge {
+      font-family:'Overpass',sans-serif; font-weight:700; font-size:10px;
+      padding:2px 8px; border-radius:32px;
+      background:rgba(6,3,141,0.07); color:var(--blue);
+    }
     .dealer-actions { display:flex; gap:6px; flex-wrap:wrap; padding-top:8px; border-top:1px solid var(--grey-border); }
     .dealer-btn {
       display:inline-flex; align-items:center; gap:4px;
@@ -356,6 +362,7 @@
                   ${dist ? `<div class="dealer-distance">${dist}</div>` : ''}
                 </div>
                 <div class="dealer-address">${this._escape(d.address)}</div>
+                ${d.campaigns && d.campaigns.length ? `<div class="dealer-campaigns">${d.campaigns.map(c => `<span class="dealer-campaign-badge">${this._escape(c)}</span>`).join('')}</div>` : ''}
                 <div class="dealer-actions">
                   <a class="dealer-btn dealer-btn-primary" href="${mapsUrl}" target="_blank" rel="noopener">${PIN_ICON} Get directions</a>
                   ${telUrl ? `<a class="dealer-btn dealer-btn-secondary" href="${telUrl}">${PHONE_ICON} Call</a>` : ''}
@@ -424,6 +431,11 @@
             lang: this._lang,
             userLat,
             userLng,
+            // Send last 4 messages (excluding current) for context
+            history: this._messages.slice(-5, -1).map(m => ({
+              role: m.role === 'user' ? 'user' : 'assistant',
+              content: m.text || '(shown as cards)',
+            })),
           }),
         })
 
