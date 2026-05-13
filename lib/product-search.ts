@@ -10,6 +10,7 @@ interface SearchFilters {
   excludeLevels?: string[]
   isGear?: boolean      // user is looking for accessories/gear, not a bike
   gearType?: string     // specific gear type keyword, e.g. 'helmet', 'jersey'
+  color?: string        // color keyword, e.g. 'black', 'white', 'red'
   suspension?: string   // 'Full Suspension' | 'Hardtail' | 'Front Suspension'
   frameMaterial?: string // 'Composite/Carbon' | 'Aluminum'
   wheelSize?: string    // '29"' | '700c' | '650b' | etc.
@@ -191,6 +192,11 @@ function extractFilters(message: string): SearchFilters {
     filters.isSale = true
   }
 
+  // Color extraction
+  const COLOR_KEYWORDS = ['black', 'white', 'red', 'blue', 'green', 'yellow', 'gray', 'grey', 'silver', 'orange', 'pink', 'purple', 'chrome', 'gold', 'brown', 'navy', 'teal']
+  const matchedColor = COLOR_KEYWORDS.find(c => msg.includes(c))
+  if (matchedColor) filters.color = matchedColor
+
   // Remaining keywords for scoring
   filters.keywords = msg
     .replace(/[^\w\s]/g, ' ')
@@ -215,6 +221,7 @@ function scoreProduct(product: Product, filters: SearchFilters): number {
     ...product.technologies,
     ...Object.values(product.keySpecs),
     ...Object.values(product.structuredFilters),
+    ...product.colors,
   ].join(' ').toLowerCase()
 
   const nameLower = product.name.toLowerCase()
@@ -249,6 +256,12 @@ function scoreProduct(product: Product, filters: SearchFilters): number {
     if (product.filters.some(f => /lifestyle|recreational|leisure/i.test(f))) score += 3
     if (product.price <= 1500) score += 2
     else if (product.price <= 2500) score += 1
+  }
+
+  // Boost products matching requested color
+  if (filters.color) {
+    const colorsLower = product.colors.map(c => c.toLowerCase())
+    if (colorsLower.some(c => c.includes(filters.color!))) score += 4
   }
 
   // Boost products where rider height is close to the middle of the fit range

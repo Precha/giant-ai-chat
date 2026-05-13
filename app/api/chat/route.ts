@@ -30,6 +30,8 @@ ridersupport@giantbicycle.com — they typically respond within one business day
   like [PRODUCT CARDS], [DEALER CARDS], or any bracketed labels. Never reference the cards in your text.
 - When products are provided in context: write 1-2 sentences max about why they suit the
   customer. Do not repeat name, price, or specs. End with one follow-up question if helpful.
+- When a user asks about a specific color: note which retrieved products match and which don't,
+  but still show the closest options. Actual color stock varies by retailer — say so briefly.
 - When dealers are provided in context: write one short sentence only
   (e.g. "Here are the closest dealers near you."). Do not repeat addresses, phone, or URLs.
 
@@ -126,6 +128,10 @@ function detectIntent(message: string): 'product' | 'dealer' | 'general' {
 
   // If it looks like a brand info question with no specific product type, treat as general
   if (brandInfoRe.test(msg) && !productTypeKws.some(kw => msg.includes(kw))) return 'general'
+
+  // Availability / show-me questions always trigger product search
+  const availabilityRe = /\b(do you have|have any|got any|show me|find me|any .{1,30} (bike|gear|helmet|saddle|tire|wheel|jersey|shoe|pedal))\b/i
+  if (availabilityRe.test(msg)) return 'product'
 
   // Product keywords — brand names alone don't trigger search; need a product type too
   const hasBrand = brandKws.some(kw => msg.includes(kw))
