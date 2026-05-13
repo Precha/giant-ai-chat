@@ -61,7 +61,7 @@ function extractFilters(message: string): SearchFilters {
   }
 
   // Gear/accessory detection — when searching for accessories, skip bike-type filters
-  filters.isGear = msg.split(/\s+/).some(w => GEAR_KEYWORDS_SET.has(w))
+  filters.isGear = Array.from(GEAR_KEYWORDS_SET).some(kw => msg.includes(kw))
 
   // Type extraction — skip for gear queries (e.g. "road biker" shouldn't filter helmets to Road bikes)
   if (!filters.isGear) {
