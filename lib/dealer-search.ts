@@ -13,6 +13,25 @@ function haversine(lat1: number, lng1: number, lat2: number, lng2: number): numb
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 }
 
+// Approximate city center coordinates for distance-based fallback
+const CITY_COORDS: Record<string, { lat: number; lng: number }> = {
+  'Los Angeles':   { lat: 34.0522, lng: -118.2437 },
+  'San Francisco': { lat: 37.7749, lng: -122.4194 },
+  'New York':      { lat: 40.7128, lng: -74.0060  },
+  'Chicago':       { lat: 41.8781, lng: -87.6298  },
+  'Houston':       { lat: 29.7604, lng: -95.3698  },
+  'Dallas':        { lat: 32.7767, lng: -96.7970  },
+  'Miami':         { lat: 25.7617, lng: -80.1918  },
+  'Seattle':       { lat: 47.6062, lng: -122.3321 },
+  'Portland':      { lat: 45.5051, lng: -122.6750 },
+  'Denver':        { lat: 39.7392, lng: -104.9903 },
+  'Phoenix':       { lat: 33.4484, lng: -112.0740 },
+  'Boston':        { lat: 42.3601, lng: -71.0589  },
+  'Atlanta':       { lat: 33.7490, lng: -84.3880  },
+  'Nashville':     { lat: 36.1627, lng: -86.7816  },
+  'Austin':        { lat: 30.2672, lng: -97.7431  },
+}
+
 // Common US state abbreviation → full name map
 const STATE_ABBR: Record<string, string> = {
   AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
@@ -61,7 +80,7 @@ function extractLocation(message: string): { state?: string; city?: string } {
   let state: string | undefined
 
   // "in Chicago, IL" / "near Chicago" / "live in Newbury Park" / "I'm in California"
-  const nearIn = msg.match(/(?:live in|living in|based in|i'm in|i am in|near|in|around)\s+([a-z][a-z\s]*?)(?:,\s*([a-z]{2}))?(?:\s|$|[,\.!?])/)
+  const nearIn = msg.match(/(?:live in|living in|based in|i'm in|i am in|near|in|around)\s+([a-z][a-z\s]+?)(?:\s*,\s*([a-z]{2})\b|\s*[\.!?]|\s*$)/)
 
   if (nearIn) {
     const loc = nearIn[1].trim()
@@ -140,7 +159,7 @@ export function searchDealers(
     if (serviceFiltered.length > 0) candidates = serviceFiltered
   }
 
-  // If user GPS provided, sort by distance
+  // Sort by user GPS if provided
   if (userLat && userLng) {
     candidates = candidates
       .map(d => ({ ...d, distanceMi: haversine(userLat, userLng, d.lat, d.lng) }))
@@ -157,13 +176,21 @@ export function searchDealers(
     if (stateFiltered.length > 0) candidates = stateFiltered
   }
 
-  // Filter by city — word boundary match to avoid substring false positives
+  // Filter by city — word boundary match
   if (city) {
     const cityRe = new RegExp(`\\b${city.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i')
     const cityFiltered = candidates.filter(d =>
       cityRe.test(d.city ?? '') || cityRe.test(d.address ?? '')
     )
     if (cityFiltered.length > 0) candidates = cityFiltered
+  }
+
+  // Sort by distance from city center if we have coords for the city
+  const cityCoords = city ? CITY_COORDS[city] : null
+  if (cityCoords) {
+    candidates = candidates
+      .map(d => ({ ...d, distanceMi: haversine(cityCoords.lat, cityCoords.lng, d.lat, d.lng) }))
+      .sort((a, b) => (a.distanceMi ?? 999) - (b.distanceMi ?? 999))
   }
 
   return candidates.slice(0, topK)
