@@ -230,6 +230,7 @@
       this._isLoading = false
       this._messages = []
       this._chipsCollapsed = false
+      this._productLinks = [] // accumulated [{name, productUrl}] across session
     }
 
     connectedCallback() {
@@ -375,14 +376,14 @@
 
       // When cards exist: always show cards first, text below
       if (cardsHtml) {
-        const products = (m.cards && m.cards.type === 'products') ? m.cards.items : []
         const textHtml = m.text
-          ? `<div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--grey-border);font-size:12px;color:var(--muted)">${this._linkifyProducts(this._renderMarkdown(m.text), products)}</div>`
+          ? `<div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--grey-border);font-size:12px;color:var(--muted)">${this._linkifyProducts(this._renderMarkdown(m.text), this._productLinks)}</div>`
           : ''
         return `<div class="msg msg-ai" style="max-width:95%">${cardsHtml}${textHtml}</div>`
       }
 
-      return `<div class="msg msg-ai" style="max-width:95%">${this._renderMarkdown(m.text)}</div>`
+      // Text-only reply: still linkify using accumulated session product links
+      return `<div class="msg msg-ai" style="max-width:95%">${this._linkifyProducts(this._renderMarkdown(m.text), this._productLinks)}</div>`
     }
 
     _handleSend() {
@@ -466,6 +467,12 @@
               const parsed = JSON.parse(payload)
               if (parsed.structured) {
                 this._messages[msgIdx].cards = parsed.structured
+                // Accumulate product links for use in future text-only replies
+                if (parsed.structured.type === 'products') {
+                  for (const p of parsed.structured.items) {
+                    if (p.name && p.productUrl) this._productLinks.push({ name: p.name, productUrl: p.productUrl })
+                  }
+                }
               } else if (parsed.text) {
                 aiText += parsed.text
                 this._messages[msgIdx].text = aiText
