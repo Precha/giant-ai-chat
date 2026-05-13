@@ -511,9 +511,11 @@
         if (!p.name || !p.productUrl) continue
         const escapedUrl = this._escape(p.productUrl)
 
-        // Build candidate names: full name + short name (strip generic suffixes like "Mens Helmet")
-        const SUFFIXES = /\s+(mens?|womens?|youth|unisex)?\s*(helmet|bike|bicycle|jersey|gloves?|shoes?|saddle|shorts?|tights?|bib|socks?)\s*$/i
-        const shortName = p.name.replace(SUFFIXES, '').trim()
+        // Build short name by stripping from the first descriptor/type word onwards
+        // e.g. "Breakaway Short Sleeve Jersey" → "Breakaway"
+        //      "Rev Pro MIPS Mens Helmet"      → "Rev Pro MIPS"
+        //      "Scout Womens Jersey"            → "Scout"
+        const shortName = p.name.replace(/\s+(?:short|long|3\/4|full|sleeve|mens?|womens?|youth|unisex|road|mtb|gravel|trail|helmet|bike|bicycle|jersey|gloves?|shoes?|saddle|shorts?|tights?|bib|socks?|pad|pant|jacket|vest|base\s+layer).*$/i, '').trim()
         const candidates = [...new Set([p.name, shortName].filter(Boolean))]
           .sort((a, b) => b.length - a.length) // longest first to avoid partial replacement
 
