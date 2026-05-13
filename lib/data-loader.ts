@@ -138,9 +138,15 @@ function parseProducts(raw: any, defaultBrand: Brand, forceBrand?: Brand): Produ
         category: filters[0] ?? '',
         price,
         priceMax,
-        description: (p.MetaDescription && p.MetaDescription.length >= 60)
-          ? p.MetaDescription
-          : p.BikeSeriesDescription?.slice(0, 300) ?? p.MetaDescription ?? '',
+        description: (() => {
+          if (p.MetaDescription && p.MetaDescription.length >= 60) return p.MetaDescription
+          if (p.BikeSeriesDescription) return p.BikeSeriesDescription.slice(0, 300)
+          // Gear products use Features[0] as description fallback
+          const firstFeature = ((p.Features as string[] | undefined)?.[0] ?? '')
+            .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
+          if (firstFeature.length >= 30) return firstFeature.slice(0, 300)
+          return p.MetaDescription ?? ''
+        })(),
         imageUrl,
         productUrl: `${BRAND_BASE_URL[brand]}${p.Url ?? ''}`,
         filters,
