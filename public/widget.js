@@ -375,8 +375,9 @@
 
       // When cards exist: always show cards first, text below
       if (cardsHtml) {
+        const products = (m.cards && m.cards.type === 'products') ? m.cards.items : []
         const textHtml = m.text
-          ? `<div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--grey-border);font-size:12px;color:var(--muted)">${this._renderMarkdown(m.text)}</div>`
+          ? `<div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--grey-border);font-size:12px;color:var(--muted)">${this._linkifyProducts(this._renderMarkdown(m.text), products)}</div>`
           : ''
         return `<div class="msg msg-ai" style="max-width:95%">${cardsHtml}${textHtml}</div>`
       }
@@ -502,6 +503,21 @@
         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.+?)\*/g, '<em>$1</em>')
         .replace(/\n/g, '<br>')
+    }
+
+    _linkifyProducts(html, products) {
+      if (!products || !products.length) return html
+      for (const p of products) {
+        if (!p.name || !p.productUrl) continue
+        const escapedName = this._escape(p.name)
+        const escapedUrl = this._escape(p.productUrl)
+        const rePattern = escapedName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+        html = html.replace(
+          new RegExp(rePattern, 'g'),
+          `<a href="${escapedUrl}" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;text-decoration:none;">${escapedName}</a>`
+        )
+      }
+      return html
     }
   }
 
