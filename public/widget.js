@@ -509,13 +509,21 @@
       if (!products || !products.length) return html
       for (const p of products) {
         if (!p.name || !p.productUrl) continue
-        const escapedName = this._escape(p.name)
         const escapedUrl = this._escape(p.productUrl)
-        const rePattern = escapedName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-        html = html.replace(
-          new RegExp(rePattern, 'g'),
-          `<a href="${escapedUrl}" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;text-decoration:none;">${escapedName}</a>`
-        )
+
+        // Build candidate names: full name + short name (strip generic suffixes like "Mens Helmet")
+        const SUFFIXES = /\s+(mens?|womens?|youth|unisex)?\s*(helmet|bike|bicycle|jersey|gloves?|shoes?|saddle|shorts?|tights?|bib|socks?)\s*$/i
+        const shortName = p.name.replace(SUFFIXES, '').trim()
+        const candidates = [...new Set([p.name, shortName].filter(Boolean))]
+          .sort((a, b) => b.length - a.length) // longest first to avoid partial replacement
+
+        for (const name of candidates) {
+          const escaped = this._escape(name)
+          const rePattern = escaped.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+          const linked = `<a href="${escapedUrl}" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;text-decoration:none;">${escaped}</a>`
+          const replaced = html.replace(new RegExp(rePattern, 'gi'), linked)
+          if (replaced !== html) { html = replaced; break } // stop at first match
+        }
       }
       return html
     }
