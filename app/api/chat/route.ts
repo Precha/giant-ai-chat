@@ -122,7 +122,7 @@ function detectIntent(message: string): 'product' | 'dealer' | 'general' {
     'tire', 'wheel', 'shoe', 'pedal', 'bottle', 'light', 'lock', 'pump',
     'bag', 'rack', 'fender', 'tube', 'handlebar', 'stem', 'seatpost',
     'battery', 'charger', 'accessory', 'apparel', 'sock', 'eyewear',
-    'goggle', 'computer', 'short', 'bib', 'warmer', 'jacket',
+    'goggle', 'glasses', 'sunglass', 'computer', 'short', 'bib', 'warmer', 'jacket',
   ]
   const brandKws = ['liv', 'giant', 'momentum', 'cadex']
 

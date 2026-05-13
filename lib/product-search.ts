@@ -23,7 +23,7 @@ const GEAR_KEYWORDS_SET = new Set([
   'helmet', 'saddle', 'jersey', 'shoes', 'gloves', 'shorts', 'pedal', 'bottle',
   'light', 'lock', 'pump', 'bag', 'rack', 'fender', 'wheel', 'tire', 'tube',
   'handlebar', 'stem', 'seatpost', 'battery', 'charger', 'accessory', 'gear', 'apparel',
-  'sock', 'eyewear', 'goggle', 'computer', 'bib', 'warmer',
+  'sock', 'eyewear', 'goggle', 'glasses', 'sunglass', 'computer', 'bib', 'warmer',
 ])
 
 // Maps gear keyword → exact Categories value in the product data
@@ -51,6 +51,8 @@ const GEAR_CATEGORY_MAP: Record<string, string> = {
   'sock':       'Socks',
   'eyewear':    'Eyewear',
   'goggle':     'Eyewear',
+  'glasses':    'Eyewear',
+  'sunglass':   'Eyewear',
   'computer':   'Computers',
   'bib':        'Bibs, Shorts & Tights',
   'short':      'Bibs, Shorts & Tights',
