@@ -8,8 +8,14 @@ interface SearchFilters {
   keywords?: string[]
   level?: 'entry' | 'mid' | 'high'
   excludeLevels?: string[]
-  isGear?: boolean    // user is looking for accessories/gear, not a bike
-  gearType?: string   // specific gear type keyword, e.g. 'helmet', 'jersey'
+  isGear?: boolean      // user is looking for accessories/gear, not a bike
+  gearType?: string     // specific gear type keyword, e.g. 'helmet', 'jersey'
+  suspension?: string   // 'Full Suspension' | 'Hardtail' | 'Front Suspension'
+  frameMaterial?: string // 'Composite/Carbon' | 'Aluminum'
+  wheelSize?: string    // '29"' | '700c' | '650b' | etc.
+  brakeType?: string    // 'Disc Brake' | 'Rim Brake'
+  riderHeightCm?: number
+  isSale?: boolean
 }
 
 const GEAR_KEYWORDS_SET = new Set([
@@ -55,13 +61,27 @@ const TYPE_KEYWORDS: Record<string, string[]> = {
   'Road': ['road', 'racing', 'aero', 'endurance', 'gravel', 'triathlon', 'tt'],
   'E-Bike': ['e-bike', 'ebike', 'electric', 'e-mtb', 'pedal assist', 'motor'],
   'City & Hybrid': ['city', 'commut', 'hybrid', 'urban', 'casual', 'everyday', 'lifestyle'],
-  'Kids': ['kid', 'child', 'junior', 'youth', 'small'],
+  'Kids': ['kid', 'child', 'junior', 'youth', 'small', 'boy', 'girl', 'age 5', 'age 7', 'age 10', 'age 12', 'age 16'],
+}
+
+// Maps bike type → Categories values in the product data
+const BIKE_CATEGORY_MAP: Record<string, string[]> = {
+  'Mountain':      ['Mountain Bikes', 'Cross Country', 'Trail', 'Electric Mountain'],
+  'Road':          ['Road Bikes', 'Road Race', 'Aero Race', 'Endurance', 'All-Rounder', 'Electric Road', 'Cross & Gravel Bikes', 'Gravel'],
+  'E-Bike':        ['E-bikes', 'Electric Mountain', 'Electric Road'],
+  'City & Hybrid': ['Urban Bikes', 'Leisure Bikes', 'Adventure'],
+  'Kids':          ['Kids Bikes', 'Kids Age 5-7 Bikes', 'Kids Age 7-12 Bikes', 'Kids Age 10-16 Bikes'],
 }
 
 const BRAND_KEYWORDS: Record<string, string[]> = {
   'Giant': ['giant'],
   'Liv': ['liv', 'women', 'female', "women's"],
   'Momentum': ['momentum'],
+}
+
+// Convert feet+inches string to cm
+function ftInToCm(ft: number, inch: number): number {
+  return Math.round((ft * 12 + inch) * 2.54)
 }
 
 function extractFilters(message: string): SearchFilters {
@@ -122,6 +142,54 @@ function extractFilters(message: string): SearchFilters {
     if (!filters.priceMin) filters.priceMin = 2000
   }
 
+  // Suspension type
+  if (/full.?suspension|full.?susp|dual.?susp/i.test(msg)) {
+    filters.suspension = 'Full Suspension'
+  } else if (/hardtail|hard.?tail/i.test(msg)) {
+    filters.suspension = 'Hardtail'
+  } else if (/front.?suspension/i.test(msg)) {
+    filters.suspension = 'Front Suspension'
+  }
+
+  // Frame material
+  if (/carbon|composite/i.test(msg)) {
+    filters.frameMaterial = 'Composite/Carbon'
+  } else if (/aluminum|aluminium|alloy|ally/i.test(msg)) {
+    filters.frameMaterial = 'Aluminum'
+  }
+
+  // Wheel size — match "29", "700c", "650b", "27.5", "26", "24", "20"
+  const wheelMatch = msg.match(/\b(700c|650b|27\.5|29|26|24|20)\b/)
+  if (wheelMatch) {
+    const w = wheelMatch[1]
+    // Normalise to the format used in structured filters
+    filters.wheelSize = w === '29' ? '29"' : w === '27.5' ? '27.5"' : w
+  }
+
+  // Brake type
+  if (/disc.?brake|hydraulic.?brake/i.test(msg)) {
+    filters.brakeType = 'Disc Brake'
+  } else if (/rim.?brake/i.test(msg)) {
+    filters.brakeType = 'Rim Brake'
+  }
+
+  // Rider height — "175cm", "175 cm", "5'9"", "5'9", "5ft9", "5 feet 9"
+  const cmMatch = msg.match(/(\d{3})\s*cm/)
+  const ftInMatch = msg.match(/(\d)\s*(?:ft|feet|'|foot)\s*(\d{1,2})\s*(?:in|inches|"|'')?/)
+  const ftOnlyMatch = msg.match(/(\d)\s*(?:ft|feet|foot)\b/)
+  if (cmMatch) {
+    filters.riderHeightCm = parseInt(cmMatch[1])
+  } else if (ftInMatch) {
+    filters.riderHeightCm = ftInToCm(parseInt(ftInMatch[1]), parseInt(ftInMatch[2]))
+  } else if (ftOnlyMatch) {
+    filters.riderHeightCm = ftInToCm(parseInt(ftOnlyMatch[1]), 0)
+  }
+
+  // Sale / clearance
+  if (/\bsale\b|discount|clearance|closeout|close.?out|deal\b/i.test(msg)) {
+    filters.isSale = true
+  }
+
   // Remaining keywords for scoring
   filters.keywords = msg
     .replace(/[^\w\s]/g, ' ')
@@ -141,7 +209,11 @@ function scoreProduct(product: Product, filters: SearchFilters): number {
     ...product.filters,
     product.brand,
     product.category,
+    ...product.categories,
+    ...product.keyPerformanceFactors,
+    ...product.technologies,
     ...Object.values(product.keySpecs),
+    ...Object.values(product.structuredFilters),
   ].join(' ').toLowerCase()
 
   for (const kw of keywords) {
@@ -156,8 +228,6 @@ function scoreProduct(product: Product, filters: SearchFilters): number {
     score += 3
 
     // Strong boost when the product name ends with the gear keyword
-    // e.g. "Pursuit Mips Helmet" ends with "helmet" → primary product
-    // "Replacement Pads for Helmets" does not → accessory/part
     const nameLower = product.name.toLowerCase()
     for (const kw of keywords) {
       if (GEAR_KEYWORDS_SET.has(kw) && new RegExp(`\\b${kw}s?$`).test(nameLower)) {
@@ -176,6 +246,14 @@ function scoreProduct(product: Product, filters: SearchFilters): number {
     if (product.filters.some(f => /lifestyle|recreational|leisure/i.test(f))) score += 3
     if (product.price <= 1500) score += 2
     else if (product.price <= 2500) score += 1
+  }
+
+  // Boost products where rider height is close to the middle of the fit range
+  if (filters.riderHeightCm && product.riderHeightMin > 0 && product.riderHeightMax > 0) {
+    const mid = (product.riderHeightMin + product.riderHeightMax) / 2
+    const diff = Math.abs(filters.riderHeightCm - mid)
+    if (diff <= 10) score += 2
+    else if (diff <= 20) score += 1
   }
 
   return score
@@ -212,7 +290,6 @@ export function searchProducts(message: string, topK = 3): ProductResult[] {
       if (targetCategory) {
         if (!p.categories.includes(targetCategory)) return false
       } else {
-        // Fallback to name match if no category mapping exists
         if (!p.name.toLowerCase().includes(filters.gearType)) return false
       }
     }
@@ -221,10 +298,12 @@ export function searchProducts(message: string, topK = 3): ProductResult[] {
     if (filters.priceMin && p.priceMax < filters.priceMin) return false
     if (filters.brand && !p.brand.toLowerCase().includes(filters.brand.toLowerCase())) return false
     if (filters.types?.length) {
-      const matchesType = filters.types.some(t =>
-        p.filters.some(f => f.toLowerCase().includes(t.toLowerCase())) ||
-        p.category.toLowerCase().includes(t.toLowerCase())
-      )
+      const matchesType = filters.types.some(t => {
+        const catMatches = BIKE_CATEGORY_MAP[t] ?? []
+        return p.filters.some(f => f.toLowerCase().includes(t.toLowerCase())) ||
+          p.category.toLowerCase().includes(t.toLowerCase()) ||
+          p.categories.some(c => catMatches.includes(c))
+      })
       if (!matchesType) return false
     }
     // Exclude high-end level tags for entry-level queries
@@ -234,6 +313,23 @@ export function searchProducts(message: string, topK = 3): ProductResult[] {
       )
       if (hasExcluded) return false
     }
+    // Structured filter hard-filters (only apply to bike products)
+    if (!filters.isGear) {
+      if (filters.suspension && p.structuredFilters['Suspension'] &&
+          p.structuredFilters['Suspension'] !== filters.suspension) return false
+      if (filters.frameMaterial && p.structuredFilters['Frame Material'] &&
+          p.structuredFilters['Frame Material'] !== filters.frameMaterial) return false
+      if (filters.wheelSize && p.structuredFilters['Wheel Size'] &&
+          !p.structuredFilters['Wheel Size'].includes(filters.wheelSize)) return false
+      if (filters.brakeType && p.structuredFilters['Brake Type'] &&
+          p.structuredFilters['Brake Type'] !== filters.brakeType) return false
+    }
+    // Rider height: exclude bikes that definitely don't fit
+    if (filters.riderHeightCm && p.riderHeightMin > 0 && p.riderHeightMax > 0) {
+      if (filters.riderHeightCm < p.riderHeightMin || filters.riderHeightCm > p.riderHeightMax) return false
+    }
+    // Sale filter
+    if (filters.isSale && !p.isSale) return false
     return true
   })
 
@@ -255,11 +351,15 @@ export function formatProductsForPrompt(products: ProductResult[]): string {
       .slice(0, 4)
       .map(([k, v]) => `${k}: ${v}`)
       .join('; ')
+    const fitRange = p.riderHeightMin && p.riderHeightMax
+      ? `${p.riderHeightMin}–${p.riderHeightMax} cm`
+      : ''
     return [
       `Product: ${p.name} (${p.brand})`,
       `Price: ${price}`,
       `Category: ${p.filters.slice(0, 3).join(', ')}`,
       specs ? `Key specs: ${specs}` : '',
+      fitRange ? `Fits rider height: ${fitRange}` : '',
       `Description: ${p.description.slice(0, 200)}`,
       `URL: ${p.productUrl}`,
       `Image: ${p.imageUrl}`,

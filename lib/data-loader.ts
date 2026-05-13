@@ -14,11 +14,18 @@ export interface Product {
   imageUrl: string
   productUrl: string
   filters: string[]
+  structuredFilters: Record<string, string>  // FilterName → FilterValue
   categories: string[]
   keySpecs: Record<string, string>
   sizes: string[]
   colors: string[]
   inStock: boolean
+  riderHeightMin: number  // cm, min rider height across all SKUs (0 = unknown)
+  riderHeightMax: number  // cm, max rider height across all SKUs (0 = unknown)
+  keyPerformanceFactors: string[]
+  technologies: string[]
+  isSale: boolean
+  modelYear: string
 }
 
 export interface Dealer {
@@ -47,10 +54,14 @@ const KEY_SPEC_KEYS = new Set([
   'bike_specs_hybrid_battery',
   'bike_specs_frame_frame',
   'bike_specs_frame_fork',
+  'bike_specs_frame_shock',
   'bike_specs_drivetrain_brakes',
+  'bike_specs_drivetrain_rearderailleur',
   'bike_specs_wheels_tires',
   'bike_specs_frame_sizes',
   'bike_specs_frame_colors',
+  'bike_specs_max_tire_clearance',
+  'bike_specs_components_seatpost',
 ])
 
 function parseProducts(raw: any, defaultBrand: Brand, forceBrand?: Brand): Product[] {
@@ -71,6 +82,13 @@ function parseProducts(raw: any, defaultBrand: Brand, forceBrand?: Brand): Produ
         .map((f: any) => f.FilterValueLocalized)
         .filter(Boolean)
 
+      const structuredFilters: Record<string, string> = {}
+      for (const f of p.Filters ?? []) {
+        if (f.FilterName && f.FilterValueLocalized) {
+          structuredFilters[f.FilterName] = f.FilterValueLocalized
+        }
+      }
+
       const keySpecs: Record<string, string> = {}
       for (const attr of p.ProductAttributes ?? []) {
         if (KEY_SPEC_KEYS.has(attr.Key) && attr.Value) {
@@ -81,6 +99,26 @@ function parseProducts(raw: any, defaultBrand: Brand, forceBrand?: Brand): Produ
       const sizes = [...new Set(skus.map((s: any) => s.Size).filter(Boolean))] as string[]
       const colors = [...new Set(skus.map((s: any) => s.Color).filter(Boolean))] as string[]
       const inStock = skus.some((s: any) => !s.HasNoStock && !s.Discontinued)
+
+      // Rider height range from Frame.SizeStart / SizeEnd (cm)
+      const heights = skus.flatMap((s: any) => {
+        const start = parseInt(s.Frame?.SizeStart ?? '')
+        const end = parseInt(s.Frame?.SizeEnd ?? '')
+        return [start, end].filter(n => !isNaN(n))
+      })
+      const riderHeightMin = heights.length ? Math.min(...heights) : 0
+      const riderHeightMax = heights.length ? Math.max(...heights) : 0
+
+      const keyPerformanceFactors: string[] = (p.KeyPerformanceFactors ?? [])
+        .map((kpf: any) => [kpf.Title, kpf.Text].filter(Boolean).join(': '))
+        .filter(Boolean)
+
+      const technologies: string[] = (p.Technologies ?? [])
+        .map((t: any) => t.Name)
+        .filter(Boolean)
+
+      const isSale = !!(p.IsSale || p.IsCloseOutSale)
+      const modelYear: string = p.CollectionName ?? ''
 
       return {
         id: p.Id,
@@ -93,11 +131,18 @@ function parseProducts(raw: any, defaultBrand: Brand, forceBrand?: Brand): Produ
         imageUrl,
         productUrl: `https://www.giant-bicycles.com${p.Url ?? ''}`,
         filters,
+        structuredFilters,
         categories: (p.Categories ?? []) as string[],
         keySpecs,
         sizes,
         colors,
         inStock,
+        riderHeightMin,
+        riderHeightMax,
+        keyPerformanceFactors,
+        technologies,
+        isSale,
+        modelYear,
       }
     } catch {
       return null
