@@ -57,6 +57,7 @@ export async function POST(req: Request) {
             brand: p.brand,
             price: p.price,
             priceMax: p.priceMax,
+            description: p.description ? p.description.slice(0, 100).replace(/\s\S+$/, '…') : '',
             imageUrl: p.imageUrl,
             productUrl: p.productUrl,
             inStock: p.inStock,

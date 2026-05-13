@@ -6,8 +6,9 @@ interface SearchFilters {
   brand?: string
   types?: string[]
   keywords?: string[]
-  level?: 'entry' | 'mid' | 'high'   // implied skill/budget level
-  excludeLevels?: string[]            // Giant filter values to exclude
+  level?: 'entry' | 'mid' | 'high'
+  excludeLevels?: string[]
+  isGear?: boolean    // user is looking for accessories/gear, not a bike
 }
 
 const TYPE_KEYWORDS: Record<string, string[]> = {
@@ -53,12 +54,18 @@ function extractFilters(message: string): SearchFilters {
     }
   }
 
-  // Type extraction
-  const matchedTypes: string[] = []
-  for (const [type, kws] of Object.entries(TYPE_KEYWORDS)) {
-    if (kws.some(kw => msg.includes(kw))) matchedTypes.push(type)
+  // Gear/accessory detection — when searching for accessories, skip bike-type filters
+  const GEAR_KEYWORDS = ['helmet', 'saddle', 'jersey', 'shoes', 'gloves', 'shorts', 'pedal', 'bottle', 'light', 'lock', 'pump', 'bag', 'rack', 'fender', 'wheel', 'tire', 'tube', 'handlebar', 'stem', 'seatpost', 'battery', 'charger', 'accessory', 'gear', 'apparel']
+  filters.isGear = GEAR_KEYWORDS.some(kw => msg.includes(kw))
+
+  // Type extraction — skip for gear queries (e.g. "road biker" shouldn't filter helmets to Road bikes)
+  if (!filters.isGear) {
+    const matchedTypes: string[] = []
+    for (const [type, kws] of Object.entries(TYPE_KEYWORDS)) {
+      if (kws.some(kw => msg.includes(kw))) matchedTypes.push(type)
+    }
+    if (matchedTypes.length) filters.types = matchedTypes
   }
-  if (matchedTypes.length) filters.types = matchedTypes
 
   // Skill / budget level detection
   const isEntry = /beginner|entry.?level|starter|first.?bike|first bike|new to|getting into|casual|recreational/i.test(msg)
@@ -104,6 +111,9 @@ function scoreProduct(product: Product, filters: SearchFilters): number {
   // Bonus: in stock
   if (product.inStock) score += 2
 
+  // Boost gear/accessory products for gear queries
+  if (filters.isGear && product.brand === 'Giant Gear') score += 3
+
   // Boost Lifestyle-level products for entry queries
   if (filters.level === 'entry') {
     if (product.filters.some(f => /lifestyle|recreational|leisure/i.test(f))) score += 3
@@ -130,7 +140,11 @@ export function searchProducts(message: string, topK = 3): ProductResult[] {
   // Only include framesets if user explicitly asked for one
   const wantsFrameset = /frameset/i.test(message)
 
+  const BIKE_BRANDS = new Set(['Giant', 'Liv', 'Momentum'])
+
   let candidates = products.filter(p => {
+    // Gear query: only return gear/accessory products, not bikes
+    if (filters.isGear && BIKE_BRANDS.has(p.brand)) return false
     if (!wantsFrameset && isFrameset(p)) return false
     if (filters.priceMax && p.price > filters.priceMax) return false
     if (filters.priceMin && p.priceMax < filters.priceMin) return false

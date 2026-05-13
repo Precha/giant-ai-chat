@@ -71,7 +71,7 @@
     #panel.open { transform: translateY(0); opacity: 1; pointer-events: all; }
 
     #header {
-      background: var(--dark); padding: 12px 14px;
+      background: #05038D; padding: 12px 14px;
       display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
     }
     #header-left { display: flex; align-items: center; gap: 10px; }
@@ -126,6 +126,7 @@
     }
     .product-card-body { padding:10px 12px 12px; border-top:1px solid var(--grey-border); }
     .product-card-name { font-family:'Overpass',sans-serif; font-weight:700; font-size:13px; color:var(--text); margin-bottom:2px; }
+    .product-card-desc { font-family:'Open Sans',sans-serif; font-size:11px; color:var(--muted); line-height:1.5; margin-bottom:10px; }
     .product-card-price { font-family:'Open Sans',sans-serif; font-weight:600; font-size:13px; color:var(--blue); margin-bottom:8px; }
     .product-card-link {
       display:inline-flex; align-items:center; gap:4px;
@@ -333,6 +334,7 @@
               <div class="product-card-body">
                 <div class="product-card-name">${this._escape(p.name)}</div>
                 <div class="product-card-price">${price}${stockLabel}</div>
+                ${p.description ? `<div class="product-card-desc">${this._escape(p.description)}</div>` : ''}
                 <a class="product-card-link" href="${this._escape(p.productUrl)}" target="_blank" rel="noopener">View details →</a>
               </div>
             </div>`
