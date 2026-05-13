@@ -98,6 +98,28 @@ export interface DealerResult extends Dealer {
   distanceMi?: number
 }
 
+// Map user query keywords → campaign names in the data
+const CAMPAIGN_KEYWORDS: Array<{ pattern: RegExp; campaign: string }> = [
+  { pattern: /click\s*[&and]+\s*collect|click\s*collect|curbside|in.?store pickup/i, campaign: 'Click & Collect' },
+  { pattern: /home\s*deliver|deliver.*home|ship.*home/i,                               campaign: 'Home Delivery' },
+  { pattern: /e.?bike\s*repair|electric\s*bike\s*service|e.?bike\s*service/i,         campaign: 'E-Bike Repair Certified' },
+  { pattern: /bike\s*fit|fitting\s*service/i,                                          campaign: 'Bike Fitting Services' },
+  { pattern: /cadex/i,                                                                  campaign: 'CADEX Certified' },
+  { pattern: /\bliv\b|women.?s\s*bike/i,                                               campaign: "Liv Women's Bikes" },
+  { pattern: /e.?bike(?!\s*repair)/i,                                                  campaign: 'E-Bikes' },
+]
+
+function extractRequiredCampaign(message: string): string | null {
+  for (const { pattern, campaign } of CAMPAIGN_KEYWORDS) {
+    if (pattern.test(message)) return campaign
+  }
+  return null
+}
+
+export interface DealerResult extends Dealer {
+  distanceMi?: number
+}
+
 export function searchDealers(
   message: string,
   userLat?: number,
@@ -106,8 +128,17 @@ export function searchDealers(
 ): DealerResult[] {
   const dealers = getDealers()
   const { state, city } = extractLocation(message)
+  const requiredCampaign = extractRequiredCampaign(message)
 
   let candidates: DealerResult[] = dealers.map(d => ({ ...d }))
+
+  // Filter by required service/campaign first
+  if (requiredCampaign) {
+    const serviceFiltered = candidates.filter(d =>
+      d.campaigns.some(c => c.toLowerCase() === requiredCampaign.toLowerCase())
+    )
+    if (serviceFiltered.length > 0) candidates = serviceFiltered
+  }
 
   // If user GPS provided, sort by distance
   if (userLat && userLng) {
