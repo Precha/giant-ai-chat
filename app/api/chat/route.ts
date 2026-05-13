@@ -53,7 +53,7 @@ export async function POST(req: Request) {
     let structuredData: object | null = null
 
     if (intent === 'product') {
-      const results = searchProducts(fullContext, 3)
+      const results = searchProducts(message, 3)
       if (results.length) {
         contextBlock = `RELEVANT PRODUCTS:\n${formatProductsForPrompt(results)}`
         structuredData = {

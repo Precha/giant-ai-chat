@@ -14,6 +14,7 @@ export interface Product {
   imageUrl: string
   productUrl: string
   filters: string[]
+  categories: string[]
   keySpecs: Record<string, string>
   sizes: string[]
   colors: string[]
@@ -92,6 +93,7 @@ function parseProducts(raw: any, defaultBrand: Brand, forceBrand?: Brand): Produ
         imageUrl,
         productUrl: `https://www.giant-bicycles.com${p.Url ?? ''}`,
         filters,
+        categories: (p.Categories ?? []) as string[],
         keySpecs,
         sizes,
         colors,

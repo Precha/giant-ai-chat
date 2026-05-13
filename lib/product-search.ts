@@ -9,13 +9,46 @@ interface SearchFilters {
   level?: 'entry' | 'mid' | 'high'
   excludeLevels?: string[]
   isGear?: boolean    // user is looking for accessories/gear, not a bike
+  gearType?: string   // specific gear type keyword, e.g. 'helmet', 'jersey'
 }
 
 const GEAR_KEYWORDS_SET = new Set([
   'helmet', 'saddle', 'jersey', 'shoes', 'gloves', 'shorts', 'pedal', 'bottle',
   'light', 'lock', 'pump', 'bag', 'rack', 'fender', 'wheel', 'tire', 'tube',
   'handlebar', 'stem', 'seatpost', 'battery', 'charger', 'accessory', 'gear', 'apparel',
+  'sock', 'eyewear', 'goggle', 'computer', 'bib', 'warmer',
 ])
+
+// Maps gear keyword → exact Categories value in the product data
+const GEAR_CATEGORY_MAP: Record<string, string> = {
+  'helmet':     'Bike Helmets',
+  'jersey':     'Jerseys',
+  'glove':      'Gloves',
+  'saddle':     'Saddles',
+  'shoes':      'Shoes',
+  'pedal':      'Pedals',
+  'bottle':     'Bottles & Cages',
+  'light':      'Lights',
+  'lock':       'Locks',
+  'pump':       'Floor & Mini Pumps',
+  'bag':        'Bike Bag & Panniers',
+  'rack':       'Racks',
+  'fender':     'Fenders',
+  'tire':       'Tires',
+  'tube':       'Tubes',
+  'handlebar':  'Handlebars',
+  'stem':       'Stems',
+  'seatpost':   'Seatposts',
+  'battery':    'E-Bike Batteries & Accessories',
+  'charger':    'E-Bike Batteries & Accessories',
+  'sock':       'Socks',
+  'eyewear':    'Eyewear',
+  'goggle':     'Eyewear',
+  'computer':   'Computers',
+  'bib':        'Bibs, Shorts & Tights',
+  'short':      'Bibs, Shorts & Tights',
+  'warmer':     'Arm & Leg Warmers/Coolers',
+}
 
 const TYPE_KEYWORDS: Record<string, string[]> = {
   'Mountain': ['mountain', 'mtb', 'trail', 'enduro', 'xc', 'cross-country', 'downhill', 'dirt'],
@@ -61,7 +94,9 @@ function extractFilters(message: string): SearchFilters {
   }
 
   // Gear/accessory detection — when searching for accessories, skip bike-type filters
-  filters.isGear = Array.from(GEAR_KEYWORDS_SET).some(kw => msg.includes(kw))
+  const matchedGearKw = Array.from(GEAR_KEYWORDS_SET).find(kw => msg.includes(kw))
+  filters.isGear = !!matchedGearKw
+  if (matchedGearKw) filters.gearType = matchedGearKw
 
   // Type extraction — skip for gear queries (e.g. "road biker" shouldn't filter helmets to Road bikes)
   if (!filters.isGear) {
@@ -171,6 +206,16 @@ export function searchProducts(message: string, topK = 3): ProductResult[] {
     if (filters.isGear && BIKE_BRANDS.has(p.brand)) return false
     // Gear query: exclude obvious replacement parts/accessories
     if (filters.isGear && ACCESSORY_PART_RE.test(p.name)) return false
+    // Specific gear type: filter by Category (e.g. "helmet" → "Bike Helmets")
+    if (filters.gearType && filters.isGear) {
+      const targetCategory = GEAR_CATEGORY_MAP[filters.gearType]
+      if (targetCategory) {
+        if (!p.categories.includes(targetCategory)) return false
+      } else {
+        // Fallback to name match if no category mapping exists
+        if (!p.name.toLowerCase().includes(filters.gearType)) return false
+      }
+    }
     if (!wantsFrameset && isFrameset(p)) return false
     if (filters.priceMax && p.price > filters.priceMax) return false
     if (filters.priceMin && p.priceMax < filters.priceMin) return false
