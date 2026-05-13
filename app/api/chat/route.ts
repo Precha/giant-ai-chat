@@ -110,18 +110,27 @@ function detectIntent(message: string): 'product' | 'dealer' | 'general' {
 
   if (strongDealerKws.some(kw => msg.includes(kw)) || strongDealerRe.test(msg)) return 'dealer'
 
-  // Product keywords — only checked when no strong dealer signal
-  const productKws = [
+  // Brand/general info questions — no product search needed
+  // e.g. "what's the difference between giant and liv", "what is cadex?"
+  const brandInfoRe = /\b(what('?s| is| are)|difference between|compare|vs\.?|versus|tell me about|explain|who (is|are)|how does|why is|about)\b/i
+  const productTypeKws = [
     'bike', 'bicycle', 'e-bike', 'ebike', 'gear', 'helmet', 'jersey', 'saddle', 'glove',
     'recommend', 'looking for', 'suggest', 'best', 'under $', 'budget',
     'road', 'mountain', 'electric', 'commut', 'gravel', 'trail', 'kids',
-    'liv', 'giant', 'momentum', 'cadex',
     'tire', 'wheel', 'shoe', 'pedal', 'bottle', 'light', 'lock', 'pump',
     'bag', 'rack', 'fender', 'tube', 'handlebar', 'stem', 'seatpost',
     'battery', 'charger', 'accessory', 'apparel', 'sock', 'eyewear',
     'goggle', 'computer', 'short', 'bib', 'warmer', 'jacket',
   ]
-  if (productKws.some(kw => msg.includes(kw))) return 'product'
+  const brandKws = ['liv', 'giant', 'momentum', 'cadex']
+
+  // If it looks like a brand info question with no specific product type, treat as general
+  if (brandInfoRe.test(msg) && !productTypeKws.some(kw => msg.includes(kw))) return 'general'
+
+  // Product keywords — brand names alone don't trigger search; need a product type too
+  const hasBrand = brandKws.some(kw => msg.includes(kw))
+  const hasProductType = productTypeKws.some(kw => msg.includes(kw))
+  if (hasProductType || hasBrand) return 'product'
 
   return 'general'
 }
