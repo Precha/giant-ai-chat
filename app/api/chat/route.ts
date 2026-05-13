@@ -20,13 +20,22 @@ Guidelines:
 function detectIntent(message: string): 'product' | 'dealer' | 'general' {
   const msg = message.toLowerCase()
 
-  const productKws = ['bike', 'bicycle', 'e-bike', 'ebike', 'gear', 'helmet', 'jersey', 'saddle', 'glove', 'recommend', 'looking for', 'suggest', 'best', 'under $', 'budget', 'road', 'mountain', 'electric', 'commut', 'liv', 'giant', 'momentum']
-  const dealerKws = ['dealer', 'store', 'shop', 'near me', 'nearby', 'closest', 'where can i buy', 'where to buy', 'where do i buy', 'where can i get', 'buy a bike', 'purchase', 'location', 'retailer', 'i live in', "i'm in", 'i am in']
-  const dealerRe = /\b(find|locate)\s+a\s+(dealer|store|shop|retailer)\b|\bstores?\s+near\b/i
+  // Strong dealer signals always win — explicit purchase/location intent
+  const strongDealerKws = [
+    'dealer', 'store', 'shop', 'retailer', 'location',
+    'near me', 'nearby', 'closest',
+    'where can i buy', 'where to buy', 'where do i buy', 'where can i get',
+    'buy a bike', 'purchase', 'click and collect', 'home delivery',
+    'i live in', "i'm in", 'i am in', 'based in',
+  ]
+  const strongDealerRe = /\b(find|locate)\s+a\s+(dealer|store|shop|retailer)\b|\bstores?\s+near\b|\bwhere\s+(can\s+i|do\s+i|to)\s+(buy|get|find|purchase)\b/i
 
-  // Product keywords take priority — prevents "Find an e-bike" from matching dealer
+  if (strongDealerKws.some(kw => msg.includes(kw)) || strongDealerRe.test(msg)) return 'dealer'
+
+  // Product keywords — only checked when no strong dealer signal
+  const productKws = ['bike', 'bicycle', 'e-bike', 'ebike', 'gear', 'helmet', 'jersey', 'saddle', 'glove', 'recommend', 'looking for', 'suggest', 'best', 'under $', 'budget', 'road', 'mountain', 'electric', 'commut', 'liv', 'giant', 'momentum']
   if (productKws.some(kw => msg.includes(kw))) return 'product'
-  if (dealerKws.some(kw => msg.includes(kw)) || dealerRe.test(msg)) return 'dealer'
+
   return 'general'
 }
 
