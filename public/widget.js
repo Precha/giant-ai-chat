@@ -297,6 +297,9 @@
     _togglePanel(open) {
       this._isOpen = open !== undefined ? open : !this._isOpen
       this._shadow.getElementById('panel').classList.toggle('open', this._isOpen)
+      if (this._isOpen) {
+        setTimeout(() => this._shadow.getElementById('input')?.focus(), 200)
+      }
     }
 
     _addAiMessage(text, cards) {

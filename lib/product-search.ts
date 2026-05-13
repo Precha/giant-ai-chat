@@ -11,6 +11,12 @@ interface SearchFilters {
   isGear?: boolean    // user is looking for accessories/gear, not a bike
 }
 
+const GEAR_KEYWORDS_SET = new Set([
+  'helmet', 'saddle', 'jersey', 'shoes', 'gloves', 'shorts', 'pedal', 'bottle',
+  'light', 'lock', 'pump', 'bag', 'rack', 'fender', 'wheel', 'tire', 'tube',
+  'handlebar', 'stem', 'seatpost', 'battery', 'charger', 'accessory', 'gear', 'apparel',
+])
+
 const TYPE_KEYWORDS: Record<string, string[]> = {
   'Mountain': ['mountain', 'mtb', 'trail', 'enduro', 'xc', 'cross-country', 'downhill', 'dirt'],
   'Road': ['road', 'racing', 'aero', 'endurance', 'gravel', 'triathlon', 'tt'],
@@ -55,8 +61,7 @@ function extractFilters(message: string): SearchFilters {
   }
 
   // Gear/accessory detection — when searching for accessories, skip bike-type filters
-  const GEAR_KEYWORDS = ['helmet', 'saddle', 'jersey', 'shoes', 'gloves', 'shorts', 'pedal', 'bottle', 'light', 'lock', 'pump', 'bag', 'rack', 'fender', 'wheel', 'tire', 'tube', 'handlebar', 'stem', 'seatpost', 'battery', 'charger', 'accessory', 'gear', 'apparel']
-  filters.isGear = GEAR_KEYWORDS.some(kw => msg.includes(kw))
+  filters.isGear = msg.split(/\s+/).some(w => GEAR_KEYWORDS_SET.has(w))
 
   // Type extraction — skip for gear queries (e.g. "road biker" shouldn't filter helmets to Road bikes)
   if (!filters.isGear) {
@@ -111,8 +116,25 @@ function scoreProduct(product: Product, filters: SearchFilters): number {
   // Bonus: in stock
   if (product.inStock) score += 2
 
-  // Boost gear/accessory products for gear queries
-  if (filters.isGear && product.brand === 'Giant Gear') score += 3
+  // Gear query boosts
+  if (filters.isGear && product.brand === 'Giant Gear') {
+    score += 3
+
+    // Strong boost when the product name ends with the gear keyword
+    // e.g. "Pursuit Mips Helmet" ends with "helmet" → primary product
+    // "Replacement Pads for Helmets" does not → accessory/part
+    const nameLower = product.name.toLowerCase()
+    for (const kw of keywords) {
+      if (GEAR_KEYWORDS_SET.has(kw) && new RegExp(`\\b${kw}s?$`).test(nameLower)) {
+        score += 5  // primary product match
+      }
+    }
+
+    // Penalise parts/accessories that mention the keyword only as a modifier
+    if (/replacement|spare|pad|visor|plug|mount|strap|cover|part/i.test(product.name)) {
+      score -= 4
+    }
+  }
 
   // Boost Lifestyle-level products for entry queries
   if (filters.level === 'entry') {

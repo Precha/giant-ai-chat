@@ -51,7 +51,7 @@ const KEY_SPEC_KEYS = new Set([
   'bike_specs_frame_colors',
 ])
 
-function parseProducts(raw: any, defaultBrand: Brand): Product[] {
+function parseProducts(raw: any, defaultBrand: Brand, forceBrand?: Brand): Product[] {
   if (!raw?.Products) return []
   return raw.Products.map((p: any): Product | null => {
     try {
@@ -60,7 +60,7 @@ function parseProducts(raw: any, defaultBrand: Brand): Product[] {
       const price = prices.length ? Math.min(...prices) : 0
       const priceMax = prices.length ? Math.max(...prices) : 0
 
-      const brand: Brand = BRAND_MAP[p.Brand] ?? defaultBrand
+      const brand: Brand = forceBrand ?? BRAND_MAP[p.Brand] ?? defaultBrand
 
       const imageUrl: string =
         p.Images?.find((img: any) => img.Path)?.Path ?? ''
@@ -142,7 +142,7 @@ export function getProducts(): Product[] {
     ...parseProducts(readJson(path.join(dir, 'giant_bike_US.json')), 'Giant'),
     ...parseProducts(readJson(path.join(dir, 'liv_bike_US.json')), 'Liv'),
     ...parseProducts(readJson(path.join(dir, 'momentum_bike_US.json')), 'Momentum'),
-    ...parseProducts(readJson(path.join(dir, 'giant_gear_US.json')), 'Giant Gear'),
+    ...parseProducts(readJson(path.join(dir, 'giant_gear_US.json')), 'Giant Gear', 'Giant Gear'),
   ]
   return _products
 }
