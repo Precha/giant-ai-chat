@@ -1,0 +1,2151 @@
+{
+  "Products": [
+    {
+      "Id": 77633,
+      "GlobalId": 3562,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "PakYak Auxiliary Battery Combo",
+      "Type": 2,
+      "VideoUrl": "",
+      "Features": [],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/wya08lnvzvvmkh8bbmoz/PakYak_Aux_Battery.jpg",
+          "SkuId": "70001",
+          "CloudinaryPublicId": "wya08lnvzvvmkh8bbmoz"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "70001",
+          "Price": 1125,
+          "Color": "",
+          "Size": "",
+          "Usage": "PakYak E+ Auxillary Battery Bundle",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "760343700011",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/wya08lnvzvvmkh8bbmoz/PakYak_Aux_Battery.jpg",
+              "SkuId": "70001",
+              "CloudinaryPublicId": "wya08lnvzvvmkh8bbmoz"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Bicycle Accessories"
+      ],
+      "PowerReviewId": "g-3562",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-89"
+      ],
+      "CurrencyCode": "USD",
+      "Retailgroup": "RSEBikeCer",
+      "Specifications": "",
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/pakyak-auxiliary-battery-combo",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 75799,
+      "GlobalId": 3533,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "PakYak Auxiliary Battery",
+      "Type": 2,
+      "VideoUrl": "",
+      "Features": [
+        "Includes a 500WH battery\r\n"
+      ],
+      "MetaTitle": "PakYak Auxiliary Battery | Electric Bike Accessories | Momentum Bikes US",
+      "MetaDescription": "The PakYak E+ is capable of carrying an extra 500 Wh e-bike  removable battery so you can extend the ride range. PakYak auxiliary battery is your best option!",
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/i1pmlneqnoshyaxlkwea/pakyak_aux_battery.jpg",
+          "SkuId": "700000049",
+          "CloudinaryPublicId": "i1pmlneqnoshyaxlkwea"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "700000049",
+          "Price": 900,
+          "Color": "",
+          "Size": "",
+          "Usage": "*** ORM-D LABEL / SHIP GROUND ONLY ***",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250013725",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/i1pmlneqnoshyaxlkwea/pakyak_aux_battery.jpg",
+              "SkuId": "700000049",
+              "CloudinaryPublicId": "i1pmlneqnoshyaxlkwea"
+            }
+          ]
+        }
+      ],
+      "RelatedProductIds": [],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Bicycle Accessories"
+      ],
+      "PowerReviewId": "g-3533",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-89"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul>\r\n<li>Material: aluminum</li>\r\n<li>Weight: 6.85lbs/3110g</li>\r\n<li>Dimension: 15.7\" x 2.8\" x 2.8\"/40 cm x 7 cm x 7 cm</li>\r\n<li>Content: 500Wh</li>\r\n</ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "key",
+            "SpecificationValue": "value"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "key",
+            "SpecificationValue": "value"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/pakyak-auxiliary-battery",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 76026,
+      "GlobalId": 3561,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "PakYak Passenger Accessories Bundle",
+      "Type": 2,
+      "Features": [],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/dfqjmuvqj0po4bbtocpw/PakYak_Passenger_Bundle.jpg",
+          "SkuId": "54001",
+          "CloudinaryPublicId": "dfqjmuvqj0po4bbtocpw"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "54001",
+          "Price": 543.4,
+          "Color": "",
+          "Size": "",
+          "Usage": "PakYak E+ Passenger Bundle",
+          "Discontinued": false,
+          "HasNoStock": true,
+          "ShowInShop": true,
+          "Barcode": "2222222222222",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/dfqjmuvqj0po4bbtocpw/PakYak_Passenger_Bundle.jpg",
+              "SkuId": "54001",
+              "CloudinaryPublicId": "dfqjmuvqj0po4bbtocpw"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Bicycle Accessories"
+      ],
+      "PowerReviewId": "g-3561",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-89"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "",
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/pakyak-passenger-accessories-bundle",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 104309,
+      "GlobalId": 4566,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Cito E+ Bench Seat",
+      "Type": 2,
+      "VideoUrl": "",
+      "Features": [
+        "Elongated seat designed with comfort in mind.\r\n",
+        "3-height adjustment accommodates various rider heights, up to 190cm.\r\n",
+        "Compatible with 2023+ Cito E+.\r\n"
+      ],
+      "MetaTitle": "Momentum Cito E+ Ebike Bench Seat| Moto Style Ebike Seat ",
+      "MetaDescription": "Ride comfortably on the Cito ebike bench seat with extra padding, and 3-height adjustments. This bike saddle fits a variety of different rider heights and gives you room to move around.\r\n",
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/nuf20lu7mt56ugvljrvz/_44A4737.jpg",
+          "SkuId": "120000207",
+          "CloudinaryPublicId": "nuf20lu7mt56ugvljrvz"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "120000207",
+          "Price": 275,
+          "Color": "",
+          "Size": "",
+          "Usage": "Cito E+ Bench Seat",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250052571",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/nuf20lu7mt56ugvljrvz/_44A4737.jpg",
+              "SkuId": "120000207",
+              "CloudinaryPublicId": "nuf20lu7mt56ugvljrvz"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Components",
+        "Saddles"
+      ],
+      "PowerReviewId": "g-4566",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-61"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>:Material: aluminum</li><li>:Color: matte black</li><li>:Weight: 5.3lbs/2.4kg</li><li>:Dimensions: 17.3”x7.1”x3.2”/44x 18x 8cm</li><li>:Max load: 242.5lbs/110kg</li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationValue": "Material: aluminum"
+          },
+          {
+            "RowId": 2,
+            "SpecificationValue": "Color: matte black"
+          },
+          {
+            "RowId": 3,
+            "SpecificationValue": "Weight: 5.3lbs/2.4kg"
+          },
+          {
+            "RowId": 4,
+            "SpecificationValue": "Dimensions: 17.3”x7.1”x3.2”/44x 18x 8cm"
+          },
+          {
+            "RowId": 5,
+            "SpecificationValue": "Max load: 242.5lbs/110kg"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/cito-eplus-bench-seat-2024",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 75802,
+      "GlobalId": 3536,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Rear Basket",
+      "Type": 2,
+      "VideoUrl": "",
+      "Features": [
+        "Mounting hardware included\r\n",
+        "Strong aluminum frame for durability\r\n",
+        "Removable aluminum plate included\r\n",
+        "Compatible with Eurocrate 600x400mm capacity\r\n",
+        "Compatible with Cito E+ and PakYak\r\n"
+      ],
+      "MetaTitle": "Momentum Rear Basket | Rear Basket for Electric Bike |Electric Bike Accessories ",
+      "MetaDescription": "An electric bike with basket enables you to carry heavy stuff easily. Momentum Rear Basket can help your bike hold up to 46 kg without hesitation! \r\n",
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/zgywn0xtw6phjtfiixgy/momentum-pakyak@rear-basket@450000009@1.jpg",
+          "SkuId": "450000009",
+          "CloudinaryPublicId": "zgywn0xtw6phjtfiixgy"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "450000009",
+          "Price": 235,
+          "Color": "",
+          "Size": "",
+          "Usage": "Momentum Rear basket",
+          "Discontinued": false,
+          "HasNoStock": true,
+          "ShowInShop": true,
+          "Barcode": "4713250013770",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/zgywn0xtw6phjtfiixgy/momentum-pakyak@rear-basket@450000009@1.jpg",
+              "SkuId": "450000009",
+              "CloudinaryPublicId": "zgywn0xtw6phjtfiixgy"
+            }
+          ]
+        }
+      ],
+      "RelatedProductIds": [],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Racks"
+      ],
+      "PowerReviewId": "g-3536",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-73"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul>\r\n<li>Material: Aluminum</li>\r\n<li>Weight: 11lbs/4.8kg</li>\r\n<li>Outer Dimension: 675mm x 475mm x 155mm</li>\r\n<li>Loading capacity: 100lb/46kg</li>\r\n<li>Compatiable with PakYak E+ &amp; Cito E+ Models</li>\r\n</ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "key",
+            "SpecificationValue": "value"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "key",
+            "SpecificationValue": "value"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/rear-basket",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 77632,
+      "GlobalId": 3560,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "PakYak Auxiliary Battery Holder",
+      "Type": 2,
+      "VideoUrl": "",
+      "Features": [],
+      "MetaDescription": "\r\n",
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/q0cgnbvbfvcsd76dz4ic/PakYak_Aux_Battery_holder.jpg",
+          "SkuId": "700000050",
+          "CloudinaryPublicId": "q0cgnbvbfvcsd76dz4ic"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "700000050",
+          "Price": 225,
+          "Color": "",
+          "Size": "",
+          "Usage": "PakYak E+ Second battery holder",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250013732",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/q0cgnbvbfvcsd76dz4ic/PakYak_Aux_Battery_holder.jpg",
+              "SkuId": "700000050",
+              "CloudinaryPublicId": "q0cgnbvbfvcsd76dz4ic"
+            }
+          ]
+        }
+      ],
+      "RelatedProductIds": [],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Bicycle Accessories"
+      ],
+      "PowerReviewId": "g-3560",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-89"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "key",
+            "SpecificationValue": "value"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "key",
+            "SpecificationValue": "value"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/pakyak-auxiliary-battery-holder",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 75801,
+      "GlobalId": 3537,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "PakYak Pannier Bag",
+      "Type": 2,
+      "VideoUrl": "",
+      "Features": [
+        "Two-in-one bike pannier bag with adjustable drawcord enclosure to convert to sling-style hammock bag.\r\n",
+        "Inner Velcro closure allows you to adjust internal compartment or rolled and concealed when not in use.\r\n",
+        "Reflective details for added visibility\r\n"
+      ],
+      "MetaTitle": "PakYak Bike Pannier Bag | Water-repellent E-bike Grocery Pannier",
+      "MetaDescription": "PakYak bike pannier bag helps you organize your riding! Water-repellent material and zippered pocket make it a top choice to pack your grocery and go!\r\n\r\n\r\n",
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/xradrkxhzmowt6jrnlbp/momentum-pakyak@-pannier-bag@430000139@1.jpg",
+          "SkuId": "430000139",
+          "CloudinaryPublicId": "xradrkxhzmowt6jrnlbp"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "430000139",
+          "Price": 195,
+          "Color": "Grey",
+          "Size": "One Size",
+          "Usage": "",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250013800",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/xradrkxhzmowt6jrnlbp/momentum-pakyak@-pannier-bag@430000139@1.jpg",
+              "SkuId": "430000139",
+              "CloudinaryPublicId": "xradrkxhzmowt6jrnlbp"
+            }
+          ]
+        }
+      ],
+      "RelatedProductIds": [],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Bike Bag & Panniers"
+      ],
+      "PowerReviewId": "g-3537",
+      "Colors": [
+        "Grey"
+      ],
+      "NavigationIds": [
+        "gear-50"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul>\r\n<li>Material: Polyster, PU</li>\r\n<li>Weight: 3lbs/910g per side</li>\r\n<li>Dimension:22” x 5.5” x 15.7”/ 560mmx140mmx400mm</li>\r\n<li>Load Capacity: 26lb/12kg per bag, 52lb/24kg per pair</li>\r\n</ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "key",
+            "SpecificationValue": "value"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "key",
+            "SpecificationValue": "value"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/pakyak-pannier-bag",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 104311,
+      "GlobalId": 4569,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Cito E+ Top Tube Add-On",
+      "Type": 2,
+      "Features": [
+        "To change the low step through frame to sporty look diamond frame.\r\n",
+        "The storage space inside the tube offer the convenience to the rider for small personal stuff.\r\n"
+      ],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/zii38eq95idm0gt4yunm/Cito-Eplus-Top-Tube-Add-On-540000053.jpg",
+          "SkuId": "540000053",
+          "CloudinaryPublicId": "zii38eq95idm0gt4yunm"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "540000053",
+          "Price": 184.99,
+          "Color": "",
+          "Size": "",
+          "Usage": "Cito E+ Top Tube Add-On",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250052625",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/zii38eq95idm0gt4yunm/Cito-Eplus-Top-Tube-Add-On-540000053.jpg",
+              "SkuId": "540000053",
+              "CloudinaryPublicId": "zii38eq95idm0gt4yunm"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Bicycle Accessories"
+      ],
+      "PowerReviewId": "g-4569",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-89"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>:Material: aluminum</li><li>:Color: matte black</li><li>:Weight: 1.5lbs/ 0.7kg</li><li>:Max load: 33lbs/ 5kg</li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationValue": "Material: aluminum"
+          },
+          {
+            "RowId": 2,
+            "SpecificationValue": "Color: matte black"
+          },
+          {
+            "RowId": 3,
+            "SpecificationValue": "Weight: 1.5lbs/ 0.7kg"
+          },
+          {
+            "RowId": 4,
+            "SpecificationValue": "Max load: 33lbs/ 5kg"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/cito-eplus-top-tube-add-on-2024",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 78468,
+      "GlobalId": 3746,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Momentum Front Bike Rack - Large",
+      "Type": 2,
+      "VideoUrl": "",
+      "Features": [
+        "Carries up to 15 kg\r\n",
+        "Made from aluminum with a durable matte black finish\r\n",
+        "Includes stainless steel mounting hardware for easy installation\r\n",
+        "MIK platform included to mount MIK accessories\r\n",
+        "Sold separately: side rails to secure your belongings\r\n",
+        "Compatible with 2022+ Voya E+ and Vida E+\r\n"
+      ],
+      "MetaTitle": "Momentum Front Bike Rack - Large ",
+      "MetaDescription": "Momentum Front Bike Rack is made from durable aluminum and can carry up to 15kg! With this bicycle front rack, a trip to the grocery store will surely be hassle-free.\r\n",
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/bj6xaxdrkdpqj46jvo6o/Front-Rack-Large.jpg",
+          "SkuId": "440000027",
+          "CloudinaryPublicId": "bj6xaxdrkdpqj46jvo6o"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "440000027",
+          "Price": 132,
+          "Color": "Black",
+          "Size": "Large",
+          "Usage": "",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250023823",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/bj6xaxdrkdpqj46jvo6o/Front-Rack-Large.jpg",
+              "SkuId": "440000027",
+              "CloudinaryPublicId": "bj6xaxdrkdpqj46jvo6o"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Racks"
+      ],
+      "PowerReviewId": "g-3746",
+      "Colors": [
+        "Black"
+      ],
+      "NavigationIds": [
+        "gear-73"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>Material:aluminum</li><li>Color:matte black</li><li>Weight:2lbs/0.9kg</li><li>Dimensions:15.4” x 17.3” x 4.3” / 39cm x 44cm x 11cm</li><li>Max load:33lbs/ 15kg</li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "Material",
+            "SpecificationValue": "aluminum"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "Color",
+            "SpecificationValue": "matte black"
+          },
+          {
+            "RowId": 3,
+            "SpecificationKey": "Weight",
+            "SpecificationValue": "2lbs/0.9kg"
+          },
+          {
+            "RowId": 4,
+            "SpecificationKey": "Dimensions",
+            "SpecificationValue": "15.4” x 17.3” x 4.3” / 39cm x 44cm x 11cm"
+          },
+          {
+            "RowId": 5,
+            "SpecificationKey": "Max load",
+            "SpecificationValue": "33lbs/ 15kg"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/momentum-front-bike-rack---large-2022",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 78470,
+      "GlobalId": 3749,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Momentum Rear Bike Rack",
+      "Type": 2,
+      "VideoUrl": "",
+      "Features": [
+        "Carries up to 25 kg\r\n",
+        "MIK deck and rear taillight bracket included\r\n",
+        "Made from aluminum with a durable matte black finish\r\n",
+        "Includes stainless steel mounting hardware for easy installation\r\n",
+        "Compatible with 2019+ Vida E+; 2022+ Voya E+; and 2019+ Transend E+\r\n"
+      ],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/o7g7t5xk0areoriw2nhv/Rear-rack.jpg",
+          "SkuId": "440000029",
+          "CloudinaryPublicId": "o7g7t5xk0areoriw2nhv"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "440000029",
+          "Price": 129.99,
+          "Color": "Black",
+          "Size": "One Size",
+          "Usage": "",
+          "Discontinued": false,
+          "HasNoStock": true,
+          "ShowInShop": true,
+          "Barcode": "4713250023847",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/o7g7t5xk0areoriw2nhv/Rear-rack.jpg",
+              "SkuId": "440000029",
+              "CloudinaryPublicId": "o7g7t5xk0areoriw2nhv"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Racks"
+      ],
+      "PowerReviewId": "g-3749",
+      "Colors": [
+        "Black"
+      ],
+      "NavigationIds": [
+        "gear-73"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>Material:aluminum</li><li>Color:matte black</li><li>Weight:2lbs/0.9kg (w/side rail)</li><li>Dimensions:15.8” x 5.1” x 14.2” / 40cm x 13cm x 36cm</li><li>Max load:55lbs/ 25kg</li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "Material",
+            "SpecificationValue": "aluminum"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "Color",
+            "SpecificationValue": "matte black"
+          },
+          {
+            "RowId": 3,
+            "SpecificationKey": "Weight",
+            "SpecificationValue": "2lbs/0.9kg (w/side rail)"
+          },
+          {
+            "RowId": 4,
+            "SpecificationKey": "Dimensions",
+            "SpecificationValue": "15.8” x 5.1” x 14.2” / 40cm x 13cm x 36cm"
+          },
+          {
+            "RowId": 5,
+            "SpecificationKey": "Max load",
+            "SpecificationValue": "55lbs/ 25kg"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/momentum-rear-bike-rack-2022",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 78466,
+      "GlobalId": 3751,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Momentum Fender Set for Vida E+",
+      "Type": 2,
+      "Features": [
+        "Compatible with all Vida E+ models (from 2019 onwards)\r\n",
+        "Made of durable ABS plastic and stainless-steel hardware to protect against corrosion and UV\r\n",
+        "Full fender protection\r\n"
+      ],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/jpt4z6z7er9dijf2c8cj/Vida-fender-set.jpg",
+          "SkuId": "530000052",
+          "CloudinaryPublicId": "jpt4z6z7er9dijf2c8cj"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "530000052",
+          "Price": 110,
+          "Color": "Black",
+          "Size": "",
+          "Usage": "",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250023892",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/jpt4z6z7er9dijf2c8cj/Vida-fender-set.jpg",
+              "SkuId": "530000052",
+              "CloudinaryPublicId": "jpt4z6z7er9dijf2c8cj"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Fenders"
+      ],
+      "PowerReviewId": "g-3751",
+      "Colors": [
+        "Black"
+      ],
+      "NavigationIds": [
+        "gear-70"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>Material:ABS fender/ stainless-steel hardware</li><li>Color:Matt black</li><li>Weight:237g (F)/ 415g (R) </li><li>Diameter:654mm (F)/1172mm(R)</li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "Material",
+            "SpecificationValue": "ABS fender/ stainless-steel hardware"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "Color",
+            "SpecificationValue": "Matt black"
+          },
+          {
+            "RowId": 3,
+            "SpecificationKey": "Weight",
+            "SpecificationValue": "237g (F)/ 415g (R) "
+          },
+          {
+            "RowId": 4,
+            "SpecificationKey": "Diameter",
+            "SpecificationValue": "654mm (F)/1172mm(R)"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/momentum-fender-set-for-vida-eplus-2022",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 78469,
+      "GlobalId": 3747,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Momentum Front Rack - Small",
+      "Type": 2,
+      "VideoUrl": "",
+      "Features": [
+        "Carries up to 15 kg\r\n",
+        "Side rails to secure your belongings\r\n",
+        "Made from aluminum with a durable matte black finish\r\n",
+        "Includes stainless steel mounting hardware for easy installation\r\n",
+        "MIK platform included to mount MIK accessories\r\n",
+        "Compatible with 2022+ Voya E+ and Vida E+\r\n"
+      ],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/hvjo7x5ilvpn8wdbe91m/_44A7207.jpg",
+          "SkuId": "440000028",
+          "CloudinaryPublicId": "hvjo7x5ilvpn8wdbe91m"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "440000028",
+          "Price": 109.99,
+          "Color": "Black",
+          "Size": "Small",
+          "Usage": "",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250023830",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/hvjo7x5ilvpn8wdbe91m/_44A7207.jpg",
+              "SkuId": "440000028",
+              "CloudinaryPublicId": "hvjo7x5ilvpn8wdbe91m"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Racks"
+      ],
+      "PowerReviewId": "g-3747",
+      "Colors": [
+        "Black"
+      ],
+      "NavigationIds": [
+        "gear-73"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>Material:aluminum</li><li>Color:matte black</li><li>Weight:1.8lbs/0.8kg (w/side rail)</li><li>Dimensions:14.2” x 9.5” x 4.3” / 36cm x 24cm x 11cm</li><li>Max load:33lbs/ 15kg</li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "Material",
+            "SpecificationValue": "aluminum"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "Color",
+            "SpecificationValue": "matte black"
+          },
+          {
+            "RowId": 3,
+            "SpecificationKey": "Weight",
+            "SpecificationValue": "1.8lbs/0.8kg (w/side rail)"
+          },
+          {
+            "RowId": 4,
+            "SpecificationKey": "Dimensions",
+            "SpecificationValue": "14.2” x 9.5” x 4.3” / 36cm x 24cm x 11cm"
+          },
+          {
+            "RowId": 5,
+            "SpecificationKey": "Max load",
+            "SpecificationValue": "33lbs/ 15kg"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/momentum-front-rack---small-2022",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 78465,
+      "GlobalId": 3750,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Momentum Fender Set for Transend E+",
+      "Type": 2,
+      "Features": [
+        "Compatible with all Transend E+ Models (from 2019 onwards)\r\n",
+        "Made of durable ABS plastic and stainless-steel hardware to protect against corrosion and UV\r\n"
+      ],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/fa26ez1ngpm3kkakypag/Transend-eplus-fender-set.jpg",
+          "SkuId": "530000051",
+          "CloudinaryPublicId": "fa26ez1ngpm3kkakypag"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "530000051",
+          "Price": 105,
+          "Color": "Black",
+          "Size": "",
+          "Usage": "",
+          "Discontinued": false,
+          "HasNoStock": true,
+          "ShowInShop": true,
+          "Barcode": "4713250023885",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/fa26ez1ngpm3kkakypag/Transend-eplus-fender-set.jpg",
+              "SkuId": "530000051",
+              "CloudinaryPublicId": "fa26ez1ngpm3kkakypag"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Fenders"
+      ],
+      "PowerReviewId": "g-3750",
+      "Colors": [
+        "Black"
+      ],
+      "NavigationIds": [
+        "gear-70"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>Material:ABS fender/ stainless-steel hardware</li><li>Color:Matt black</li><li>Weight:247g (F)/ 355g (R) </li><li>Diameter:678mm (F)/900mm(R)</li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "Material",
+            "SpecificationValue": "ABS fender/ stainless-steel hardware"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "Color",
+            "SpecificationValue": "Matt black"
+          },
+          {
+            "RowId": 3,
+            "SpecificationKey": "Weight",
+            "SpecificationValue": "247g (F)/ 355g (R) "
+          },
+          {
+            "RowId": 4,
+            "SpecificationKey": "Diameter",
+            "SpecificationValue": "678mm (F)/900mm(R)"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/momentum-fender-set-for-transend-eplus-2022",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 102992,
+      "GlobalId": 4389,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Vida E+ front rack",
+      "Type": 2,
+      "Features": [],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/bi3otgrt1vaqu7pa3tfu/440000023.jpg",
+          "SkuId": "440000023",
+          "CloudinaryPublicId": "bi3otgrt1vaqu7pa3tfu"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "440000023",
+          "Price": 95,
+          "Color": "",
+          "Size": "",
+          "Usage": "MMT Vida E+ front rack",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250008257",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/bi3otgrt1vaqu7pa3tfu/440000023.jpg",
+              "SkuId": "440000023",
+              "CloudinaryPublicId": "bi3otgrt1vaqu7pa3tfu"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Racks"
+      ],
+      "PowerReviewId": "g-4389",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-73"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "key",
+            "SpecificationValue": "value"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "key",
+            "SpecificationValue": "value"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/vida-eplus-front-rack",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 78467,
+      "GlobalId": 3752,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Momentum Fender Set for Voya E+",
+      "Type": 2,
+      "Features": [
+        "Compatible with all Voya E+ models\r\n",
+        "Made of durable ABS plastic and stainless-steel hardware to protect against corrosion and UV\r\n",
+        "Full fender protection\r\n"
+      ],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/cfytuszisaiyopuxsyxk/Voya-Eplus-Fender-set.jpg",
+          "SkuId": "530000053",
+          "CloudinaryPublicId": "cfytuszisaiyopuxsyxk"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "530000053",
+          "Price": 75,
+          "Color": "Black",
+          "Size": "",
+          "Usage": "",
+          "Discontinued": false,
+          "HasNoStock": true,
+          "ShowInShop": true,
+          "Barcode": "4713250023908",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/cfytuszisaiyopuxsyxk/Voya-Eplus-Fender-set.jpg",
+              "SkuId": "530000053",
+              "CloudinaryPublicId": "cfytuszisaiyopuxsyxk"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Fenders"
+      ],
+      "PowerReviewId": "g-3752",
+      "Colors": [
+        "Black"
+      ],
+      "NavigationIds": [
+        "gear-70"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>Material:ABS fender / stainless-steel hardware</li><li>Color:Matt black</li><li>Weight:173g (F)/ 332g (R) </li><li>Diameter:685mm (F)/1208mm(R)</li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "Material",
+            "SpecificationValue": "ABS fender / stainless-steel hardware"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "Color",
+            "SpecificationValue": "Matt black"
+          },
+          {
+            "RowId": 3,
+            "SpecificationKey": "Weight",
+            "SpecificationValue": "173g (F)/ 332g (R) "
+          },
+          {
+            "RowId": 4,
+            "SpecificationKey": "Diameter",
+            "SpecificationValue": "685mm (F)/1208mm(R)"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/momentum-fender-set-for-voya-eplus-2022",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 129006,
+      "GlobalId": 5421,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Vida E+ Throttle",
+      "Type": 2,
+      "Features": [
+        "One Half Grip with Integrated Twist Throttle\r\n",
+        "Waterproof Level: IPX6\r\n",
+        "Voltage: 5V\r\n",
+        "Wire Length: 650mm\r\n",
+        "E-bike accelerator with half twist throttle design for precise control.\r\n",
+        "Compatible with Vida E+ (from 2025 onwards)\r\n"
+      ],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/jclmdatxcbt2wgx2odny/Momentum_Throttle.jpg",
+          "SkuId": "410000182",
+          "CloudinaryPublicId": "jclmdatxcbt2wgx2odny"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/suc0sfvpeclorudjfvkw/MY26VidaE_ColorC-D-6.jpg",
+          "CloudinaryPublicId": "suc0sfvpeclorudjfvkw"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/ufyais8sxlb4fhcywfct/USA_128613_b.jpg",
+          "CloudinaryPublicId": "ufyais8sxlb4fhcywfct"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/beawvppdib0bw5m13jdh/USA_124568_b.jpg",
+          "CloudinaryPublicId": "beawvppdib0bw5m13jdh"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "410000182",
+          "Price": 65,
+          "Color": "",
+          "Size": "",
+          "Usage": "MMT Vida E+ Throttle",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250079349",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/jclmdatxcbt2wgx2odny/Momentum_Throttle.jpg",
+              "SkuId": "410000182",
+              "CloudinaryPublicId": "jclmdatxcbt2wgx2odny"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Components",
+        "E-Bike Batteries & Accessories"
+      ],
+      "PowerReviewId": "g-5421",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-95"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>Weight : 130± 10g:Color : Red</li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "Weight : 130± 10g",
+            "SpecificationValue": "Color : Red"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/vida-eplus-throttle-2025",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 75800,
+      "GlobalId": 3538,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Tote Bag",
+      "Type": 2,
+      "VideoUrl": "",
+      "Features": [
+        "20mmx10mm inner bag design allow you to protect essential items while use the bag.\r\n",
+        "Velcro straps so you can attach it to the front basket.\r\n",
+        "Drawcord closure design\r\n"
+      ],
+      "MetaTitle": "PakYak & Cito Tote Bag | Electric Bike Accessories | Momentum Bikes US",
+      "MetaDescription": "Grab what you want and pop it in the best e-bike accessory, Tote Bag, which is designed for the front basket and made from water-repellent material.\r\n",
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/coiqedkyactvrw0t13uu/momentum-pakyak@tote-bag@430000150@2.jpg",
+          "SkuId": "430000150",
+          "CloudinaryPublicId": "coiqedkyactvrw0t13uu"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "430000150",
+          "Price": 65,
+          "Color": "",
+          "Size": "",
+          "Usage": "PakYak E+ Front Basket Tote Bag",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250021812",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/coiqedkyactvrw0t13uu/momentum-pakyak@tote-bag@430000150@2.jpg",
+              "SkuId": "430000150",
+              "CloudinaryPublicId": "coiqedkyactvrw0t13uu"
+            }
+          ]
+        }
+      ],
+      "RelatedProductIds": [],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Bike Bag & Panniers"
+      ],
+      "PowerReviewId": "g-3538",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-50"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul>\r\n<li>Material: Polyester</li>\r\n<li>Weight: 220 g</li>\r\n<li>Dimensions: 17.7” x 18.5” x 9.4”/450mm x 475mm x 245mm</li>\r\n<li>Loading capacity: 11 lbs/ 5kg</li>\r\n<li>Rack not included</li>\r\n</ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "key",
+            "SpecificationValue": "value"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "key",
+            "SpecificationValue": "value"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/tote-bag",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 129197,
+      "GlobalId": 5422,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Recon E HL 50 STVZO JL Connector",
+      "Type": 2,
+      "VideoUrl": "",
+      "Features": [
+        "Features reliable and high-quality LED lamps and strips from leading manufacturer OSRAM\r\n",
+        "Delivers well-controlled beams without glare or shadows\r\n",
+        "Designed with integrated reflector\r\n",
+        "IPX6 water resistant\r\n",
+        "StVZO compliant\r\n",
+        "Compatible only with:\r\n\r\n",
+        "2026 Vida E+\r\n",
+        "2026 Talon E+\r\n",
+        "2026 Tempt E+\r\n"
+      ],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/e40vxcvcffpfxvusvjg4/400000264_image.jpg",
+          "SkuId": "400000264",
+          "CloudinaryPublicId": "e40vxcvcffpfxvusvjg4"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "400000264",
+          "Price": 55,
+          "Color": "",
+          "Size": "",
+          "Usage": "GNT Recon E HL50",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250082301",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/e40vxcvcffpfxvusvjg4/400000264_image.jpg",
+              "SkuId": "400000264",
+              "CloudinaryPublicId": "e40vxcvcffpfxvusvjg4"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Lights"
+      ],
+      "PowerReviewId": "g-5422",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-60"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>:Material: Plastic Casing / TIR Lens</li><li>:SIZE: L 57mm x W 40mm x H 70mm</li><li>:Weight: 48g</li><li>:Waterproof rating: IPX6</li><li>:Light mode: Day Running Light (DRL) 100lm</li><li>:Voltage: 6-58V, 2W</li><li>:Mount type: Fork mount</li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationValue": "Material: Plastic Casing / TIR Lens"
+          },
+          {
+            "RowId": 2,
+            "SpecificationValue": "SIZE: L 57mm x W 40mm x H 70mm"
+          },
+          {
+            "RowId": 3,
+            "SpecificationValue": "Weight: 48g"
+          },
+          {
+            "RowId": 4,
+            "SpecificationValue": "Waterproof rating: IPX6"
+          },
+          {
+            "RowId": 5,
+            "SpecificationValue": "Light mode: Day Running Light (DRL) 100lm"
+          },
+          {
+            "RowId": 6,
+            "SpecificationValue": "Voltage: 6-58V, 2W"
+          },
+          {
+            "RowId": 7,
+            "SpecificationValue": "Mount type: Fork mount"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/recon-e-hl-50-stvzo-jl-connector-2025",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 78471,
+      "GlobalId": 3748,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Side Rail for Momentum Front Racks",
+      "Type": 2,
+      "Features": [
+        "Made from aluminum with a durable matte black finish\r\n",
+        "Includes stainless steel mounting hardware for easy installation\r\n",
+        "Fits on Momentum Front Rack - Large and Small\r\n"
+      ],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/wcex4xviiao9umow60z2/Side-rail.jpg",
+          "SkuId": "440000030",
+          "CloudinaryPublicId": "wcex4xviiao9umow60z2"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "440000030",
+          "Price": 55,
+          "Color": "",
+          "Size": "",
+          "Usage": "MMT Side Rail for Large Front Rack (440000027)",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250026473",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/wcex4xviiao9umow60z2/Side-rail.jpg",
+              "SkuId": "440000030",
+              "CloudinaryPublicId": "wcex4xviiao9umow60z2"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Racks"
+      ],
+      "PowerReviewId": "g-3748",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-73"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>Material:aluminum</li><li>Color:matte black</li><li>Weight:0.28lbs/127g </li><li>Dimensions:10.6” x 3.5” x 3.2” / 27cm x 9cm x 8cm</li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "Material",
+            "SpecificationValue": "aluminum"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "Color",
+            "SpecificationValue": "matte black"
+          },
+          {
+            "RowId": 3,
+            "SpecificationKey": "Weight",
+            "SpecificationValue": "0.28lbs/127g "
+          },
+          {
+            "RowId": 4,
+            "SpecificationKey": "Dimensions",
+            "SpecificationValue": "10.6” x 3.5” x 3.2” / 27cm x 9cm x 8cm"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/side-rail-for-momentum-front-racks-2022",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 104313,
+      "GlobalId": 4592,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Rear View Mirror",
+      "Type": 2,
+      "Features": [
+        "Measures 8.1 x 6.3cm and offers a wide field of view.\r\n",
+        "Installed at bar end and easily adjusted to angle needed.\r\n",
+        "High-rise arm with ball and socket for optimum viewing angle.\r\n",
+        "Fits flat bars and mounts easily using a 5mm Allen key.\r\n",
+        "Compatible with 2023+ Cito E+.\r\n"
+      ],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/emudgklyz5gni828hy2b/MMTrearviewmirror540000052.jpg",
+          "CloudinaryPublicId": "emudgklyz5gni828hy2b"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "540000052",
+          "Price": 44,
+          "Color": "",
+          "Size": "",
+          "Usage": "MMT Rear View Mirror",
+          "Discontinued": false,
+          "HasNoStock": true,
+          "ShowInShop": true,
+          "Barcode": "4713250052601",
+          "Images": []
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Bicycle Accessories"
+      ],
+      "PowerReviewId": "g-4592",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-89"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>:Material: ABS+Coating / PA / Glass</li><li>:Color: Matt black</li><li>:Weight: 0.4lbs/184g</li><li>:Mirror size:3.2”x 2.4”/8x6 cm</li><li>:Bar end mount; Both left and right side.</li><li>:2 pairs of smaller plug: Fit ø14.5~ ø16.5mm handlebar-end</li><li>:2 pairs of larger plug: Fit ø18~ ø19.5mm handlebar-end</li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationValue": "Material: ABS+Coating / PA / Glass"
+          },
+          {
+            "RowId": 2,
+            "SpecificationValue": "Color: Matt black"
+          },
+          {
+            "RowId": 3,
+            "SpecificationValue": "Weight: 0.4lbs/184g"
+          },
+          {
+            "RowId": 4,
+            "SpecificationValue": "Mirror size:3.2”x 2.4”/8x6 cm"
+          },
+          {
+            "RowId": 5,
+            "SpecificationValue": "Bar end mount; Both left and right side."
+          },
+          {
+            "RowId": 6,
+            "SpecificationValue": "2 pairs of smaller plug: Fit ø14.5~ ø16.5mm handlebar-end"
+          },
+          {
+            "RowId": 7,
+            "SpecificationValue": "2 pairs of larger plug: Fit ø18~ ø19.5mm handlebar-end"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/rear-view-mirror-2024",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 102993,
+      "GlobalId": 4301,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Rack Clamp for Vida E+",
+      "Type": 2,
+      "Features": [],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/wd328phrztfudy1bvaxd/440000026.jpg",
+          "SkuId": "440000026",
+          "CloudinaryPublicId": "wd328phrztfudy1bvaxd"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "440000026",
+          "Price": 39.99,
+          "Color": "Black",
+          "Size": "",
+          "Usage": "",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250022871",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/wd328phrztfudy1bvaxd/440000026.jpg",
+              "SkuId": "440000026",
+              "CloudinaryPublicId": "wd328phrztfudy1bvaxd"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Racks"
+      ],
+      "PowerReviewId": "g-4301",
+      "Colors": [
+        "Black"
+      ],
+      "NavigationIds": [
+        "gear-73"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "key",
+            "SpecificationValue": "value"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "key",
+            "SpecificationValue": "value"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/rack-clamp-for-vida-eplus-2023",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 100709,
+      "GlobalId": 3753,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Momentum Dual Mounting Kit for Transend E+",
+      "Type": 2,
+      "Features": [],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/y7caxkypkuqnguyzwp63/_44A0141-transendE.jpg",
+          "SkuId": "530000054",
+          "CloudinaryPublicId": "y7caxkypkuqnguyzwp63"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "530000054",
+          "Price": 35,
+          "Color": "",
+          "Size": "",
+          "Usage": "MMT Dual Mounting Kit for Transend E+",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250035451",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/y7caxkypkuqnguyzwp63/_44A0141-transendE.jpg",
+              "SkuId": "530000054",
+              "CloudinaryPublicId": "y7caxkypkuqnguyzwp63"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Bicycle Accessories"
+      ],
+      "PowerReviewId": "g-3753",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-89"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>Material:aluminum</li><li>Color:Matt black</li><li>Weight:124g </li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "Material",
+            "SpecificationValue": "aluminum"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "Color",
+            "SpecificationValue": "Matt black"
+          },
+          {
+            "RowId": 3,
+            "SpecificationKey": "Weight",
+            "SpecificationValue": "124g "
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/momentum-dual-mounting-kit-for-transend-eplus-2022",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 100710,
+      "GlobalId": 3754,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Momentum Dual Mounting Kit for Vida E+",
+      "Type": 2,
+      "Features": [],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/tyeivyid5e5rsixqsb2e/_44A0129-VidaE.jpg",
+          "SkuId": "530000055",
+          "CloudinaryPublicId": "tyeivyid5e5rsixqsb2e"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "530000055",
+          "Price": 35,
+          "Color": "",
+          "Size": "",
+          "Usage": "MMT Dual Mounting Kit for Vida E+",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250035468",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/tyeivyid5e5rsixqsb2e/_44A0129-VidaE.jpg",
+              "SkuId": "530000055",
+              "CloudinaryPublicId": "tyeivyid5e5rsixqsb2e"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Bicycle Accessories"
+      ],
+      "PowerReviewId": "g-3754",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-89"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>Material:aluminum</li><li>Color:Matt black</li><li>Weight:128g </li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "Material",
+            "SpecificationValue": "aluminum"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "Color",
+            "SpecificationValue": "Matt black"
+          },
+          {
+            "RowId": 3,
+            "SpecificationKey": "Weight",
+            "SpecificationValue": "128g "
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/momentum-dual-mounting-kit-for-vida-eplus-2022",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 100711,
+      "GlobalId": 3755,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Momentum Dual Mounting Kit for Voya E+",
+      "Type": 2,
+      "Features": [],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/bfoinowz9vdj4wxgh3c0/_44A0157-voya.jpg",
+          "SkuId": "530000056",
+          "CloudinaryPublicId": "bfoinowz9vdj4wxgh3c0"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "530000056",
+          "Price": 35,
+          "Color": "",
+          "Size": "",
+          "Usage": "MMT Dual Mounting Kit for Voya E+",
+          "Discontinued": false,
+          "HasNoStock": true,
+          "ShowInShop": true,
+          "Barcode": "4713250035475",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/bfoinowz9vdj4wxgh3c0/_44A0157-voya.jpg",
+              "SkuId": "530000056",
+              "CloudinaryPublicId": "bfoinowz9vdj4wxgh3c0"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Bicycle Accessories"
+      ],
+      "PowerReviewId": "g-3755",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-89"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>Material:aluminum</li><li>Color:Matt black</li><li>Weight:100g</li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationKey": "Material",
+            "SpecificationValue": "aluminum"
+          },
+          {
+            "RowId": 2,
+            "SpecificationKey": "Color",
+            "SpecificationValue": "Matt black"
+          },
+          {
+            "RowId": 3,
+            "SpecificationKey": "Weight",
+            "SpecificationValue": "100g"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/momentum-dual-mounting-kit-for-voya-eplus-2022",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 75803,
+      "GlobalId": 3542,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Cargo Strap",
+      "Type": 2,
+      "VideoUrl": "",
+      "Features": [
+        "Elastic for versatile usage\r\n"
+      ],
+      "MetaTitle": "PakYak & Cito Cargo Strap | Electric Bike Accessories | Momentum Bikes US",
+      "MetaDescription": "Have peace of mind for bigger loads with the 3-band heavy-duty universal Cargo Strap. Use the load strap to secure oversized items on the cargo bike.\r\n",
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/scr5pnbxykt2ctjrsahi/momentum-pakyak@cargo-strap@540000032.jpg",
+          "SkuId": "540000032",
+          "CloudinaryPublicId": "scr5pnbxykt2ctjrsahi"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "540000032",
+          "Price": 18,
+          "Color": "",
+          "Size": "",
+          "Usage": "MMT Cargo Rack Bungee Cord",
+          "Discontinued": false,
+          "HasNoStock": false,
+          "ShowInShop": true,
+          "Barcode": "4713250013763",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/scr5pnbxykt2ctjrsahi/momentum-pakyak@cargo-strap@540000032.jpg",
+              "SkuId": "540000032",
+              "CloudinaryPublicId": "scr5pnbxykt2ctjrsahi"
+            }
+          ]
+        }
+      ],
+      "RelatedProductIds": [],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Bicycle Accessories"
+      ],
+      "PowerReviewId": "g-3542",
+      "Colors": [],
+      "NavigationIds": [
+        "gear-89"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul>\r\n<li>Material: Elastic polyester strap, aluminum hooks</li>\r\n<li>Weight: 0.12lbs/55g</li>\r\n<li>Length: each strap is 2 feet (60cm) long</li>\r\n</ul>",
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/cargo-strap",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 129196,
+      "GlobalId": 5420,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "Vida E+ Fender Set",
+      "Type": 2,
+      "Features": [
+        "Compatible with all Vida E+ models (from 2025 onwards)\r\n",
+        "Made of durable aluminum to protect against corrosion.\r\n",
+        "Full fender protection\r\n"
+      ],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/imt3pxzx43lm2j93ypqn/Vida_e_plus_fender_set.jpg",
+          "SkuId": "530000059",
+          "CloudinaryPublicId": "imt3pxzx43lm2j93ypqn"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/ptdpstunolzejyhdok6y/USA_128367_b.jpg",
+          "CloudinaryPublicId": "ptdpstunolzejyhdok6y"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/btteq63pmrrk0rffizd2/USA_128380_b.jpg",
+          "CloudinaryPublicId": "btteq63pmrrk0rffizd2"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/kyracpfobkjhi87rkabq/USA_127692_b.jpg",
+          "CloudinaryPublicId": "kyracpfobkjhi87rkabq"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "530000059",
+          "Price": 115,
+          "Color": "Black",
+          "Size": "",
+          "Usage": "",
+          "Discontinued": false,
+          "HasNoStock": true,
+          "ShowInShop": false,
+          "Barcode": "4713250082257",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/imt3pxzx43lm2j93ypqn/Vida_e_plus_fender_set.jpg",
+              "SkuId": "530000059",
+              "CloudinaryPublicId": "imt3pxzx43lm2j93ypqn"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Fenders"
+      ],
+      "PowerReviewId": "g-5420",
+      "Colors": [
+        "Black"
+      ],
+      "NavigationIds": [
+        "gear-70"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>:Material : Aluminum</li><li>:Dimensions : Front 698 ± 2mm / Rear 1131 ± 2mm</li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationValue": "Material : Aluminum"
+          },
+          {
+            "RowId": 2,
+            "SpecificationValue": "Dimensions : Front 698 ± 2mm / Rear 1131 ± 2mm"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/vida-eplus-fender-set-2025",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    },
+    {
+      "Id": 129123,
+      "GlobalId": 4944,
+      "CountryIsoCode": "us",
+      "Brand": 3,
+      "Name": "L-Shaped Front Rack",
+      "Type": 2,
+      "Features": [
+        "Carries up to 15kg (33lbs)\r\n",
+        "Made from aluminum with a durable matte black finish.\r\n",
+        "MIK platform integrated in horizontal way (to the front edge)\r\n",
+        "Compatible with 2025+ Vida E+.\r\n"
+      ],
+      "Images": [
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/jvxnm9wpgptdlvd7xkcn/FrontRack_Lshapehi-res.png",
+          "SkuId": "440000032",
+          "CloudinaryPublicId": "jvxnm9wpgptdlvd7xkcn"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/jdx2pved3wvtx0t1tyau/USA_123992_b.jpg",
+          "CloudinaryPublicId": "jdx2pved3wvtx0t1tyau"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/vx2fytqhy7f47gdnuope/USA_124573_b.jpg",
+          "CloudinaryPublicId": "vx2fytqhy7f47gdnuope"
+        },
+        {
+          "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/l7hbg89arlx8a1syspzd/USA_125151_b.jpg",
+          "CloudinaryPublicId": "l7hbg89arlx8a1syspzd"
+        }
+      ],
+      "Skus": [
+        {
+          "Id": "440000032",
+          "Price": 120,
+          "Color": "Black",
+          "Size": "",
+          "Usage": "",
+          "Discontinued": false,
+          "HasNoStock": true,
+          "ShowInShop": false,
+          "Barcode": "4713250055237",
+          "Images": [
+            {
+              "Path": "https://images2.giant-bicycles.com/b_white%2Cc_pad%2Cq_80/jvxnm9wpgptdlvd7xkcn/FrontRack_Lshapehi-res.png",
+              "SkuId": "440000032",
+              "CloudinaryPublicId": "jvxnm9wpgptdlvd7xkcn"
+            }
+          ]
+        }
+      ],
+      "Categories": [
+        "Gear",
+        "Bike Gear",
+        "Racks"
+      ],
+      "PowerReviewId": "g-4944",
+      "Colors": [
+        "Black"
+      ],
+      "NavigationIds": [
+        "gear-73"
+      ],
+      "CurrencyCode": "USD",
+      "Specifications": "<ul><li>:Material : Aluminum with a durable matte black finish</li><li>:Weight : 700g</li><li>:Carry Capacity : 15kg / 33lbs</li><li>:Dimensions : L 240mm x W 300mm x H 220mm</li></ul>",
+      "SpecificationsObject": {
+        "SpecificationRows": [
+          {
+            "RowId": 1,
+            "SpecificationValue": "Material : Aluminum with a durable matte black finish"
+          },
+          {
+            "RowId": 2,
+            "SpecificationValue": "Weight : 700g"
+          },
+          {
+            "RowId": 3,
+            "SpecificationValue": "Carry Capacity : 15kg / 33lbs"
+          },
+          {
+            "RowId": 4,
+            "SpecificationValue": "Dimensions : L 240mm x W 300mm x H 220mm"
+          }
+        ]
+      },
+      "RetailerProductLabels": [],
+      "HasBikeFitCategory": false,
+      "DefaultPedalId": 0,
+      "AllowanceLevel": 20,
+      "Url": "/us/l-shaped-front-rack-2024",
+      "IsCloseOutSale": false,
+      "IsSale": false
+    }
+  ]
+}

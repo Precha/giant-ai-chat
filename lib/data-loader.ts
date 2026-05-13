@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-export type Brand = 'Giant' | 'Liv' | 'Momentum' | 'Giant Gear'
+export type Brand = 'Giant' | 'Liv' | 'Momentum' | 'Giant Gear' | 'Liv Gear' | 'Momentum Gear' | 'Cadex'
 
 export interface Product {
   id: number
@@ -46,6 +46,17 @@ const BRAND_MAP: Record<number, Brand> = {
   1: 'Giant',
   2: 'Liv',
   3: 'Momentum',
+  4: 'Cadex',
+}
+
+const BRAND_BASE_URL: Record<Brand, string> = {
+  'Giant':          'https://www.giant-bicycles.com',
+  'Liv':            'https://www.liv-cycling.com',
+  'Momentum':       'https://www.momentum-biking.com',
+  'Giant Gear':     'https://www.giant-bicycles.com',
+  'Liv Gear':       'https://www.liv-cycling.com',
+  'Momentum Gear':  'https://www.momentum-biking.com',
+  'Cadex':          'https://www.cadex-cycling.com',
 }
 
 // Spec keys worth keeping for AI context
@@ -129,7 +140,7 @@ function parseProducts(raw: any, defaultBrand: Brand, forceBrand?: Brand): Produ
         priceMax,
         description: p.MetaDescription ?? p.BikeSeriesDescription?.slice(0, 300) ?? '',
         imageUrl,
-        productUrl: `https://www.giant-bicycles.com${p.Url ?? ''}`,
+        productUrl: `${BRAND_BASE_URL[brand]}${p.Url ?? ''}`,
         filters,
         structuredFilters,
         categories: (p.Categories ?? []) as string[],
@@ -192,6 +203,9 @@ export function getProducts(): Product[] {
     ...parseProducts(readJson(path.join(dir, 'liv_bike_US.json')), 'Liv'),
     ...parseProducts(readJson(path.join(dir, 'momentum_bike_US.json')), 'Momentum'),
     ...parseProducts(readJson(path.join(dir, 'giant_gear_US.json')), 'Giant Gear', 'Giant Gear'),
+    ...parseProducts(readJson(path.join(dir, 'liv_gear_US.json')), 'Liv Gear', 'Liv Gear'),
+    ...parseProducts(readJson(path.join(dir, 'momentum_gear_US.json')), 'Momentum Gear', 'Momentum Gear'),
+    ...parseProducts(readJson(path.join(dir, 'cadex_gear_US.json')), 'Cadex', 'Cadex'),
   ]
   return _products
 }

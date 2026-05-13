@@ -77,6 +77,7 @@ const BRAND_KEYWORDS: Record<string, string[]> = {
   'Giant': ['giant'],
   'Liv': ['liv', 'women', 'female', "women's"],
   'Momentum': ['momentum'],
+  'Cadex': ['cadex'],
 }
 
 // Convert feet+inches string to cm
