@@ -217,8 +217,10 @@ function scoreProduct(product: Product, filters: SearchFilters): number {
     ...Object.values(product.structuredFilters),
   ].join(' ').toLowerCase()
 
+  const nameLower = product.name.toLowerCase()
   for (const kw of keywords) {
     if (haystack.includes(kw)) score += 1
+    if (nameLower.includes(kw)) score += 2  // extra boost: keyword appears in product name
   }
 
   // Bonus: in stock

@@ -523,7 +523,7 @@
           const escaped = this._escape(name)
           const rePattern = escaped.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
           const linked = `<a href="${escapedUrl}" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;text-decoration:none;">${escaped}</a>`
-          const replaced = html.replace(new RegExp(rePattern, 'gi'), linked)
+          const replaced = html.replace(new RegExp('\\b' + rePattern + '\\b', 'gi'), linked)
           if (replaced !== html) { html = replaced; break } // stop at first match
         }
       }
