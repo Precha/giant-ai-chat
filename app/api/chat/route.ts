@@ -19,11 +19,14 @@ Guidelines:
 
 function detectIntent(message: string): 'product' | 'dealer' | 'general' {
   const msg = message.toLowerCase()
-  const dealerKws = ['dealer', 'store', 'shop', 'near me', 'nearby', 'closest', 'find a', 'where can i buy', 'where to buy', 'where do i buy', 'where can i get', 'buy a bike', 'purchase', 'location', 'retailer', 'i live in', 'i\'m in', 'i am in', 'local']
-  const productKws = ['bike', 'bicycle', 'e-bike', 'ebike', 'gear', 'helmet', 'recommend', 'looking for', 'suggest', 'best', 'under $', 'budget', 'road', 'mountain', 'electric', 'commut']
 
-  if (dealerKws.some(kw => msg.includes(kw))) return 'dealer'
+  const productKws = ['bike', 'bicycle', 'e-bike', 'ebike', 'gear', 'helmet', 'jersey', 'saddle', 'glove', 'recommend', 'looking for', 'suggest', 'best', 'under $', 'budget', 'road', 'mountain', 'electric', 'commut', 'liv', 'giant', 'momentum']
+  const dealerKws = ['dealer', 'store', 'shop', 'near me', 'nearby', 'closest', 'where can i buy', 'where to buy', 'where do i buy', 'where can i get', 'buy a bike', 'purchase', 'location', 'retailer', 'i live in', "i'm in", 'i am in']
+  const dealerRe = /\b(find|locate)\s+a\s+(dealer|store|shop|retailer)\b|\bstores?\s+near\b/i
+
+  // Product keywords take priority — prevents "Find an e-bike" from matching dealer
   if (productKws.some(kw => msg.includes(kw))) return 'product'
+  if (dealerKws.some(kw => msg.includes(kw)) || dealerRe.test(msg)) return 'dealer'
   return 'general'
 }
 
