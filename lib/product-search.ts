@@ -218,6 +218,20 @@ function extractFilters(message: string): SearchFilters {
     filters.isSale = true
   }
 
+  // Tech acronym expansion — map shorthands to terms that appear in product specs
+  const techExpansions: Record<string, string[]> = {
+    'isp':   ['integrated', 'seatpost'],  // Integrated Seatpost
+    'mips':  ['mips'],
+    'di2':   ['electronic', 'shimano'],
+    'axs':   ['sram', 'axs'],
+    'etap':  ['electronic'],
+  }
+  for (const [acronym, terms] of Object.entries(techExpansions)) {
+    if (new RegExp(`\\b${acronym}\\b`, 'i').test(msg)) {
+      filters.keywords = [...(filters.keywords ?? []), ...terms]
+    }
+  }
+
   // Color extraction
   const COLOR_KEYWORDS = ['black', 'white', 'red', 'blue', 'green', 'yellow', 'gray', 'grey', 'silver', 'orange', 'pink', 'purple', 'chrome', 'gold', 'brown', 'navy', 'teal']
   const matchedColor = COLOR_KEYWORDS.find(c => msg.includes(c))
