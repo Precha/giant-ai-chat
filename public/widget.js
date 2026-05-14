@@ -322,11 +322,16 @@
     _renderMessages() {
       const container = this._shadow.getElementById('messages')
       if (!container) return
-      container.innerHTML = this._messages.map(m => this._renderMessage(m)).join('')
+      container.innerHTML = this._messages.map((m, i) => {
+        const prevUser = m.role === 'ai'
+          ? [...this._messages.slice(0, i)].reverse().find(x => x.role === 'user')
+          : null
+        return this._renderMessage(m, prevUser ? prevUser.text : '')
+      }).join('')
       container.scrollTop = container.scrollHeight
     }
 
-    _renderMessage(m) {
+    _renderMessage(m, prevUserText = '') {
       if (m.role === 'user') {
         return `<div class="msg msg-user">${this._escape(m.text)}</div>`
       }
@@ -374,16 +379,22 @@
         }).join('')
       }
 
+      const _renderText = (text) =>
+        this._boldQueryKeywords(
+          this._linkifyProducts(this._renderMarkdown(text), this._productLinks),
+          prevUserText
+        )
+
       // When cards exist: always show cards first, text below
       if (cardsHtml) {
         const textHtml = m.text
-          ? `<div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--grey-border);font-size:12px;color:var(--muted)">${this._linkifyProducts(this._renderMarkdown(m.text), this._productLinks)}</div>`
+          ? `<div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--grey-border);font-size:12px;color:var(--muted)">${_renderText(m.text)}</div>`
           : ''
         return `<div class="msg msg-ai" style="max-width:95%">${cardsHtml}${textHtml}</div>`
       }
 
-      // Text-only reply: still linkify using accumulated session product links
-      return `<div class="msg msg-ai" style="max-width:95%">${this._linkifyProducts(this._renderMarkdown(m.text), this._productLinks)}</div>`
+      // Text-only reply: still linkify and bold using accumulated session product links
+      return `<div class="msg msg-ai" style="max-width:95%">${_renderText(m.text)}</div>`
     }
 
     _handleSend() {
@@ -510,6 +521,34 @@
         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.+?)\*/g, '<em>$1</em>')
         .replace(/\n/g, '<br>')
+    }
+
+    _boldQueryKeywords(html, userText) {
+      if (!userText || !html) return html
+      const STOPWORDS = new Set([
+        'what','which','that','this','with','have','from','will','your','more',
+        'about','then','some','into','should','would','could','does','just',
+        'like','want','need','take','look','good','very','best','find','help',
+        'make','sure','much','many','here','there','also','when','where','how',
+        'them','they','their','than','been','have','show','tell','give','know',
+      ])
+      const SHORT_ALLOW = new Set(['tcr','isp','mtb','xco','xco','sl','xc','tt','di2','axs','co2','liv'])
+
+      let words = userText.toLowerCase()
+        .replace(/[^\w\s]/g, ' ')
+        .split(/\s+/)
+        .filter(w => (w.length >= 4 || SHORT_ALLOW.has(w)) && !STOPWORDS.has(w))
+
+      // Extract numeric part from height-style tokens like "165cm" → also match "165"
+      const extraNums = words.flatMap(w => { const m = w.match(/^(\d{2,})/); return m ? [m[1]] : [] })
+      words = [...new Set([...words, ...extraNums])].sort((a, b) => b.length - a.length)
+
+      for (const word of words) {
+        const pattern = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+        // (?![^<]*>) prevents matching inside HTML tag attributes
+        html = html.replace(new RegExp(`\\b(${pattern})\\b(?![^<]*>)`, 'gi'), '<strong>$1</strong>')
+      }
+      return html
     }
 
     _linkifyProducts(html, products) {
