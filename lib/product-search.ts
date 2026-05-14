@@ -24,6 +24,9 @@ const GEAR_KEYWORDS_SET = new Set([
   'light', 'lock', 'pump', 'bag', 'rack', 'fender', 'wheel', 'tire', 'tube',
   'handlebar', 'stem', 'seatpost', 'battery', 'charger', 'accessory', 'gear', 'apparel',
   'sock', 'eyewear', 'goggle', 'glasses', 'sunglass', 'computer', 'bib', 'warmer',
+  // Additional gear categories derived from product data
+  'grip', 'tape', 'tool', 'brake', 'tubeless', 'lube', 'cleaner',
+  'trainer', 'inflator', 'co2', 'kickstand', 'cage',
 ])
 
 // Maps gear keyword → exact Categories value in the product data
@@ -57,6 +60,19 @@ const GEAR_CATEGORY_MAP: Record<string, string> = {
   'bib':        'Bibs, Shorts & Tights',
   'short':      'Bibs, Shorts & Tights',
   'warmer':     'Arm & Leg Warmers/Coolers',
+  // Additional mappings derived from product data
+  'grip':       'Grips & Tape',
+  'tape':       'Grips & Tape',
+  'tool':       'Mini Tools',
+  'brake':      'Brakes',
+  'tubeless':   'Tubeless Accessories',
+  'lube':       'Lubes & Cleaners',
+  'cleaner':    'Lubes & Cleaners',
+  'trainer':    'Trainers',
+  'inflator':   'Inflators & CO2',
+  'co2':        'Inflators & CO2',
+  'kickstand':  'Kickstands',
+  'cage':       'Bottles & Cages',
 }
 
 const TYPE_KEYWORDS: Record<string, string[]> = {
