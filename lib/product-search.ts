@@ -218,7 +218,18 @@ function extractFilters(message: string): SearchFilters {
     filters.isSale = true
   }
 
-  // Tech acronym expansion — map shorthands to terms that appear in product specs
+  // Color extraction
+  const COLOR_KEYWORDS = ['black', 'white', 'red', 'blue', 'green', 'yellow', 'gray', 'grey', 'silver', 'orange', 'pink', 'purple', 'chrome', 'gold', 'brown', 'navy', 'teal']
+  const matchedColor = COLOR_KEYWORDS.find(c => msg.includes(c))
+  if (matchedColor) filters.color = matchedColor
+
+  // Base keywords for scoring
+  filters.keywords = msg
+    .replace(/[^\w\s]/g, ' ')
+    .split(/\s+/)
+    .filter(w => w.length >= 2)  // include short acronyms like 'tcr', 'xc', 'tt'
+
+  // Tech acronym expansion — appended AFTER base keywords
   const techExpansions: Record<string, string[]> = {
     'isp':   ['integrated', 'seatpost'],  // Integrated Seatpost
     'mips':  ['mips'],
@@ -228,20 +239,9 @@ function extractFilters(message: string): SearchFilters {
   }
   for (const [acronym, terms] of Object.entries(techExpansions)) {
     if (new RegExp(`\\b${acronym}\\b`, 'i').test(msg)) {
-      filters.keywords = [...(filters.keywords ?? []), ...terms]
+      filters.keywords = [...filters.keywords, ...terms]
     }
   }
-
-  // Color extraction
-  const COLOR_KEYWORDS = ['black', 'white', 'red', 'blue', 'green', 'yellow', 'gray', 'grey', 'silver', 'orange', 'pink', 'purple', 'chrome', 'gold', 'brown', 'navy', 'teal']
-  const matchedColor = COLOR_KEYWORDS.find(c => msg.includes(c))
-  if (matchedColor) filters.color = matchedColor
-
-  // Remaining keywords for scoring
-  filters.keywords = msg
-    .replace(/[^\w\s]/g, ' ')
-    .split(/\s+/)
-    .filter(w => w.length >= 2)  // include short acronyms like 'tcr', 'xc', 'tt'
 
   return filters
 }
