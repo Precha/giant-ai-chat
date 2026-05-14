@@ -174,8 +174,15 @@ export async function POST(req: Request) {
     if (intent === 'product') {
       const results = searchProducts(message, 3)
       if (results.length) {
+        // If query names a specific bike model but no result matches it, skip cards
+        const msgLower = message.toLowerCase()
+        const queriedModel = BIKE_MODEL_NAMES.find(m => msgLower.includes(m))
+        const hasModelMatch = !queriedModel || results.some(r => r.name.toLowerCase().includes(queriedModel))
+
         contextBlock = `RELEVANT PRODUCTS:\n${formatProductsForPrompt(results)}`
-        structuredData = {
+        if (!hasModelMatch) contextBlock += '\n\nNote: No exact match found for the requested model. Show these as related options only if genuinely relevant, otherwise say you don\'t have that specific model.'
+
+        structuredData = hasModelMatch ? {
           type: 'products',
           items: results.map(p => ({
             name: p.name,
@@ -192,7 +199,7 @@ export async function POST(req: Request) {
             productUrl: p.productUrl,
             inStock: p.inStock,
           })),
-        }
+        } : null
       }
     } else if (intent === 'dealer') {
       const results = searchDealers(message, userLat, userLng, 3)

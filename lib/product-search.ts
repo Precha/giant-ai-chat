@@ -201,7 +201,8 @@ function extractFilters(message: string): SearchFilters {
   }
 
   // Rider height — "175cm", "175 cm", "5'9"", "5'9", "5ft9", "5 feet 9"
-  const cmMatch = msg.match(/(\d{3})\s*cm/)
+  // Also accept "165m" as a common typo for "165cm"
+  const cmMatch = msg.match(/(\d{3})\s*(?:cm|m\b)/)
   const ftInMatch = msg.match(/(\d)\s*(?:ft|feet|'|foot)\s*(\d{1,2})\s*(?:in|inches|"|'')?/)
   const ftOnlyMatch = msg.match(/(\d)\s*(?:ft|feet|foot)\b/)
   if (cmMatch) {
@@ -226,7 +227,7 @@ function extractFilters(message: string): SearchFilters {
   filters.keywords = msg
     .replace(/[^\w\s]/g, ' ')
     .split(/\s+/)
-    .filter(w => w.length > 3)
+    .filter(w => w.length >= 2)  // include short acronyms like 'tcr', 'xc', 'tt'
 
   return filters
 }
@@ -317,10 +318,13 @@ export function searchProducts(message: string, topK = 3): ProductResult[] {
   const wantsFrameset = /frameset/i.test(message)
 
   const BIKE_BRANDS = new Set(['Giant', 'Liv', 'Momentum'])
+  const GEAR_ONLY_BRANDS = new Set(['Giant Gear', 'Liv Gear', 'Momentum Gear', 'Cadex'])
 
   const ACCESSORY_PART_RE = /^(replacement|spare|visor for|plug for|pad(s)? for|mount for|strap for|extension for|clip for|clamp for|cover for)/i
 
   let candidates = products.filter(p => {
+    // Bike query: exclude gear-only brands (prevents frame bags beating TCR bikes, etc.)
+    if (!filters.isGear && GEAR_ONLY_BRANDS.has(p.brand)) return false
     // Gear query: only return gear/accessory products, not bikes
     if (filters.isGear && BIKE_BRANDS.has(p.brand)) return false
     // Gear query: exclude obvious replacement parts/accessories
