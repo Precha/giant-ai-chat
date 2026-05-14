@@ -403,7 +403,8 @@ export function searchProducts(message: string, topK = 3): ProductResult[] {
           !p.structuredFilters['Wheel Size'].includes(filters.wheelSize)) return false
       if (filters.brakeType && p.structuredFilters['Brake Type'] &&
           p.structuredFilters['Brake Type'] !== filters.brakeType) return false
-      if (filters.seatpostType && p.structuredFilters['Seatpost Type'] &&
+      // Strict seatpost match: product must explicitly have the requested type
+      if (filters.seatpostType &&
           p.structuredFilters['Seatpost Type'] !== filters.seatpostType) return false
     }
     // Rider height: exclude bikes that definitely don't fit
