@@ -1,5 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk'
-import { searchProducts, formatProductsForPrompt } from '@/lib/product-search'
+import { searchProducts, formatProductsForPrompt, BIKE_MODEL_NAMES } from '@/lib/product-search'
 import { searchDealers, formatDealersForPrompt } from '@/lib/dealer-search'
 
 const client = new Anthropic()
@@ -134,6 +134,9 @@ function detectIntent(message: string): 'product' | 'dealer' | 'general' {
   // Availability / show-me questions always trigger product search
   const availabilityRe = /\b(do you have|have any|got any|show me|find me|any .{1,30} (bike|gear|helmet|saddle|tire|wheel|jersey|shoe|pedal))\b/i
   if (availabilityRe.test(msg)) return 'product'
+
+  // Specific bike model names trigger product search even without other product keywords
+  if (BIKE_MODEL_NAMES.some(m => msg.includes(m))) return 'product'
 
   // Product keywords — brand names alone don't trigger search; need a product type too
   const hasBrand = brandKws.some(kw => msg.includes(kw))

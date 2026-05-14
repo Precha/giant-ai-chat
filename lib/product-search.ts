@@ -76,12 +76,19 @@ const GEAR_CATEGORY_MAP: Record<string, string> = {
 }
 
 const TYPE_KEYWORDS: Record<string, string[]> = {
-  'Mountain': ['mountain', 'mtb', 'trail', 'enduro', 'xc', 'cross-country', 'downhill', 'dirt'],
+  'Mountain': ['mountain', 'mtb', 'trail', 'enduro', 'xc', 'cross-country', 'downhill', 'dirt', 'dirt jump', 'dirt jumper', 'jump bike', 'dj'],
   'Road': ['road', 'racing', 'aero', 'endurance', 'gravel', 'triathlon', 'tt'],
   'E-Bike': ['e-bike', 'ebike', 'electric', 'e-mtb', 'pedal assist', 'motor'],
   'City & Hybrid': ['city', 'commut', 'hybrid', 'urban', 'casual', 'everyday', 'lifestyle'],
   'Kids': ['kid', 'child', 'junior', 'youth', 'small', 'boy', 'girl', 'age 5', 'age 7', 'age 10', 'age 12', 'age 16'],
 }
+
+// Specific bike model/series names — used in intent detection to catch bare model queries
+export const BIKE_MODEL_NAMES = [
+  'propel', 'revolt', 'tcr', 'reign', 'anthem', 'contend', 'defy', 'avail',
+  'langma', 'talon', 'stp', 'seek', 'devote', 'trance', 'fathom', 'xtc',
+  'glory', 'maestro', 'stance', 'fastroad', 'escape', 'roam', 'cypress',
+]
 
 // Maps bike type → Categories values in the product data
 const BIKE_CATEGORY_MAP: Record<string, string[]> = {
