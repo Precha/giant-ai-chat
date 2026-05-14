@@ -4,6 +4,52 @@ import { searchDealers, formatDealersForPrompt } from '@/lib/dealer-search'
 
 const client = new Anthropic()
 
+// --- CORS helpers ---
+const ALLOWED_ORIGINS: Set<string> = new Set(
+  (process.env.ALLOWED_ORIGINS ?? '')
+    .split(',')
+    .map(s => s.trim())
+    .filter(Boolean)
+)
+// Always allow localhost in development
+if (process.env.NODE_ENV !== 'production') {
+  ALLOWED_ORIGINS.add('http://localhost:3000')
+  ALLOWED_ORIGINS.add('http://localhost:3001')
+}
+
+function corsHeaders(origin: string | null): Record<string, string> {
+  const allowed = origin && ALLOWED_ORIGINS.has(origin) ? origin : null
+  return {
+    'Access-Control-Allow-Origin': allowed ?? '',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    Vary: 'Origin',
+  }
+}
+
+// --- Rate limiter: 20 requests per IP per 60 seconds (sliding window) ---
+const RATE_LIMIT = 20
+const RATE_WINDOW_MS = 60_000
+const ipLog = new Map<string, number[]>()
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now()
+  const cutoff = now - RATE_WINDOW_MS
+  const timestamps = (ipLog.get(ip) ?? []).filter(t => t > cutoff)
+  if (timestamps.length >= RATE_LIMIT) return false
+  timestamps.push(now)
+  ipLog.set(ip, timestamps)
+  return true
+}
+
+function getClientIp(req: Request): string {
+  return (
+    req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
+    req.headers.get('x-real-ip') ??
+    'unknown'
+  )
+}
+
 const SYSTEM_PROMPT = `You are Giant AI Assistant, Giant Bicycles' official virtual assistant for the United States market.
 You help cyclists — from first-time buyers to seasoned riders — find the right bike or gear,
 and locate nearby authorized dealers.
@@ -154,6 +200,14 @@ function detectIntent(message: string): 'product' | 'dealer' | 'general' {
 }
 
 export async function POST(req: Request) {
+  const origin = req.headers.get('origin')
+  const cors = corsHeaders(origin)
+
+  const ip = getClientIp(req)
+  if (!checkRateLimit(ip)) {
+    return new Response('Too many requests', { status: 429, headers: cors })
+  }
+
   try {
     const body = await req.json()
     const { message, userLat, userLng, history = [] } = body as {
@@ -166,7 +220,11 @@ export async function POST(req: Request) {
     }
 
     if (!message?.trim()) {
-      return new Response('Missing message', { status: 400 })
+      return new Response('Missing message', { status: 400, headers: cors })
+    }
+
+    if (message.length > 1000) {
+      return new Response('Message too long', { status: 400, headers: cors })
     }
 
     // fullContext (history + message) used only for search, NOT intent detection
@@ -293,23 +351,16 @@ export async function POST(req: Request) {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
         Connection: 'keep-alive',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
+        ...cors,
       },
     })
   } catch (err) {
     console.error('Chat API error:', err)
-    return new Response('Internal server error', { status: 500 })
+    return new Response('Internal server error', { status: 500, headers: cors })
   }
 }
 
-export async function OPTIONS() {
-  return new Response(null, {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    },
-  })
+export async function OPTIONS(req: Request) {
+  const origin = req.headers.get('origin')
+  return new Response(null, { headers: corsHeaders(origin) })
 }
