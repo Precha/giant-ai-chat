@@ -22,6 +22,7 @@ export interface Product {
   inStock: boolean
   riderHeightMin: number  // cm, min rider height across all SKUs (0 = unknown)
   riderHeightMax: number  // cm, max rider height across all SKUs (0 = unknown)
+  sizingChart: string     // e.g. "S: 163–174 cm | M: 175–183 cm | L: 184–191 cm"
   keyPerformanceFactors: string[]
   technologies: string[]
   isSale: boolean
@@ -120,6 +121,20 @@ function parseProducts(raw: any, defaultBrand: Brand, forceBrand?: Brand): Produ
       const riderHeightMin = heights.length ? Math.min(...heights) : 0
       const riderHeightMax = heights.length ? Math.max(...heights) : 0
 
+      // Per-size height chart (deduplicated by size name)
+      const seenSizes = new Set<string>()
+      const sizingChart = skus
+        .filter((s: any) => s.Frame?.SizeStart && s.Frame?.SizeEnd && s.Size)
+        .reduce((acc: string[], s: any) => {
+          const key = s.Size
+          if (!seenSizes.has(key)) {
+            seenSizes.add(key)
+            acc.push(`${s.Size}: ${s.Frame.SizeStart}–${s.Frame.SizeEnd} cm`)
+          }
+          return acc
+        }, [])
+        .join(' | ')
+
       const keyPerformanceFactors: string[] = (p.KeyPerformanceFactors ?? [])
         .map((kpf: any) => [kpf.Title, kpf.Text].filter(Boolean).join(': '))
         .filter(Boolean)
@@ -158,6 +173,7 @@ function parseProducts(raw: any, defaultBrand: Brand, forceBrand?: Brand): Produ
         inStock,
         riderHeightMin,
         riderHeightMax,
+        sizingChart,
         keyPerformanceFactors,
         technologies,
         isSale,

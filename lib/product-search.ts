@@ -443,6 +443,7 @@ export function formatProductsForPrompt(products: ProductResult[]): string {
       `Category: ${p.filters.slice(0, 3).join(', ')}`,
       specs ? `Key specs: ${specs}` : '',
       fitRange ? `Fits rider height: ${fitRange}` : '',
+      p.sizingChart ? `Size guide (by rider height): ${p.sizingChart}` : '',
       `Description: ${p.description.slice(0, 200)}`,
       `URL: ${p.productUrl}`,
       `Image: ${p.imageUrl}`,
