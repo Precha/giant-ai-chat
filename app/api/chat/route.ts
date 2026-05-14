@@ -177,6 +177,7 @@ export async function POST(req: Request) {
     const intent = detectIntent(message)
     let contextBlock = ''
     let structuredData: object | null = null
+    let linkData: { name: string; productUrl: string }[] = []
 
     if (intent === 'product') {
       const results = searchProducts(message, 3)
@@ -208,6 +209,9 @@ export async function POST(req: Request) {
             stockBySize: p.stockBySize,
           })),
         } : null
+
+        // Always populate linkData so text replies can hyperlink product names
+        linkData = results.map(p => ({ name: p.name, productUrl: p.productUrl }))
       }
     } else if (intent === 'dealer') {
       const results = searchDealers(message, userLat, userLng, 3)
@@ -259,6 +263,12 @@ export async function POST(req: Request) {
         if (structuredData) {
           controller.enqueue(
             encoder.encode(`data: ${JSON.stringify({ structured: structuredData })}\n\n`)
+          )
+        }
+        // Always send link data so text replies can hyperlink product names (even without cards)
+        if (linkData.length) {
+          controller.enqueue(
+            encoder.encode(`data: ${JSON.stringify({ links: linkData })}\n\n`)
           )
         }
 

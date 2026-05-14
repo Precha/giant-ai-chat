@@ -490,11 +490,10 @@
               const parsed = JSON.parse(payload)
               if (parsed.structured) {
                 this._messages[msgIdx].cards = parsed.structured
-                // Accumulate product links for use in future text-only replies
-                if (parsed.structured.type === 'products') {
-                  for (const p of parsed.structured.items) {
-                    if (p.name && p.productUrl) this._productLinks.push({ name: p.name, productUrl: p.productUrl })
-                  }
+              } else if (parsed.links) {
+                // Accumulate product links for text linkification (sent even without cards)
+                for (const p of parsed.links) {
+                  if (p.name && p.productUrl) this._productLinks.push({ name: p.name, productUrl: p.productUrl })
                 }
               } else if (parsed.text) {
                 aiText += parsed.text
