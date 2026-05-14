@@ -437,6 +437,11 @@ export function formatProductsForPrompt(products: ProductResult[]): string {
     const fitRange = p.riderHeightMin && p.riderHeightMax
       ? `${p.riderHeightMin}–${p.riderHeightMax} cm`
       : ''
+    const stockInfo = Object.entries(p.stockBySize)
+      .map(([size, status]) => {
+        const label = status === 'in_stock' ? '✓' : status === 'low_stock' ? '⚠ Low' : '✗'
+        return `${size}: ${label}`
+      }).join(', ')
     return [
       `Product: ${p.name} (${p.brand})`,
       `Price: ${price}`,
@@ -444,10 +449,10 @@ export function formatProductsForPrompt(products: ProductResult[]): string {
       specs ? `Key specs: ${specs}` : '',
       fitRange ? `Fits rider height: ${fitRange}` : '',
       p.sizingChart ? `Size guide (by rider height): ${p.sizingChart}` : '',
+      stockInfo ? `Stock by size: ${stockInfo}` : `In stock: ${p.inStock}`,
       `Description: ${p.description.slice(0, 200)}`,
       `URL: ${p.productUrl}`,
       `Image: ${p.imageUrl}`,
-      `In stock: ${p.inStock}`,
     ].filter(Boolean).join('\n')
   }).join('\n\n')
 }

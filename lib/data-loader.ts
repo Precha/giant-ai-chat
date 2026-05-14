@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 
 export type Brand = 'Giant' | 'Liv' | 'Momentum' | 'Giant Gear' | 'Liv Gear' | 'Momentum Gear' | 'Cadex'
+export type StockStatus = 'in_stock' | 'low_stock' | 'out_of_stock'
 
 export interface Product {
   id: number
@@ -20,6 +21,7 @@ export interface Product {
   sizes: string[]
   colors: string[]
   inStock: boolean
+  stockBySize: Record<string, StockStatus>  // Size → stock status per size
   riderHeightMin: number  // cm, min rider height across all SKUs (0 = unknown)
   riderHeightMax: number  // cm, max rider height across all SKUs (0 = unknown)
   sizingChart: string     // e.g. "S: 163–174 cm | M: 175–183 cm | L: 184–191 cm"
@@ -76,6 +78,20 @@ const KEY_SPEC_KEYS = new Set([
   'bike_specs_components_seatpost',
 ])
 
+// Stock map singleton — ItemId (SKU Id) → total shippable qty
+let _stockMap: Map<string, number> | null = null
+
+function getStockMap(): Map<string, number> {
+  if (_stockMap) return _stockMap
+  _stockMap = new Map()
+  const raw: { ItemId: string; TotalShippableQty: number }[] =
+    readJson(path.join(DATA_DIR, 'stock', 'stock_US.json')) ?? []
+  for (const r of raw) {
+    _stockMap.set(String(r.ItemId), Number(r.TotalShippableQty))
+  }
+  return _stockMap
+}
+
 function parseProducts(raw: any, defaultBrand: Brand, forceBrand?: Brand): Product[] {
   if (!raw?.Products) return []
   return raw.Products.map((p: any): Product | null => {
@@ -110,7 +126,24 @@ function parseProducts(raw: any, defaultBrand: Brand, forceBrand?: Brand): Produ
 
       const sizes = [...new Set(skus.map((s: any) => s.Size).filter(Boolean))] as string[]
       const colors = [...new Set(skus.map((s: any) => s.Color).filter(Boolean))] as string[]
-      const inStock = skus.some((s: any) => !s.HasNoStock && !s.Discontinued)
+
+      // Build per-size stock status from real inventory data
+      const stockMap = getStockMap()
+      const qtyBySize: Record<string, number> = {}
+      for (const s of skus) {
+        if (!s.Size) continue
+        const qty = stockMap.get(String(s.Id)) ?? 0
+        qtyBySize[s.Size] = (qtyBySize[s.Size] ?? 0) + qty
+      }
+      const stockBySize: Record<string, StockStatus> = {}
+      for (const [size, qty] of Object.entries(qtyBySize)) {
+        stockBySize[size] = qty > 2 ? 'in_stock' : qty > 0 ? 'low_stock' : 'out_of_stock'
+      }
+
+      // inStock: use real stock data when available, fallback to JSON HasNoStock
+      const inStock = Object.keys(stockBySize).length > 0
+        ? Object.values(stockBySize).some(s => s !== 'out_of_stock')
+        : skus.some((s: any) => !s.HasNoStock && !s.Discontinued)
 
       // Rider height range from Frame.SizeStart / SizeEnd (cm)
       const heights = skus.flatMap((s: any) => {
@@ -171,6 +204,7 @@ function parseProducts(raw: any, defaultBrand: Brand, forceBrand?: Brand): Produ
         sizes,
         colors,
         inStock,
+        stockBySize,
         riderHeightMin,
         riderHeightMax,
         sizingChart,

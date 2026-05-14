@@ -127,7 +127,12 @@
     .product-card-body { padding:10px 12px 12px; border-top:1px solid var(--grey-border); }
     .product-card-name { font-family:'Overpass',sans-serif; font-weight:700; font-size:13px; color:var(--text); margin-bottom:2px; }
     .product-card-desc { font-family:'Open Sans',sans-serif; font-size:11px; color:var(--muted); line-height:1.5; margin-bottom:10px; }
-    .product-card-price { font-family:'Open Sans',sans-serif; font-weight:600; font-size:13px; color:var(--blue); margin-bottom:8px; }
+    .product-card-price { font-family:'Open Sans',sans-serif; font-weight:600; font-size:13px; color:var(--blue); margin-bottom:6px; }
+    .stock-badges { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:8px; }
+    .size-badge { display:inline-flex; align-items:center; gap:2px; font-size:10px; padding:2px 6px; border-radius:4px; font-family:'Open Sans',sans-serif; font-weight:600; }
+    .stock-in  { background:#e6f4ea; color:#2e7d32; }
+    .stock-low { background:#fff8e1; color:#e65100; }
+    .stock-out { background:#fce8e8; color:#c62828; }
     .product-card-link {
       display:inline-flex; align-items:center; gap:4px;
       padding:5px 12px; border:1.5px solid var(--blue);
@@ -342,13 +347,20 @@
           const price = p.price === p.priceMax
             ? `$${p.price.toLocaleString()}`
             : `$${p.price.toLocaleString()}–$${p.priceMax.toLocaleString()}`
-          const stockLabel = p.inStock ? '' : '<span style="color:#cd0000;font-size:11px"> · Out of stock</span>'
+          const stockBadges = p.stockBySize && Object.keys(p.stockBySize).length
+            ? `<div class="stock-badges">${Object.entries(p.stockBySize).map(([size, status]) => {
+                const cls = status === 'in_stock' ? 'stock-in' : status === 'low_stock' ? 'stock-low' : 'stock-out'
+                const icon = status === 'in_stock' ? '✓' : status === 'low_stock' ? '⚠' : '✗'
+                return `<span class="size-badge ${cls}">${this._escape(size)} ${icon}</span>`
+              }).join('')}</div>`
+            : (p.inStock ? '' : '<div style="font-size:11px;color:#c62828;margin-bottom:8px">Out of stock</div>')
           return `
             <div class="product-card">
               ${p.imageUrl ? `<img src="${this._escape(p.imageUrl)}" alt="${this._escape(p.name)}" loading="lazy" />` : ''}
               <div class="product-card-body">
                 <div class="product-card-name">${this._escape(p.name)}</div>
-                <div class="product-card-price">${price}${stockLabel}</div>
+                <div class="product-card-price">${price}</div>
+                ${stockBadges}
                 ${p.description ? `<div class="product-card-desc">${this._escape(p.description)}</div>` : ''}
                 <a class="product-card-link" href="${this._escape(p.productUrl)}" target="_blank" rel="noopener">View details →</a>
               </div>

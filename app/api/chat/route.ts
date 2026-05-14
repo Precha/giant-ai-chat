@@ -33,6 +33,9 @@ ridersupport@giantbicycle.com — they typically respond within one business day
 - When a user provides their height and asks for sizing: use the "Size guide" field in the
   product context to recommend a specific size. State the size name and height range clearly.
   If the user's height overlaps two sizes, mention both and suggest trying both in store.
+- When asked about stock or availability: use the "Stock by size" field to answer.
+  State which sizes are in stock (✓), low stock (⚠ Low), or unavailable (✗).
+  For low stock sizes, recommend confirming with a local dealer.
 - When a user asks about a specific color: note which retrieved products match and which don't,
   but still show the closest options. Actual color stock varies by retailer — say so briefly.
 - When dealers are provided in context: write one short sentence only
@@ -128,14 +131,15 @@ function detectIntent(message: string): 'product' | 'dealer' | 'general' {
     'goggle', 'glasses', 'sunglass', 'computer', 'short', 'bib', 'warmer', 'jacket',
     'grip', 'tape', 'tool', 'brake', 'tubeless', 'lube', 'cleaner',
     'trainer', 'inflator', 'co2', 'kickstand', 'cage',
+    'stock', 'available', 'availability', 'inventory', 'size',
   ]
   const brandKws = ['liv', 'giant', 'momentum', 'cadex']
 
   // If it looks like a brand info question with no specific product type, treat as general
   if (brandInfoRe.test(msg) && !productTypeKws.some(kw => msg.includes(kw))) return 'general'
 
-  // Availability / show-me questions always trigger product search
-  const availabilityRe = /\b(do you have|have any|got any|show me|find me|any .{1,30} (bike|gear|helmet|saddle|tire|wheel|jersey|shoe|pedal))\b/i
+  // Availability / stock / show-me questions always trigger product search
+  const availabilityRe = /\b(do you have|have any|got any|show me|find me|in stock|out of stock|have in stock|any .{1,30} (bike|gear|helmet|saddle|tire|wheel|jersey|shoe|pedal))\b/i
   if (availabilityRe.test(msg)) return 'product'
 
   // Specific bike model names trigger product search even without other product keywords
@@ -201,6 +205,7 @@ export async function POST(req: Request) {
             imageUrl: p.imageUrl,
             productUrl: p.productUrl,
             inStock: p.inStock,
+            stockBySize: p.stockBySize,
           })),
         } : null
       }
