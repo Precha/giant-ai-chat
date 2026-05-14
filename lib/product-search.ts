@@ -15,6 +15,7 @@ interface SearchFilters {
   frameMaterial?: string // 'Composite/Carbon' | 'Aluminum'
   wheelSize?: string    // '29"' | '700c' | '650b' | etc.
   brakeType?: string    // 'Disc Brake' | 'Rim Brake'
+  seatpostType?: string // 'Integrated' | 'Dropper' | 'Adjustable'
   riderHeightCm?: number
   isSale?: boolean
 }
@@ -223,19 +224,39 @@ function extractFilters(message: string): SearchFilters {
   const matchedColor = COLOR_KEYWORDS.find(c => msg.includes(c))
   if (matchedColor) filters.color = matchedColor
 
-  // Base keywords for scoring
+  // ISP = hard filter by Seatpost Type, not just keyword scoring
+  if (/\bisp\b/i.test(msg)) filters.seatpostType = 'Integrated'
+  // Dropper seatpost
+  if (/\bdropper\b/i.test(msg)) filters.seatpostType = 'Dropper'
+
+  // Base keywords — exclude stopwords and very short noise words
+  const STOPWORDS = new Set([
+    'the','and','for','with','are','not','but','all','its','can','has','was',
+    'have','been','will','more','your','that','also','each','into','any',
+    'you','what','how','why','who','when','where','which','this','from',
+    'they','them','their','then','than','too','would','could','should',
+    'does','did','just','only','very','if','do','is','am','im','buy',
+    'get','use','take','want','need','like','make','know','see','say',
+    'my','me','we','it','as','at','by','or','an','in','on','of','to','be','so',
+  ])
+  // Short meaningful acronyms that bypass the length filter
+  const SHORT_ALLOWLIST = new Set(['xc','tt','sl','mtb','isp','di2','axs','co2'])
+
   filters.keywords = msg
     .replace(/[^\w\s]/g, ' ')
     .split(/\s+/)
-    .filter(w => w.length >= 2)  // include short acronyms like 'tcr', 'xc', 'tt'
+    .filter(w => {
+      const lw = w.toLowerCase()
+      if (STOPWORDS.has(lw)) return false
+      return w.length >= 4 || SHORT_ALLOWLIST.has(lw)
+    })
 
   // Tech acronym expansion — appended AFTER base keywords
   const techExpansions: Record<string, string[]> = {
-    'isp':   ['integrated', 'seatpost'],  // Integrated Seatpost
-    'mips':  ['mips'],
     'di2':   ['electronic', 'shimano'],
     'axs':   ['sram', 'axs'],
     'etap':  ['electronic'],
+    'mips':  ['mips'],
   }
   for (const [acronym, terms] of Object.entries(techExpansions)) {
     if (new RegExp(`\\b${acronym}\\b`, 'i').test(msg)) {
@@ -382,6 +403,8 @@ export function searchProducts(message: string, topK = 3): ProductResult[] {
           !p.structuredFilters['Wheel Size'].includes(filters.wheelSize)) return false
       if (filters.brakeType && p.structuredFilters['Brake Type'] &&
           p.structuredFilters['Brake Type'] !== filters.brakeType) return false
+      if (filters.seatpostType && p.structuredFilters['Seatpost Type'] &&
+          p.structuredFilters['Seatpost Type'] !== filters.seatpostType) return false
     }
     // Rider height: exclude bikes that definitely don't fit
     if (filters.riderHeightCm && p.riderHeightMin > 0 && p.riderHeightMax > 0) {
