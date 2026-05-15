@@ -98,6 +98,11 @@
     }
     .msg-ai { background:var(--white); color:var(--text); align-self:flex-start; border:1px solid var(--grey-border); }
     .msg-user { background:var(--blue); color:var(--white); align-self:flex-end; }
+    .feedback { display:flex; align-items:center; gap:4px; margin-top:8px; padding-top:6px; border-top:1px solid var(--grey-border); }
+    .feedback-btn { background:none; border:1px solid var(--grey-border); border-radius:16px; padding:2px 9px; font-size:12px; cursor:pointer; color:var(--muted); line-height:1.6; }
+    .feedback-btn:hover:not(:disabled) { background:var(--grey-bg); }
+    .feedback-btn:disabled { opacity:0.45; cursor:default; }
+    .feedback-thanks { font-size:11px; color:var(--muted); margin-left:4px; }
 
     .typing {
       background:var(--white); border:1px solid var(--grey-border);
@@ -298,6 +303,21 @@
           if (text) this._sendMessage(text)
         })
       })
+      // Delegated feedback handler — survives _renderMessages() rebuilds
+      this._shadow.getElementById('messages').addEventListener('click', (e) => {
+        const btn = e.target.closest('.feedback-btn')
+        if (!btn) return
+        const msgIdx = parseInt(btn.dataset.idx, 10)
+        const rating = btn.dataset.rating
+        if (isNaN(msgIdx) || !rating) return
+        this._messages[msgIdx].feedback = rating
+        this._renderMessages()
+        fetch(this._apiUrl.replace('/chat', '/feedback'), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ session_id: this._sessionId, message_index: msgIdx, rating }),
+        }).catch(() => {})
+      })
     }
 
     _toggleChips() {
@@ -331,12 +351,12 @@
         const prevUser = m.role === 'ai'
           ? [...this._messages.slice(0, i)].reverse().find(x => x.role === 'user')
           : null
-        return this._renderMessage(m, prevUser ? prevUser.text : '')
+        return this._renderMessage(m, prevUser ? prevUser.text : '', i)
       }).join('')
       container.scrollTop = container.scrollHeight
     }
 
-    _renderMessage(m, prevUserText = '') {
+    _renderMessage(m, prevUserText = '', msgIdx = -1) {
       if (m.role === 'user') {
         return `<div class="msg msg-user">${this._escape(m.text)}</div>`
       }
@@ -397,16 +417,25 @@
           prevUserText
         )
 
+      const feedbackHtml = m.feedbackReady
+        ? m.feedback
+          ? `<div class="feedback"><span class="feedback-thanks">Thanks for the feedback!</span></div>`
+          : `<div class="feedback">
+               <button class="feedback-btn" data-idx="${msgIdx}" data-rating="up">👍</button>
+               <button class="feedback-btn" data-idx="${msgIdx}" data-rating="down">👎</button>
+             </div>`
+        : ''
+
       // When cards exist: always show cards first, text below
       if (cardsHtml) {
         const textHtml = m.text
           ? `<div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--grey-border);font-size:12px;color:var(--muted)">${_renderText(m.text)}</div>`
           : ''
-        return `<div class="msg msg-ai" style="max-width:95%">${cardsHtml}${textHtml}</div>`
+        return `<div class="msg msg-ai" style="max-width:95%">${cardsHtml}${textHtml}${feedbackHtml}</div>`
       }
 
       // Text-only reply: still linkify and bold using accumulated session product links
-      return `<div class="msg msg-ai" style="max-width:95%">${_renderText(m.text)}</div>`
+      return `<div class="msg msg-ai" style="max-width:95%">${_renderText(m.text)}${feedbackHtml}</div>`
     }
 
     _handleSend() {
@@ -502,6 +531,11 @@
               this._renderMessages()
             } catch (_) { /* skip */ }
           }
+        }
+        // Show feedback buttons once streaming is complete
+        if (this._messages[msgIdx]) {
+          this._messages[msgIdx].feedbackReady = true
+          this._renderMessages()
         }
       } catch (_) {
         typingEl.remove()
