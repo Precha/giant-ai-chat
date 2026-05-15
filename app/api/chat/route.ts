@@ -191,6 +191,15 @@ function detectIntent(message: string): 'product' | 'dealer' | 'general' {
   // Specific bike model names trigger product search even without other product keywords
   if (BIKE_MODEL_NAMES.some(m => msg.includes(m))) return 'product'
 
+  // Service/financial questions — never trigger product search even with brand names
+  const serviceKws = [
+    'lease', 'leasing', 'finance', 'financing', 'loan', 'installment', 'payment plan',
+    'warranty', 'return', 'refund', 'exchange', 'repair', 'maintenance', 'service',
+    'shipping', 'delivery', 'order', 'order status', 'customer service', 'support',
+    'credit', 'insurance', 'program',
+  ]
+  if (serviceKws.some(kw => msg.includes(kw)) && !productTypeKws.some(kw => msg.includes(kw))) return 'general'
+
   // Product keywords — brand names alone don't trigger search; need a product type too
   const hasBrand = brandKws.some(kw => msg.includes(kw))
   const hasProductType = productTypeKws.some(kw => msg.includes(kw))
