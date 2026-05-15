@@ -87,6 +87,36 @@ Prompt caching is enabled — reduces Claude API costs ~90% on repeated system p
 
 ---
 
+## Conversation log (Supabase)
+
+每次對話結束後自動寫入 Supabase `conversation_logs` 資料表。
+需設定環境變數：`SUPABASE_URL`、`SUPABASE_ANON_KEY`。
+
+### 常用查詢
+
+```sql
+-- 熱門問題 Top 10
+select user_message, count(*) as count
+from conversation_logs
+group by user_message
+order by count desc
+limit 10;
+
+-- 各 intent 使用量
+select intent, count(*) as count
+from conversation_logs
+group by intent
+order by count desc;
+
+-- 最近 50 筆對話
+select created_at, user_message, ai_response
+from conversation_logs
+order by created_at desc
+limit 50;
+```
+
+---
+
 ## Tech stack
 
 | Layer | Choice |
