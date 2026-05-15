@@ -320,6 +320,8 @@ function scoreProduct(product: Product, filters: SearchFilters): number {
     const isRoadProduct = /\b(road|gravel|aero|race)\b/i.test(product.name)
     if (wantsRoad && isMtbProduct)  score -= 6
     if (wantsMtb  && isRoadProduct) score -= 6
+    if (wantsRoad && isRoadProduct) score += 5
+    if (wantsMtb  && isMtbProduct)  score += 5
   }
 
   // Boost Lifestyle-level products for entry queries
