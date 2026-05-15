@@ -115,6 +115,19 @@ order by created_at desc
 limit 50;
 ```
 
+### 滿意度查詢（feedback 資料表）
+
+```sql
+-- 找到負評的對話
+select f.session_id, f.message_index, f.created_at,
+       c.user_message, c.ai_response
+from feedback f
+join conversation_logs c 
+  on c.session_id = f.session_id
+where f.rating = 'down'
+order by f.created_at desc;
+```
+
 ---
 
 ## Tech stack
