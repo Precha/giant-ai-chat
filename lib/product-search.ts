@@ -312,6 +312,16 @@ function scoreProduct(product: Product, filters: SearchFilters): number {
     }
   }
 
+  // Penalise type mismatch for gear (e.g. "road jersey" should not return MTB jersey)
+  if (filters.isGear && keywords.length) {
+    const wantsRoad = keywords.some(kw => ['road', 'roadbike', 'gravel', 'racing', 'aero', 'triathlon'].includes(kw))
+    const wantsMtb  = keywords.some(kw => ['mountain', 'mtb', 'trail', 'enduro', 'xc'].includes(kw))
+    const isMtbProduct  = /\b(mtb|mountain)\b/i.test(product.name)
+    const isRoadProduct = /\b(road|gravel|aero|race)\b/i.test(product.name)
+    if (wantsRoad && isMtbProduct)  score -= 6
+    if (wantsMtb  && isRoadProduct) score -= 6
+  }
+
   // Boost Lifestyle-level products for entry queries
   if (filters.level === 'entry') {
     if (product.filters.some(f => /lifestyle|recreational|leisure/i.test(f))) score += 3
