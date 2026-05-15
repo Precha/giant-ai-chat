@@ -190,6 +190,11 @@ function detectIntent(message: string): 'product' | 'dealer' | 'general' {
   ]
   if (serviceKws.some(kw => msg.includes(kw))) return 'general'
 
+  // Informational questions — always general regardless of product keywords
+  // Covers: "why X", "how does X", "what is X", "explain X", etc.
+  const infoQnRe = /^\s*(why|how\s+(does|do|is|are|come)|what\s+(is|are|makes|gives|'s)|explain|tell\s+me\s+(about|why|how)|is\s+it\s+true|what'?s\s+the\s+(difference|reason))/i
+  if (infoQnRe.test(msg)) return 'general'
+
   // If it looks like a brand info question with no specific product type, treat as general
   if (brandInfoRe.test(msg) && !productTypeKws.some(kw => msg.includes(kw))) return 'general'
 
