@@ -142,7 +142,7 @@ function extractFilters(message: string): SearchFilters {
   }
 
   // Gear/accessory detection — when searching for accessories, skip bike-type filters
-  const matchedGearKw = Array.from(GEAR_KEYWORDS_SET).find(kw => msg.includes(kw))
+  const matchedGearKw = Array.from(GEAR_KEYWORDS_SET).find(kw => new RegExp(`\\b${kw}s?\\b`, 'i').test(msg))
   filters.isGear = !!matchedGearKw
   if (matchedGearKw) filters.gearType = matchedGearKw
 
