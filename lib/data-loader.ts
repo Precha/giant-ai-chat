@@ -189,11 +189,13 @@ function parseProducts(raw: any, defaultBrand: Brand, forceBrand?: Brand): Produ
         description: (() => {
           if (p.MetaDescription && p.MetaDescription.length >= 60) return p.MetaDescription
           if (p.BikeSeriesDescription) return p.BikeSeriesDescription.slice(0, 300)
-          // Gear products use Features[0] as description fallback
-          const firstFeature = ((p.Features as string[] | undefined)?.[0] ?? '')
-            .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
-          if (firstFeature.length >= 30) return firstFeature.slice(0, 300)
-          return p.MetaDescription ?? ''
+          // Gear products: find first Feature with enough content (skip short header lines)
+          const features = (p.Features as string[] | undefined) ?? []
+          for (const f of features) {
+            const cleaned = f.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
+            if (cleaned.length >= 30) return cleaned.slice(0, 300)
+          }
+          return ''
         })(),
         imageUrl,
         productUrl: `${BRAND_BASE_URL[brand]}${p.Url ?? ''}`,
