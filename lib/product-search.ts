@@ -316,8 +316,9 @@ function scoreProduct(product: Product, filters: SearchFilters): number {
   if (filters.isGear && keywords.length) {
     const wantsRoad = keywords.some(kw => ['road', 'roadbike', 'gravel', 'racing', 'aero', 'triathlon'].includes(kw))
     const wantsMtb  = keywords.some(kw => ['mountain', 'mtb', 'trail', 'enduro', 'xc'].includes(kw))
-    const isMtbProduct  = /\b(mtb|mountain)\b/i.test(product.name)
-    const isRoadProduct = /\b(road|gravel|aero|race)\b/i.test(product.name)
+    const isMtbProduct  = /\b(mtb|mountain|off.?road|trail|enduro|xc)\b/i.test(product.name)
+    const isRoadProduct = /\b(gravel|aero|race)\b/i.test(product.name) ||
+      (/\broad\b/i.test(product.name) && !/\boff.?road\b/i.test(product.name))
     if (wantsRoad && isMtbProduct)  score -= 6
     if (wantsMtb  && isRoadProduct) score -= 6
     if (wantsRoad && isRoadProduct) score += 5
