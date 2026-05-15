@@ -191,9 +191,9 @@
     }
     #chips.collapsed { max-height:0; padding-bottom:0; }
     .chip {
-      display:inline-flex; align-items:center; padding:5px 11px;
+      display:inline-flex; align-items:center; justify-content:center; padding:5px 11px;
       border:1.5px solid var(--blue); color:var(--blue); border-radius:32px;
-      font-family:'Overpass',sans-serif; font-weight:700; font-size:11px;
+      font-family:'Overpass',sans-serif; font-weight:700; font-size:11px; line-height:1;
       cursor:pointer; white-space:nowrap; background:transparent;
     }
     .chip:hover { background:rgba(6,3,141,0.05); }
