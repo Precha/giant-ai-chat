@@ -1,6 +1,11 @@
 import Anthropic from '@anthropic-ai/sdk'
+import { createClient } from '@supabase/supabase-js'
 import { searchProducts, formatProductsForPrompt, BIKE_MODEL_NAMES } from '@/lib/product-search'
 import { searchDealers, formatDealersForPrompt } from '@/lib/dealer-search'
+
+const supabase = process.env.SUPABASE_URL && process.env.SUPABASE_ANON_KEY
+  ? createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY)
+  : null
 
 const client = new Anthropic()
 
@@ -339,11 +344,13 @@ export async function POST(req: Request) {
           )
         }
 
+        let aiResponse = ''
         for await (const chunk of stream) {
           if (
             chunk.type === 'content_block_delta' &&
             chunk.delta.type === 'text_delta'
           ) {
+            aiResponse += chunk.delta.text
             controller.enqueue(
               encoder.encode(`data: ${JSON.stringify({ text: chunk.delta.text })}\n\n`)
             )
@@ -352,6 +359,18 @@ export async function POST(req: Request) {
 
         controller.enqueue(encoder.encode('data: [DONE]\n\n'))
         controller.close()
+
+        // Log conversation to Supabase (non-blocking)
+        if (supabase) {
+          supabase.from('conversation_logs').insert({
+            session_id: body.sessionId ?? null,
+            user_message: message,
+            ai_response: aiResponse,
+            intent,
+          }).then(({ error }) => {
+            if (error) console.error('Supabase log error:', error.message)
+          })
+        }
       },
     })
 
