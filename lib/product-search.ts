@@ -240,7 +240,7 @@ function extractFilters(message: string): SearchFilters {
     'my','me','we','it','as','at','by','or','an','in','on','of','to','be','so',
   ])
   // Short meaningful acronyms that bypass the length filter
-  const SHORT_ALLOWLIST = new Set(['xc','tt','sl','mtb','isp','di2','axs','co2'])
+  const SHORT_ALLOWLIST = new Set(['xc','tt','sl','mtb','isp','di2','axs','co2','tcr','stp','xtc'])
 
   filters.keywords = msg
     .replace(/[^\w\s]/g, ' ')
