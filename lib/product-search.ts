@@ -89,6 +89,7 @@ export const BIKE_MODEL_NAMES = [
   'propel', 'revolt', 'tcr', 'reign', 'anthem', 'contend', 'defy', 'avail',
   'langma', 'talon', 'stp', 'seek', 'devote', 'trance', 'fathom', 'xtc',
   'glory', 'maestro', 'stance', 'fastroad', 'escape', 'roam', 'cypress',
+  'tempt',
 ]
 
 // Maps bike type → Categories values in the product data
@@ -240,7 +241,17 @@ function extractFilters(message: string): SearchFilters {
     'my','me','we','it','as','at','by','or','an','in','on','of','to','be','so',
   ])
   // Short meaningful acronyms that bypass the length filter
-  const SHORT_ALLOWLIST = new Set(['xc','tt','sl','mtb','isp','di2','axs','co2','tcr','stp','xtc'])
+  const SHORT_ALLOWLIST = new Set([
+    'xc','tt','sl','mtb','isp','di2','axs','co2','tcr','stp','xtc',
+    'ar',   // Contend AR, Avail AR, CADEX AR
+    'se',   // Revolt Advanced 0 SE, Devote Advanced 0 SE
+    'fs',   // STP 20 FS (Full Suspension)
+    'gx',   // CADEX GX
+    'gc',   // CADEX GC
+    'red',  // SRAM RED groupset
+    'xdr',  // SRAM XDR freehub
+    'ult',  // Ultegra shorthand
+  ])
 
   filters.keywords = msg
     .replace(/[^\w\s]/g, ' ')
@@ -253,13 +264,31 @@ function extractFilters(message: string): SearchFilters {
 
   // Tech acronym expansion — appended AFTER base keywords
   const techExpansions: Record<string, string[]> = {
+    // drivetrain electronics
     'di2':   ['electronic', 'shimano'],
     'axs':   ['sram', 'axs'],
     'etap':  ['electronic'],
+    // safety
     'mips':  ['mips'],
+    // Giant/Liv model designations
+    'e+':    ['electric', 'motor', 'ebike'],
+    'ar':    ['aero', 'allroad'],
+    // drivetrain groupsets
+    'red':   ['sram', 'groupset'],
+    'gx':    ['sram', 'groupset'],
+    'xdr':   ['sram'],
+    'dura':  ['shimano', 'groupset'],
+    'ult':   ['ultegra', 'shimano', 'groupset'],
+    // suspension
+    'fs':    ['full suspension'],
   }
   for (const [acronym, terms] of Object.entries(techExpansions)) {
-    if (new RegExp(`\\b${acronym}\\b`, 'i').test(msg)) {
+    const escaped = acronym.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    // Use \b for pure-alphanumeric acronyms; fall back to space/boundary for others (e.g. "e+")
+    const re = /^[a-z0-9]+$/i.test(acronym)
+      ? new RegExp(`\\b${escaped}\\b`, 'i')
+      : new RegExp(`(?:^|\\s)${escaped}(?:\\s|$)`, 'i')
+    if (re.test(msg)) {
       filters.keywords = [...filters.keywords, ...terms]
     }
   }
