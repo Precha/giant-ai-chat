@@ -181,6 +181,15 @@ function detectIntent(message: string): 'product' | 'dealer' | 'general' {
   ]
   const brandKws = ['liv', 'giant', 'momentum', 'cadex']
 
+  // Service/financial questions — always general, must check before availability/product rules
+  const serviceKws = [
+    'lease', 'leasing', 'finance', 'financing', 'loan', 'installment', 'payment plan',
+    'warranty', 'return', 'refund', 'exchange', 'repair', 'maintenance',
+    'shipping', 'delivery', 'order status', 'customer service', 'support',
+    'credit', 'insurance',
+  ]
+  if (serviceKws.some(kw => msg.includes(kw))) return 'general'
+
   // If it looks like a brand info question with no specific product type, treat as general
   if (brandInfoRe.test(msg) && !productTypeKws.some(kw => msg.includes(kw))) return 'general'
 
@@ -190,15 +199,6 @@ function detectIntent(message: string): 'product' | 'dealer' | 'general' {
 
   // Specific bike model names trigger product search even without other product keywords
   if (BIKE_MODEL_NAMES.some(m => msg.includes(m))) return 'product'
-
-  // Service/financial questions — always general, even when product words appear
-  const serviceKws = [
-    'lease', 'leasing', 'finance', 'financing', 'loan', 'installment', 'payment plan',
-    'warranty', 'return', 'refund', 'exchange', 'repair', 'maintenance',
-    'shipping', 'delivery', 'order status', 'customer service', 'support',
-    'credit', 'insurance',
-  ]
-  if (serviceKws.some(kw => msg.includes(kw))) return 'general'
 
   // Product keywords — brand names alone don't trigger search; need a product type too
   const hasBrand = brandKws.some(kw => msg.includes(kw))
