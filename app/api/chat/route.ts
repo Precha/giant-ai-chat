@@ -191,14 +191,14 @@ function detectIntent(message: string): 'product' | 'dealer' | 'general' {
   // Specific bike model names trigger product search even without other product keywords
   if (BIKE_MODEL_NAMES.some(m => msg.includes(m))) return 'product'
 
-  // Service/financial questions — never trigger product search even with brand names
+  // Service/financial questions — always general, even when product words appear
   const serviceKws = [
     'lease', 'leasing', 'finance', 'financing', 'loan', 'installment', 'payment plan',
-    'warranty', 'return', 'refund', 'exchange', 'repair', 'maintenance', 'service',
-    'shipping', 'delivery', 'order', 'order status', 'customer service', 'support',
-    'credit', 'insurance', 'program',
+    'warranty', 'return', 'refund', 'exchange', 'repair', 'maintenance',
+    'shipping', 'delivery', 'order status', 'customer service', 'support',
+    'credit', 'insurance',
   ]
-  if (serviceKws.some(kw => msg.includes(kw)) && !productTypeKws.some(kw => msg.includes(kw))) return 'general'
+  if (serviceKws.some(kw => msg.includes(kw))) return 'general'
 
   // Product keywords — brand names alone don't trigger search; need a product type too
   const hasBrand = brandKws.some(kw => msg.includes(kw))
@@ -235,11 +235,6 @@ export async function POST(req: Request) {
     if (message.length > 1000) {
       return new Response('Message too long', { status: 400, headers: cors })
     }
-
-    // fullContext (history + message) used only for search, NOT intent detection
-    // Intent detection uses current message only to avoid history contamination
-    const recentContext = history.map(m => m.content).join(' ')
-    const fullContext = `${recentContext} ${message}`.trim()
 
     const intent = detectIntent(message)
     let contextBlock = ''
@@ -305,7 +300,7 @@ export async function POST(req: Request) {
       : message
 
     // Stream from Claude
-    const stream = await client.messages.stream({
+    const stream = client.messages.stream({
       model: 'claude-sonnet-4-6',
       max_tokens: 1024,
       system: [
