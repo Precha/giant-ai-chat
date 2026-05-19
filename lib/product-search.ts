@@ -458,9 +458,6 @@ export function searchProducts(message: string, topK = 3): ProductResult[] {
     return true
   })
 
-  // Fall back to full list if filters are too restrictive
-  if (candidates.length === 0) candidates = products
-
   return candidates
     .map(p => ({ ...p, score: scoreProduct(p, filters) }))
     .sort((a, b) => b.score - a.score)
