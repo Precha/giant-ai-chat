@@ -157,6 +157,9 @@ that and will walk you through the process. They typically respond within one bu
 function detectIntent(message: string): 'product' | 'dealer' | 'general' {
   const msg = message.toLowerCase()
 
+  // 5-digit US zip code — message is only a zip, or zip preceded by "zip"/"zip code"/"in"/"near"
+  if (/^\s*\d{5}\s*$/.test(message) || /(?:zip(?:\s+code)?|in|near)\s+\d{5}\b/i.test(message)) return 'dealer'
+
   // Strong dealer signals always win — explicit purchase/location intent
   const strongDealerKws = [
     'dealer', 'store', 'shop', 'retailer', 'location',

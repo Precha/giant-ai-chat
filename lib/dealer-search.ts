@@ -74,10 +74,15 @@ const CITY_ALIASES: Record<string, { city: string; state: string }> = {
   'austin':        { city: 'Austin',        state: 'TX' },
 }
 
-function extractLocation(message: string): { state?: string; city?: string } {
+function extractLocation(message: string): { state?: string; city?: string; zipCode?: string } {
   const msg = message.toLowerCase()
   let city: string | undefined
   let state: string | undefined
+  let zipCode: string | undefined
+
+  // Detect 5-digit US zip codes (e.g. "91320", "zip 91360")
+  const zipMatch = message.match(/\b(\d{5})\b/)
+  if (zipMatch) zipCode = zipMatch[1]
 
   // "in Chicago, IL" / "near Chicago" / "live in Newbury Park" / "I'm in California"
   const nearIn = msg.match(/(?:live in|living in|based in|i'm in|i am in|near|in|around)\s+([a-z][a-z\s]+?)(?:\s*,\s*([a-z]{2})\b|\s*[\.!?]|\s*$)/)
@@ -110,7 +115,7 @@ function extractLocation(message: string): { state?: string; city?: string } {
     if (abbrMatch && STATE_ABBR[abbrMatch[1]]) state = abbrMatch[1]
   }
 
-  return { state, city }
+  return { state, city, zipCode }
 }
 
 export interface DealerResult extends Dealer {
@@ -146,7 +151,7 @@ export function searchDealers(
   topK = 3
 ): DealerResult[] {
   const dealers = getDealers()
-  const { state, city } = extractLocation(message)
+  const { state, city, zipCode } = extractLocation(message)
   const requiredCampaign = extractRequiredCampaign(message)
 
   let candidates: DealerResult[] = dealers.map(d => ({ ...d }))
@@ -165,6 +170,17 @@ export function searchDealers(
       .map(d => ({ ...d, distanceMi: haversine(userLat, userLng, d.lat, d.lng) }))
       .sort((a, b) => (a.distanceMi ?? 999) - (b.distanceMi ?? 999))
     return candidates.slice(0, topK)
+  }
+
+  // Filter by zip code — most specific, use before city/state
+  if (zipCode) {
+    const zipFiltered = candidates.filter(d => d.zipCode === zipCode)
+    if (zipFiltered.length > 0) {
+      candidates = zipFiltered
+      return candidates.slice(0, topK)
+    }
+    // No exact zip match — only continue if city/state also present, otherwise return empty
+    if (!state && !city) return []
   }
 
   // Filter by state

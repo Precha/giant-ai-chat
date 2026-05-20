@@ -37,6 +37,7 @@ export interface Dealer {
   address: string
   city: string
   state: string
+  zipCode: string
   phone: string
   url: string
   lat: number
@@ -232,6 +233,7 @@ function parseDealers(raw: any): Dealer[] {
       address: parts.join(', '),
       city: d.City ?? '',
       state: d.State ?? '',
+      zipCode: d.ZipCode ?? '',
       phone: d.Phone ?? '',
       url: d.Url ?? '',
       lat: d.Latitude,
